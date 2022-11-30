@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "321053273480",
+    "project_id": "neve-golan",
+    "storage_bucket": "neve-golan.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:321053273480:android:d010fefc4ed4b08467de3d",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "321053273480-5vrnpq53qemkc5p5qbc8qdhs1fju4a6c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrdhpm-MH9ndHdWsuA7A9WUXhTg9ydHz4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "321053273480-5vrnpq53qemkc5p5qbc8qdhs1fju4a6c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
