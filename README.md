@@ -10,6 +10,6 @@
 
 
 
-## The Neve Golan Wiki! [For more explanation ](https://github.com/nivk99/Neve-Golan.wiki.git)
+## The Neve Golan Wiki! [For more explanation ](https://github.com/nivk99/Neve-Golan/wiki)
 
 
