@@ -29,5 +29,4 @@ Made by:
 [Clone the project and run the app](https://github.com/nivk99/Neve-Golan.git)
 
 
-![](https://media.tenor.com/1tVY1qsL4l8AAAAC/android-android-os.gif)
 ![](https://media.tenor.com/mObOMMDy_lQAAAAi/android-google.gif)
