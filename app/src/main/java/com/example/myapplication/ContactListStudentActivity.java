@@ -14,13 +14,11 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Queue;
 
 public class ContactListStudentActivity extends AppCompatActivity {
     private  FirebaseDatabase database;
@@ -68,7 +66,14 @@ public class ContactListStudentActivity extends AppCompatActivity {
     }
 
     public void click_add_student(View view) {
-        startActivity(new Intent(this,AddStudentActivity.class));
+        if(LoginActivity._ADMIN) {
+            startActivity(new Intent(this, AddStudentActivity.class));
+        }
+        else
+        {
+            Toast.makeText(this,"Only a manager can",Toast.LENGTH_LONG).show();
+        }
+
     }
 
     public void click_search_student(View view) {

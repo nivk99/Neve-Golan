@@ -5,36 +5,21 @@
     android:id="@+id/main_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8BB6CF"
+    android:background="@drawable/background_main"
     android:paddingLeft="16dp"
     android:paddingTop="@dimen/cardview_compat_inset_shadow"
     android:paddingRight="16dp"
     android:paddingBottom="16dp"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView_main_tlv"
-        android:layout_width="282dp"
-        android:layout_height="90dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.348"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/first_main_picture"
-        tools:ignore="ImageContrastCheck" />
-
     <ImageButton
         android:id="@+id/imageButton_timetable"
         android:layout_width="120dp"
         android:layout_height="120dp"
+        android:layout_marginTop="124dp"
         android:onClick="click_timetable"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.422"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:srcCompat="@drawable/calendar"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -65,14 +50,15 @@
         android:id="@+id/imageView_teacher"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginStart="71dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="172dp"
         android:onClick="click_teachers"
         app:layout_constraintBottom_toBottomOf="@+id/imageView_main_concern"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.895"
         app:layout_constraintStart_toEndOf="@+id/imageView_student"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_private"
         app:srcCompat="@drawable/teacher"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -80,23 +66,27 @@
         android:id="@+id/imageView_student"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="176dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="51dp"
+        android:layout_marginBottom="172dp"
         android:onClick="click_student"
         app:layout_constraintBottom_toBottomOf="@+id/imageView_main_concern"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton_timetable"
         app:srcCompat="@drawable/student"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/imageView_private"
-        android:layout_width="147dp"
-        android:layout_height="171dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="182dp"
+        android:layout_height="166dp"
+        android:layout_marginStart="73dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="4dp"
         android:onClick="click_private"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_neve_golan"
+        app:layout_constraintStart_toEndOf="@+id/imageButton_timetable"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:srcCompat="@drawable/personal"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -104,8 +94,8 @@
         android:id="@+id/textView_student"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="124dp"
         android:fontFamily="sans-serif-black"
         android:text="Student"
         android:textSize="24sp"
@@ -116,52 +106,83 @@
         android:id="@+id/textView_teachers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
+        android:layout_marginStart="122dp"
+        android:layout_marginEnd="36dp"
         android:layout_marginBottom="124dp"
         android:fontFamily="sans-serif-black"
         android:text="Teachers"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView_teacher"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView_student" />
 
     <TextView
         android:id="@+id/textView_timetable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="34dp"
         android:layout_marginBottom="120dp"
         android:fontFamily="sans-serif-black"
         android:text="Timetable"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageButton_timetable"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Name"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView_private"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="51dp"
-        android:layout_marginBottom="132dp"
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginBottom="129dp"
         android:fontFamily="sans-serif-black"
         android:text="Private"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView_private"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView_timetable"
-        app:layout_constraintTop_toBottomOf="@+id/textView_neve_golan" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_email_"
+        app:layout_constraintVertical_bias="0.375" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="377dp"
+        android:layout_height="127dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/neve_golan" />
 
     <TextView
-        android:id="@+id/textView_neve_golan"
-        android:layout_width="291dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="412dp"
-        android:fontFamily="cursive"
-        android:text="Neve Golan"
-        android:textSize="60sp"
-        app:layout_constraintBottom_toBottomOf="@+id/button_logout"
+        android:id="@+id/textView_Name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="32dp"
+        android:text="Name"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton_timetable"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_main_tlv"
-        app:layout_constraintVertical_bias="0.246" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView_email_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="143dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="207dp"
+        android:text="Email"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_private"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView_Name"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
