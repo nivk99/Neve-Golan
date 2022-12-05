@@ -94,11 +94,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void click_teachers(View view) {
         startActivity(new Intent(this, ContactListTeacherActivity.class));
-
     }
 
     public void click_timetable(View view) {
-        Toast.makeText(this, "click_timetable", Toast.LENGTH_SHORT).show();
-
+        startActivity(new Intent(this, CalendarViewActivity.class));
     }
 }
