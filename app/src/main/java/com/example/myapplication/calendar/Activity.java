@@ -1,12 +1,12 @@
-package com.example.myapplication;
+package com.example.myapplication.calendar;
 
-public class activity {
+public class Activity {
 
     String Name;
     String TimeStart;
     String TimeEnd;
 
-    public activity(String Name,String TimeStart,String TimeEnd){
+    public Activity(String Name,String TimeStart,String TimeEnd){
         this.Name=Name;
         this.TimeStart=TimeStart;
         this.TimeEnd=TimeEnd;

@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.calendar;
 
 import static android.content.ContentValues.TAG;
 
@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.myapplication.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,7 +20,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Map;
-import java.util.Objects;
 
 public class EditDayActivities extends AppCompatActivity {
     String Delete_ActivityName="";
@@ -57,10 +57,10 @@ public class EditDayActivities extends AppCompatActivity {
                                     flag=true; break;
                                 }
                             }
-                            if(flag==false){
+                            if(!flag){
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                                 DatabaseReference myRef = database.getReference("activity/"+year+"/"+month+"/"+day).push();
-                                myRef.setValue(new activity(Add_ActivityName,Add_TimeStart,Add_TimeEnd));
+                                myRef.setValue(new Activity(Add_ActivityName,Add_TimeStart,Add_TimeEnd));
                                 Toast.makeText(EditDayActivities.this, "הפעילות נוספה", Toast.LENGTH_SHORT).show();
                             }
                         }
