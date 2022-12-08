@@ -1,6 +1,6 @@
-package com.example.myapplication;
+package com.example.myapplication.users;
 
-public class user {
+public class User {
 
     private String _name;
     private String _last_name;
@@ -10,7 +10,7 @@ public class user {
     private String _address;
 
 
-    public user(String _name, String _last_name, double _age, String _phone, String _email, String _address) {
+    public User(String _name, String _last_name, double _age, String _phone, String _email, String _address) {
         this._name = _name;
         this._last_name = _last_name;
         this._age = _age;
@@ -19,7 +19,7 @@ public class user {
         this._address = _address;
     }
 
-    public user() {
+    public User() {
     }
 
     public String get_name() {

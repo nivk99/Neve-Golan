@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.myapplication.firebase.Authenticate;
+import com.example.myapplication.users.Admin;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -26,32 +28,27 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginActivity extends AppCompatActivity {
 
     //Admin
-    static boolean  _ADMIN;
+    static Admin admin;
+     Authenticate _mAuth;
 
-    //Firebase
-    static FirebaseAuth mAuth;
 
     //google
-    GoogleSignInOptions gso;
-    GoogleSignInClient gsc;
-    ImageView googleBtn;
+   GoogleSignInOptions gso;
+   GoogleSignInClient gsc;
+   ImageView googleBtn;
 
     //EditText
-   EditText editText_email,editText_password;
+    private EditText editText_email,editText_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        mAuth = FirebaseAuth.getInstance();
-        _ADMIN=false;
+        _mAuth=new Authenticate();
+        admin=new Admin();
         editText_email =findViewById(R.id.username);
         editText_password =findViewById(R.id.password);
-
-
-
         googleBtn = findViewById(R.id.google_button);
-
 
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
@@ -60,8 +57,6 @@ public class LoginActivity extends AppCompatActivity {
         //Build a GoogleSignInClient with the options specified by gso.
         gsc = GoogleSignIn.getClient(this,gso);
 
-
-
          //Check for existing Google Sign In account, if the user is already signed in
          // the GoogleSignInAccount will be non-null.
 
@@ -69,15 +64,12 @@ public class LoginActivity extends AppCompatActivity {
         if(acct!=null){
             navigateToSecondActivity();
         }
-
-
         googleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signIn();
             }
         });
-
 
 
     }
@@ -102,27 +94,17 @@ public class LoginActivity extends AppCompatActivity {
         }
 
     }
-    void navigateToSecondActivity(){
+    void navigateToSecondActivity() {
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         String personName = acct.getDisplayName();
         String personEmail = acct.getEmail();
-        mAuth.signInWithEmailAndPassword(personEmail,personName).addOnCompleteListener(this,new OnCompleteListener<AuthResult>(){
-            public void onComplete(@NonNull Task<AuthResult> task)
-            {
-                if(task.isSuccessful())
-                {
-                    finish();
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        _mAuth.login(personEmail,personName,this);
+    }
 
-                }
-                else
-                {
-                    Toast.makeText(LoginActivity.this,"login failed:(",Toast.LENGTH_LONG).show();
-
-                }
-            }
-        });
-
+    public void check()
+    {
+        finish();
+        startActivity(new Intent(LoginActivity.this, MainActivity.class));
     }
 
 
@@ -130,7 +112,7 @@ public class LoginActivity extends AppCompatActivity {
     public void onStart()
     {
         super.onStart();
-        FirebaseUser currentUser =mAuth.getCurrentUser();
+        FirebaseUser currentUser =_mAuth.get_auth().getCurrentUser();
         if(currentUser!=null)
         {
             startActivity(new Intent(this, MainActivity.class));
@@ -138,54 +120,29 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    public void click_register(View view)
-    {
-        mAuth.createUserWithEmailAndPassword(editText_email.getText().toString(),editText_password.getText().toString()).addOnCompleteListener(this,new OnCompleteListener<AuthResult>(){
-            public void onComplete(@NonNull Task<AuthResult> task)
-            {
-                if(task.isSuccessful())
-                {
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-
-                }
-                else
-                {
-                    Toast.makeText(LoginActivity.this,"register failed:(",Toast.LENGTH_LONG).show();
-
-                }
-            }
-        });
-
-
-    }
-
     public void click_login(View view)
     {
-        if(editText_email.getText().toString().equals("Admin")&&editText_password.getText().toString().equals("Admin"))
+        String email=editText_email.getText().toString();
+        String password=editText_password.getText().toString();
+
+        if(email.equals(admin.get_name())&&password.equals(admin.get_password()))
         {
-            _ADMIN=true;
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            admin.set_is_admin(true);
+            startActivity(new Intent(this, MainActivity.class));
         }
         else
         {
-            mAuth.signInWithEmailAndPassword(editText_email.getText().toString(),editText_password.getText().toString()).addOnCompleteListener(this,new OnCompleteListener<AuthResult>(){
-                public void onComplete(@NonNull Task<AuthResult> task)
-                {
-                    if(task.isSuccessful()&&!editText_email.getText().toString().contains("gmail.com"))
-                    {
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            if(!email.contains("gmail.com"))
+            {
+                _mAuth.login(email,password,this);
+            }
+            else
+            {
+                Toast.makeText(this,"login failed:(",Toast.LENGTH_LONG).show();
+            }
 
-                    }
-                    else
-                    {
-                        Toast.makeText(LoginActivity.this,"login failed:(",Toast.LENGTH_LONG).show();
+       }
 
-                    }
-                }
-            });
-
-
-        }
 
     }
 
@@ -197,10 +154,11 @@ public class LoginActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    public static FirebaseAuth get_firebaseAuth()
+    public static Admin get_admin()
     {
-        return mAuth;
+        return admin;
     }
+
 
 
 

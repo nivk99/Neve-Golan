@@ -9,6 +9,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.calendar.CalendarViewActivity;
+import com.example.myapplication.readUser.ContactListStudentActivity;
+import com.example.myapplication.readUser.ContactListTeacherActivity;
+import com.example.myapplication.users.Admin;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -46,15 +50,16 @@ public class MainActivity extends AppCompatActivity {
 
         else
         {
-            if(LoginActivity._ADMIN)
+            Admin admin=LoginActivity.get_admin();
+            if(admin.is_admin())
             {
-                name.setText("Admin");
-                email.setText("Admin");
+                name.setText(admin.get_name());
+                email.setText(admin.get_name());
             }
             else
             {
-                name.setText("????");
-                email.setText("????");
+                name.setText(null);
+                email.setText(null);
             }
         }
 
