@@ -1,10 +1,12 @@
-package com.example.myapplication;
+package com.example.myapplication.calendar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.CalendarView;
 import android.widget.Toast;
+
+import com.example.myapplication.R;
 
 public class CalendarViewActivity extends AppCompatActivity {
 

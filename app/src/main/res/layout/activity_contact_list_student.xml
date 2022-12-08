@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/cardview_compat_inset_shadow"
     android:paddingRight="16dp"
     android:paddingBottom="16dp"
-    tools:context=".ContactListStudentActivity">
+    tools:context=".readUser.ContactListStudentActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_list"
