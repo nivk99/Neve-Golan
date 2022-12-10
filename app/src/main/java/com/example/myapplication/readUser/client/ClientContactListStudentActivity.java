@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.example.myapplication.AddUser.AddStudentActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.readUser.InterfaceContactList;
 import com.example.myapplication.adapter.UserAdapter;
@@ -69,10 +71,14 @@ public class ClientContactListStudentActivity extends AppCompatActivity implemen
         database.orderByChild(key,adapter,this);
 
     }
-    public void Click_imageView(View view)
-    {
+
+    public void client_click_add_student(View view) {
+        startActivity(new Intent(this, AddStudentActivity.class));
 
     }
+
+
+
     public InterfaceContactList _this() {
         return this;
     }
