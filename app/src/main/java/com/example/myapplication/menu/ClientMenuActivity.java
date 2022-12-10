@@ -42,7 +42,8 @@ public class ClientMenuActivity extends AppCompatActivity {
         gsc = GoogleSignIn.getClient(this, gso);
 
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
-        if (acct != null) {
+        if (acct != null)
+        {
             String personName = acct.getDisplayName();
             String personEmail = acct.getEmail();
             name.setText(personName);
