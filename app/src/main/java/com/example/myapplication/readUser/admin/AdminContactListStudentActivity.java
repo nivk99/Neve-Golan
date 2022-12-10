@@ -16,7 +16,7 @@ import com.example.myapplication.updateRemoveUser.UpdateRemoveStudent;
 import com.example.myapplication.adapter.UserAdapter;
 import com.example.myapplication.firebase.Database;
 import com.example.myapplication.users.User;
-import com.example.myapplication.writeUser.AddStudentActivity;
+import com.example.myapplication.AddUser.AddStudentActivity;
 import com.example.myapplication.users.Student;
 
 import java.util.ArrayList;

@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/save"
-        android:title="save" />
-    <item
-        android:id="@+id/search"
-        android:title="search" />
-    <item
-        android:id="@+id/help"
-        android:title="help" />
+        app:showAsAction="always"
+        android:icon="@drawable/ic_more_vert"
+        android:title="">
+        <menu>
+            <item
+                android:id="@+id/add_admin"
+                android:title="Add Admin"
+                app:showAsAction="never"/>
+            <item
+                android:id="@+id/add_user"
+                android:title="Add User"
+                app:showAsAction="never"/>
+            <item
+                android:id="@+id/delete_admin"
+                android:title="Delete Admin"
+                app:showAsAction="never"/>
+        </menu>
+    </item>
 </menu>

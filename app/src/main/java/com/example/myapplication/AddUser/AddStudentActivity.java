@@ -1,4 +1,4 @@
-package com.example.myapplication.writeUser;
+package com.example.myapplication.AddUser;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#402196F3"
-    tools:context=".writeUser.AddTeacherActivity">
+    android:background="@drawable/background_main"
+    tools:context=".AddUser.AddTeacherActivity">
 
     <ImageView
-        android:id="@+id/imageView_teacher_imag"
+        android:id="@+id/imageView_teacher_image"
         android:layout_width="209dp"
         android:layout_height="194dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -31,7 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.398"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_teacher_imag"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_teacher_image"
         tools:ignore="TouchTargetSizeCheck" />
 
     <EditText

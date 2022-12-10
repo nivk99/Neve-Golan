@@ -12,4 +12,6 @@
     <string name="neve_golan_main">NEVE GOLAN</string>
     <string name="phone_number">Phone Number</string>
     <string name="authenticate_password">Authenticate password</string>
+    <string name="email">Email</string>
+    <string name="full_name">full name</string>
 </resources>

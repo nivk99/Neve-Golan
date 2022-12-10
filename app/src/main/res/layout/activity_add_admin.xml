@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main"
+    tools:context=".AddUser.AddAdminActivity">
+
+    <ImageView
+        android:id="@+id/imageView_admin"
+        android:layout_width="361dp"
+        android:layout_height="224dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="79dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPhone_admin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/admin" />
+
+    <EditText
+        android:id="@+id/editTextPhone_admin"
+        android:layout_width="284dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="32dp"
+        android:ems="10"
+        android:inputType="phone"
+        android:hint="Type a phone number"
+        app:layout_constraintBottom_toTopOf="@+id/button_add_admin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_admin" />
+
+    <Button
+        android:id="@+id/button_add_admin"
+        android:layout_width="112dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="170dp"
+        android:layout_marginBottom="218dp"
+        android:backgroundTint="@color/design_default_color_secondary"
+        android:onClick="click_add_admin"
+        android:text="Add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhone_admin" />
+</androidx.constraintlayout.widget.ConstraintLayout>

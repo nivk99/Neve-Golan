@@ -44,8 +44,6 @@ public class ClientLoginActivity extends AppCompatActivity implements InterfaceL
 
         //Build a GoogleSignInClient with the options specified by gso.
         gsc = GoogleSignIn.getClient(this,gso);
-        startActivity(new Intent(ClientLoginActivity.this, ClientMenuActivity.class));
-
 
         //Check for existing Google Sign In account, if the user is already signed in
          // the GoogleSignInAccount will be non-null.
@@ -92,12 +90,6 @@ public class ClientLoginActivity extends AppCompatActivity implements InterfaceL
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        getMenuInflater().inflate(R.menu.menu_main,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 
 
 

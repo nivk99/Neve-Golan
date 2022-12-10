@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.myapplication.menu.AdminMenuActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.firebase.Authenticate;
+import com.example.myapplication.menu.ClientMenuActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;

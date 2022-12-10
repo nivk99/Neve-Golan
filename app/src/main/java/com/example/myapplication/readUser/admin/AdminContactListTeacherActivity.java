@@ -17,7 +17,7 @@ import com.example.myapplication.readUser.InterfaceContactList;
 import com.example.myapplication.updateRemoveUser.UpdateRemoveTeacher;
 import com.example.myapplication.users.Teacher;
 import com.example.myapplication.users.User;
-import com.example.myapplication.writeUser.AddTeacherActivity;
+import com.example.myapplication.AddUser.AddTeacherActivity;
 
 import java.util.ArrayList;
 

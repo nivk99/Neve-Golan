@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -12,11 +11,9 @@ import android.widget.TextView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.readUser.InterfaceContactList;
-import com.example.myapplication.updateRemoveUser.UpdateRemoveStudent;
 import com.example.myapplication.adapter.UserAdapter;
 import com.example.myapplication.firebase.Database;
 import com.example.myapplication.users.User;
-import com.example.myapplication.writeUser.AddStudentActivity;
 import com.example.myapplication.users.Student;
 
 import java.util.ArrayList;

@@ -4,13 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.example.myapplication.AddUser.AddAdminActivity;
 import com.example.myapplication.login.InterfaceLogin;
-import com.example.myapplication.readUser.InterfaceContactList;
-import com.example.myapplication.writeUser.AddTeacherActivity;
-import com.example.myapplication.login.ClientLoginActivity;
+import com.example.myapplication.AddUser.InterfaceAddUser;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -61,18 +61,18 @@ public class Authenticate extends AppCompatActivity {
     }
 
 
-    public void register (String email , String password, AddTeacherActivity add)
+    public void register (String email , String password, InterfaceAddUser add)
     {
-        this._auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener( add,new OnCompleteListener<AuthResult>(){
+        this._auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener((Activity) add._this(),new OnCompleteListener<AuthResult>(){
             public void onComplete(@NonNull Task<AuthResult> task)
             {
                 if(task.isSuccessful())
                 {
-                    Toast.makeText(add,"Added a new user",Toast.LENGTH_LONG).show();
+                    Toast.makeText((Context) add._this(),"Added a new user",Toast.LENGTH_LONG).show();
                 }
                 else
                 {
-                    Toast.makeText(add,"register failed:(",Toast.LENGTH_LONG).show();
+                    Toast.makeText((Context) add._this(),"register failed:(",Toast.LENGTH_LONG).show();
                 }
 
 
@@ -98,6 +98,29 @@ public class Authenticate extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    public void register_admin(String phone , AddAdminActivity add)
+    {
+        String email_phone=phone+"@gmail.com";
+
+        this._auth.createUserWithEmailAndPassword(email_phone,phone).addOnCompleteListener( add,new OnCompleteListener<AuthResult>(){
+            public void onComplete(@NonNull Task<AuthResult> task)
+            {
+                if(task.isSuccessful())
+                {
+                    Toast.makeText(add,"Added a new admin",Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    Toast.makeText(add,"register failed admin:(",Toast.LENGTH_LONG).show();
+                }
+
+
+
+            }
+        });
 
     }
 
