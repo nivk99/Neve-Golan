@@ -35,6 +35,8 @@ public class ClientLoginActivity extends AppCompatActivity implements InterfaceL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_login);
+        startActivity(new Intent(ClientLoginActivity.this, ClientMenuActivity.class));
+
         _mAuth=new Authenticate();
         googleBtn = findViewById(R.id.google_button);
 
@@ -49,6 +51,7 @@ public class ClientLoginActivity extends AppCompatActivity implements InterfaceL
          // the GoogleSignInAccount will be non-null.
 
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+
         if(acct!=null){
             navigateToSecondActivity();
         }

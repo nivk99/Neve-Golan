@@ -48,6 +48,11 @@ public class ClientMenuActivity extends AppCompatActivity {
             name.setText(personName);
             email.setText(personEmail);
         }
+        else
+        {
+            name.setText("??");
+            email.setText("??");
+        }
 
         signOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override

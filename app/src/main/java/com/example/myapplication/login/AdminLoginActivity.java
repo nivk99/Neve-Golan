@@ -43,6 +43,7 @@ public class AdminLoginActivity extends AppCompatActivity implements InterfaceLo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_login);
+        startActivity(new Intent(AdminLoginActivity.this, AdminMenuActivity.class));
         phone = findViewById(R.id.username);
         otp = findViewById(R.id.password);
         btngenOTP = findViewById(R.id.click_login);
