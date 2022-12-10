@@ -2,10 +2,10 @@ package com.example.myapplication.users;
 
 public class Teacher extends User {
 
-    private String _profession;
+    protected String _profession;
 
-    public Teacher(String _name, String _last_name, double _age, String _phone, String _email, String _address, String _profession) {
-        super(_name, _last_name, _age, _phone, _email, _address);
+    public Teacher(String _name, String _last_name, double _age, String _phone, String _email, String _id, String _profession) {
+        super(_name, _last_name, _age, _phone, _email, _id);
         this._profession = _profession;
     }
 

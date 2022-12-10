@@ -7,4 +7,9 @@
     <string name="password">Password</string>
     <string name="sign_in">Sign in</string>
     <string name="name">Name</string>
+    <string name="admin_sign_in">Admin SIGN IN</string>
+    <string name="client_sign_in">Client SIGN IN</string>
+    <string name="neve_golan_main">NEVE GOLAN</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="authenticate_password">Authenticate password</string>
 </resources>

@@ -91,13 +91,13 @@
         tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
-        android:id="@+id/editText_teacher_address"
+        android:id="@+id/editText_teacher_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Address"
+        android:hint="ID"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.398"
         app:layout_constraintStart_toStartOf="parent"
@@ -115,11 +115,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.398"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_teacher_address"
+        app:layout_constraintTop_toBottomOf="@+id/editText_teacher_id"
         tools:ignore="TouchTargetSizeCheck" />
 
     <Button
-        android:id="@+id/button_save_teacher"
+        android:id="@+id/button_update_teacher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"

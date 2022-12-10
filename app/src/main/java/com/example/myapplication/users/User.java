@@ -2,21 +2,21 @@ package com.example.myapplication.users;
 
 public class User {
 
-    private String _name;
-    private String _last_name;
-    private double _age;
-    private String _phone;
-    private String _email;
-    private String _address;
+    protected String _name;
+    protected String _last_name;
+    protected double _age;
+    protected String _phone;
+    protected String _email;
+    protected String _id;
 
 
-    public User(String _name, String _last_name, double _age, String _phone, String _email, String _address) {
+    public User(String _name, String _last_name, double _age, String _phone, String _email, String _id) {
         this._name = _name;
         this._last_name = _last_name;
         this._age = _age;
         this._phone = _phone;
         this._email = _email;
-        this._address = _address;
+        this._id = _id;
     }
 
     public User() {
@@ -62,11 +62,11 @@ public class User {
         this._email = _email;
     }
 
-    public String get_address() {
-        return _address;
+    public String get_id() {
+        return _id;
     }
 
-    public void set_address(String _address) {
-        this._address = _address;
+    public void set_id(String _id) {
+        this._id = _id;
     }
 }

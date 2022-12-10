@@ -1,6 +1,5 @@
-package com.example.myapplication;
+package com.example.myapplication.login;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -8,46 +7,35 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.myapplication.menu.ClientMenuActivity;
+import com.example.myapplication.R;
 import com.example.myapplication.firebase.Authenticate;
-import com.example.myapplication.users.Admin;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
-public class LoginActivity extends AppCompatActivity {
+public class ClientLoginActivity extends AppCompatActivity implements InterfaceLogin {
 
-    //Admin
-    static Admin admin;
+
      Authenticate _mAuth;
-
 
     //google
    GoogleSignInOptions gso;
    GoogleSignInClient gsc;
    ImageView googleBtn;
 
-    //EditText
-    private EditText editText_email,editText_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_client_login);
         _mAuth=new Authenticate();
-        admin=new Admin();
-        editText_email =findViewById(R.id.username);
-        editText_password =findViewById(R.id.password);
         googleBtn = findViewById(R.id.google_button);
 
         // Configure sign-in to request the user's ID, email address, and basic
@@ -56,8 +44,10 @@ public class LoginActivity extends AppCompatActivity {
 
         //Build a GoogleSignInClient with the options specified by gso.
         gsc = GoogleSignIn.getClient(this,gso);
+        startActivity(new Intent(ClientLoginActivity.this, ClientMenuActivity.class));
 
-         //Check for existing Google Sign In account, if the user is already signed in
+
+        //Check for existing Google Sign In account, if the user is already signed in
          // the GoogleSignInAccount will be non-null.
 
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
@@ -101,51 +91,6 @@ public class LoginActivity extends AppCompatActivity {
         _mAuth.login(personEmail,personName,this);
     }
 
-    public void check()
-    {
-        finish();
-        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-    }
-
-
-
-    public void onStart()
-    {
-        super.onStart();
-        FirebaseUser currentUser =_mAuth.get_auth().getCurrentUser();
-        if(currentUser!=null)
-        {
-            startActivity(new Intent(this, MainActivity.class));
-        }
-    }
-
-
-    public void click_login(View view)
-    {
-        String email=editText_email.getText().toString();
-        String password=editText_password.getText().toString();
-
-        if(email.equals(admin.get_name())&&password.equals(admin.get_password()))
-        {
-            admin.set_is_admin(true);
-            startActivity(new Intent(this, MainActivity.class));
-        }
-        else
-        {
-            if(!email.contains("gmail.com"))
-            {
-                _mAuth.login(email,password,this);
-            }
-            else
-            {
-                Toast.makeText(this,"login failed:(",Toast.LENGTH_LONG).show();
-            }
-
-       }
-
-
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -154,12 +99,17 @@ public class LoginActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    public static Admin get_admin()
+
+
+    @Override
+    public void login()
     {
-        return admin;
+        finish();
+        startActivity(new Intent(ClientLoginActivity.this, ClientMenuActivity.class));
     }
 
-
-
-
+    @Override
+    public InterfaceLogin is_this() {
+        return this;
+    }
 }

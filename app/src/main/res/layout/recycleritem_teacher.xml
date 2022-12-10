@@ -9,12 +9,13 @@
         android:id="@+id/imageView"
         android:layout_width="65dp"
         android:layout_height="65dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.034"
+        android:onClick="click_imageView_teacher"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/teacher" />
+        app:srcCompat="@drawable/teacher"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/textView"
@@ -33,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="13dp"
         android:layout_marginTop="12dp"
-        android:text="Address"
+        android:text="ID"
         android:textSize="10sp"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -50,12 +51,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView_teacher_address"
+        android:id="@+id/textView_teacher_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="7dp"
         android:layout_marginTop="12dp"
-        android:text="Address"
+        android:text="identity card"
         android:textSize="10sp"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView_teacher_last_name" />
@@ -66,8 +67,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="3dp"
         android:layout_marginTop="11dp"
+        android:layout_marginBottom="12dp"
         android:text="Last Name"
         android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_teacher_id"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView_teacher_name" />
 
@@ -97,23 +100,23 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="12dp"
         android:text="Email"
         android:textSize="10sp"
-        app:layout_constraintStart_toEndOf="@+id/textView_teacher_last_name"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintStart_toEndOf="@+id/textView_teacher_last_name" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="47dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginBottom="12dp"
         android:text="profession"
         android:textSize="10sp"
-        app:layout_constraintStart_toEndOf="@+id/textView_teacher_address"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintStart_toEndOf="@+id/textView_teacher_id" />
 
     <TextView
         android:id="@+id/textView_teacher_phone"
@@ -130,10 +133,12 @@
         android:id="@+id/textView_teacher_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="18dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="10dp"
         android:text="Email"
         android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_teacher_profession"
         app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/textView_teacher_phone" />
 
@@ -141,8 +146,8 @@
         android:id="@+id/textView_teacher_profession"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
         android:text="profession"
         android:textSize="10sp"
         app:layout_constraintStart_toEndOf="@+id/textView9"

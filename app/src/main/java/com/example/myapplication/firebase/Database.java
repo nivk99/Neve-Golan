@@ -1,15 +1,14 @@
 package com.example.myapplication.firebase;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.example.myapplication.adapter.UserAdapter;
-import com.example.myapplication.calendar.Activity;
-import com.example.myapplication.readUser.ContactListStudentActivity;
+import com.example.myapplication.readUser.admin.AdminContactListStudentActivity;
 import com.example.myapplication.readUser.InterfaceContactList;
+import com.example.myapplication.readUser.client.ClientContactListStudentActivity;
 import com.example.myapplication.users.Student;
 import com.example.myapplication.users.Teacher;
 import com.example.myapplication.users.User;
@@ -21,7 +20,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 public class Database {
 
@@ -68,7 +67,7 @@ public class Database {
 
     public void write_database(User user)
     {
-        DatabaseReference myRef = this._data_base.getReference(this._name_path).push();
+        DatabaseReference myRef = this._data_base.getReference(this._name_path).child(user.get_id());
         if(user instanceof Student)
         {
             myRef.setValue((Student)(user));
@@ -91,7 +90,15 @@ public class Database {
                 users.clear();
                 for(DataSnapshot usersnapshot:snapshot.getChildren())
                 {
-                    User currentuser=usersnapshot.getValue(Student.class);
+                    User currentuser=usersnapshot.getValue(User.class);
+                    if( ContactList._this() instanceof AdminContactListStudentActivity||ContactList._this() instanceof ClientContactListStudentActivity)
+                    {
+                        currentuser=usersnapshot.getValue(Student.class);
+                    }
+                    else
+                    {
+                         currentuser=usersnapshot.getValue(Teacher.class);
+                    }
                     adapter.getUsers().add(currentuser);
                 }
                 adapter.notifyDataSetChanged();
@@ -124,6 +131,22 @@ public class Database {
         this._query = this._data_base.getReference(this._name_path).orderByChild("_name").equalTo(name);
         read_database(adapter,ContactList);
     }
+    
+    
+    
+    public void update( Map<String, Object> Map,String key)
+    {
+        _data_base.getReference(this._name_path).child(key).updateChildren(Map);
+
+        
+    }
+    public void  remove(String key)
+    {
+        _data_base.getReference(this._name_path).child(key).removeValue();
+    }
+
+
+
 
 
 

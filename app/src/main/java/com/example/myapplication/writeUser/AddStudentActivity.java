@@ -27,11 +27,11 @@ public class AddStudentActivity extends AppCompatActivity {
             TextView textView_age=(TextView)(findViewById(R.id.editText_student_age));
             TextView textView_phone=(TextView)(findViewById(R.id.editText_student_phone));
             TextView textView_email=(TextView)(findViewById(R.id.editText_student_email));
-            TextView textView_address=(TextView)(findViewById(R.id.editText_student_address));
+            TextView textView_id=(TextView)(findViewById(R.id.editText_student_id));
             TextView textView_class=(TextView)(findViewById(R.id.editText_student_class));
-            Student new_student=new Student(textView_name.getText().toString(),textView_last_name.getText().toString(),Double.parseDouble(textView_age.getText().toString()),textView_phone.getText().toString(),textView_email.getText().toString(),textView_address.getText().toString(),textView_class.getText().toString());
-           Database database=new Database("users/student");
-           database.write_database(new_student);
+            Student new_student=new Student(textView_name.getText().toString(),textView_last_name.getText().toString(),Double.parseDouble(textView_age.getText().toString()),textView_phone.getText().toString(),textView_email.getText().toString(),textView_id.getText().toString(),textView_class.getText().toString());
+            Database database=new Database("users/student");
+            database.write_database(new_student);
 
 
     }

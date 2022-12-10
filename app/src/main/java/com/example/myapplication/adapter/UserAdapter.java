@@ -54,15 +54,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         {
             //student
             View user_view= LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleritem_student,parent,false);
-            return new UserAdapter.UserViewHolder(user_view);
+            return new UserAdapter.UserViewHolder(user_view,this.user);
         }
-        if(this.user instanceof Teacher)
+        else
         {
             //teacher
             View user_view= LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleritem_teacher,parent,false);
-            return new UserAdapter.UserViewHolder(user_view);
+            return new UserAdapter.UserViewHolder(user_view,this.user);
         }
-        return null;
     }
 
     @Override
@@ -78,10 +77,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             holder.student_age_textView.setText(""+user.get_age());
             holder.student_phone_textView.setText(user.get_phone());
             holder.student_email_textView.setText(user.get_email());
-            holder.student_address_textView.setText(user.get_address());
+            holder.student_id_textView.setText(user.get_id());
             holder.student_class_textView.setText(student.get_class());
         }
-        if(this.user instanceof Teacher)
+        else
         {
             //teacher
             Teacher teacher=(Teacher)(user);
@@ -90,7 +89,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             holder.teacher_age_textView.setText(""+user.get_age());
             holder.teacher_phone_textView.setText(user.get_phone());
             holder.teacher_email_textView.setText(user.get_email());
-            holder.teacher_address_textView.setText(user.get_address());
+            holder.teacher_id_textView.setText(user.get_id());
             holder.teacher_profession_textView.setText(teacher.get_profession());
         }
 
@@ -110,7 +109,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         public TextView student_age_textView;
         public TextView student_phone_textView;
         public TextView student_email_textView;
-        public TextView student_address_textView;
+        public TextView student_id_textView;
         public TextView student_class_textView;
 
         //teacher
@@ -119,30 +118,36 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         public TextView teacher_age_textView;
         public TextView teacher_phone_textView;
         public TextView teacher_email_textView;
-        public TextView teacher_address_textView;
+        public TextView teacher_id_textView;
         public TextView teacher_profession_textView;
 
 
-        public UserViewHolder(@NonNull View itemView) {
+        public UserViewHolder(@NonNull View itemView,User user) {
             super(itemView);
 
-            //student
-            student_name_textView=itemView.findViewById(R.id.textView_student_name);
-            student_last_name_textView=itemView.findViewById(R.id.textView_student_last_name);
-            student_age_textView=itemView.findViewById(R.id.textView_student_age);
-            student_phone_textView=itemView.findViewById(R.id.textView_student_phone);
-            student_email_textView=itemView.findViewById(R.id.textView_student_email);
-            student_address_textView=itemView.findViewById(R.id.textView_student_address);
-            student_class_textView=itemView.findViewById(R.id.textView_student_class);
+            if(user instanceof Student)
+            {
+                //student
+                student_name_textView = itemView.findViewById(R.id.textView_student_name);
+                student_last_name_textView = itemView.findViewById(R.id.textView_student_last_name);
+                student_age_textView = itemView.findViewById(R.id.textView_student_age);
+                student_phone_textView = itemView.findViewById(R.id.textView_student_phone);
+                student_email_textView = itemView.findViewById(R.id.textView_student_email);
+                student_id_textView = itemView.findViewById(R.id.textView_student_id);
+                student_class_textView = itemView.findViewById(R.id.textView_student_class);
+            }
+            else {
 
-            //teacher
-            teacher_name_textView=itemView.findViewById(R.id.textView_teacher_name);
-            teacher_last_name_textView=itemView.findViewById(R.id.textView_teacher_last_name);
-            teacher_age_textView=itemView.findViewById(R.id.textView_teacher_age);
-            teacher_phone_textView=itemView.findViewById(R.id.textView_teacher_phone);
-            teacher_email_textView=itemView.findViewById(R.id.textView_teacher_email);
-            teacher_address_textView=itemView.findViewById(R.id.textView_teacher_address);
-            teacher_profession_textView=itemView.findViewById(R.id.textView_teacher_profession);
+
+                //teacher
+                teacher_name_textView = itemView.findViewById(R.id.textView_teacher_name);
+                teacher_last_name_textView = itemView.findViewById(R.id.textView_teacher_last_name);
+                teacher_age_textView = itemView.findViewById(R.id.textView_teacher_age);
+                teacher_phone_textView = itemView.findViewById(R.id.textView_teacher_phone);
+                teacher_email_textView = itemView.findViewById(R.id.textView_teacher_email);
+                teacher_id_textView = itemView.findViewById(R.id.textView_teacher_id);
+                teacher_profession_textView = itemView.findViewById(R.id.textView_teacher_profession);
+            }
 
         }
     }

@@ -4,14 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.Context;
 import android.widget.Toast;
 
+import com.example.myapplication.login.InterfaceLogin;
+import com.example.myapplication.readUser.InterfaceContactList;
 import com.example.myapplication.writeUser.AddTeacherActivity;
-import com.example.myapplication.LoginActivity;
+import com.example.myapplication.login.ClientLoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class Authenticate extends AppCompatActivity {
@@ -35,7 +40,7 @@ public class Authenticate extends AppCompatActivity {
         this._auth = _auth;
     }
 
-    public void login(String email , String password,LoginActivity log)
+    public void login(String email , String password, InterfaceLogin log)
     {
 
         this._auth.signInWithEmailAndPassword(email,password).addOnCompleteListener( Authenticate.this,new OnCompleteListener<AuthResult>(){
@@ -43,11 +48,11 @@ public class Authenticate extends AppCompatActivity {
             {
                 if(task.isSuccessful())
                 {
-                   log.check();
+                    log.login();
                 }
                 else
                 {
-                    Toast.makeText(log, "login failed:(", Toast.LENGTH_LONG).show();
+                    Toast.makeText((Context) log.is_this(), "login failed:(", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -74,6 +79,25 @@ public class Authenticate extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    public void deleteAccount()
+    {
+        final FirebaseUser currentUser = _auth.getCurrentUser();
+        currentUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    finish();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+            }
+        });
+
 
     }
 

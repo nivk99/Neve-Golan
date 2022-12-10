@@ -27,9 +27,9 @@ public class AddTeacherActivity extends AppCompatActivity {
             TextView textView_age=(TextView)(findViewById(R.id.editText_teacher_age));
             TextView textView_phone=(TextView)(findViewById(R.id.editText_teacher_phone));
             TextView textView_email=(TextView)(findViewById(R.id.editText_teacher_email));
-            TextView textView_address=(TextView)(findViewById(R.id.editText_teacher_address));
+            TextView textView_id=(TextView)(findViewById(R.id.editText_teacher_id));
             TextView textView_profession=(TextView)(findViewById(R.id.editText_teacher_profession));
-            Teacher new_teacher=new Teacher(textView_name.getText().toString(),textView_last_name.getText().toString(),Double.parseDouble(textView_age.getText().toString()),textView_phone.getText().toString(),textView_email.getText().toString(),textView_address.getText().toString(),textView_profession.getText().toString());
+            Teacher new_teacher=new Teacher(textView_name.getText().toString(),textView_last_name.getText().toString(),Double.parseDouble(textView_age.getText().toString()),textView_phone.getText().toString(),textView_email.getText().toString(),textView_id.getText().toString(),textView_profession.getText().toString());
             Database database=new Database("users/teacher");
             database.write_database(new_teacher);
             String email=new_teacher.get_email();
