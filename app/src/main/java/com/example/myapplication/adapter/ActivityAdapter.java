@@ -63,7 +63,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
         Activity activity=activitys.get(position);
         holder.activity_name_textView.setText(activity.getName());
         holder.activity_time_start_textView.setText(activity.getTimeStart());
-        holder.activity_time_start_textView.setText(activity.getTimeEnd());
+        holder.activity_time_end_textView.setText(activity.getTimeEnd());
     }
 
     @Override

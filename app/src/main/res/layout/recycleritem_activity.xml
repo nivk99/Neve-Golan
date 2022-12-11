@@ -35,11 +35,12 @@
         android:id="@+id/textView_activity_time_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="20dp"
         android:text="End Time"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView_activity_name"
         app:layout_constraintStart_toEndOf="@+id/textView14" />
 
     <View
@@ -47,8 +48,9 @@
         android:layout_width="0dp"
         android:layout_height="4dp"
         android:background="?android:attr/listDivider"
-        tools:layout_editor_absoluteY="79dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-12dp"
+        tools:layout_editor_absoluteY="80dp" />
 
     <TextView
         android:id="@+id/textView10"
@@ -65,12 +67,12 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="32dp"
         android:text="Start "
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView14"
-        tools:layout_editor_absoluteX="88dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="92dp" />
 
     <TextView
         android:id="@+id/textView14"
