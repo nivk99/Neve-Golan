@@ -35,5 +35,6 @@ public class Personal_Information_teacher extends AppCompatActivity {
         database.get_teacher(Authenticate.get_current_email(),this);
 
 
+
     }
 }
