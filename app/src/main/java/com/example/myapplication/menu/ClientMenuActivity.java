@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.myapplication.R;
 import com.example.myapplication.calendar.CalendarViewActivity;
 import com.example.myapplication.login.ClientLoginActivity;
+import com.example.myapplication.personalInformation.Personal_Information_teacher;
 import com.example.myapplication.readUser.client.ClientContactListStudentActivity;
 import com.example.myapplication.readUser.client.ClientContactListTeacherActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -79,8 +80,7 @@ public class ClientMenuActivity extends AppCompatActivity {
 
 
     public void client_click_private(View view) {
-        Toast.makeText(this, "click_private", Toast.LENGTH_SHORT).show();
-
+        startActivity(new Intent(this, Personal_Information_teacher.class));
 
     }
 

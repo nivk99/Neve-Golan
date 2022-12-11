@@ -11,6 +11,7 @@ public class Teacher extends User {
 
     public Teacher() {
         super();
+        this._profession="null";
     }
 
     public String get_profession() {
@@ -19,5 +20,18 @@ public class Teacher extends User {
 
     public void set_profession(String _profession) {
         this._profession = _profession;
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "_profession='" + _profession + '\'' +
+                ", _name='" + _name + '\'' +
+                ", _last_name='" + _last_name + '\'' +
+                ", _age=" + _age +
+                ", _phone='" + _phone + '\'' +
+                ", _email='" + _email + '\'' +
+                ", _id='" + _id + '\'' +
+                '}';
     }
 }

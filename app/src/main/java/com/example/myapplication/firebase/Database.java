@@ -1,11 +1,17 @@
 package com.example.myapplication.firebase;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.example.myapplication.adapter.UserAdapter;
+import com.example.myapplication.calendar.CalendarViewActivity;
+import com.example.myapplication.calendar.EditDayActivities;
+import com.example.myapplication.personalInformation.Personal_Information_teacher;
 import com.example.myapplication.readUser.admin.AdminContactListStudentActivity;
 import com.example.myapplication.readUser.InterfaceContactList;
 import com.example.myapplication.readUser.client.ClientContactListStudentActivity;
@@ -27,6 +33,7 @@ public class Database {
     private FirebaseDatabase _data_base;
     private String _name_path;
     private Query _query;
+    private Teacher _teacher;
 
     public Database(String name_path)
     {
@@ -143,6 +150,32 @@ public class Database {
     public void  remove(String key)
     {
         _data_base.getReference(this._name_path).child(key).removeValue();
+    }
+
+    public void get_teacher(String email, Personal_Information_teacher p)
+    {
+        this._query= this._data_base.getReference(this._name_path).orderByChild("_email").equalTo(email);
+
+        _query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot usersnapshot:snapshot.getChildren()) {
+                    Teacher teacher = usersnapshot.getValue(Teacher.class);;
+                     p.teacher_name_textView.setText(teacher.get_name());
+                    p.teacher_last_name_textView.setText(teacher.get_last_name());
+                    p.teacher_age_textView.setText("" + teacher.get_age());
+                    p.teacher_phone_textView.setText(teacher.get_phone());
+                    p.teacher_email_textView.setText(teacher.get_email());
+                    p.teacher_id_textView.setText(teacher.get_id());
+                    p.teacher_profession_textView.setText(teacher.get_profession());
+                }
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
 

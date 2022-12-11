@@ -20,6 +20,13 @@ public class User {
     }
 
     public User() {
+        this._name = "null";
+        this._last_name = "null";
+        this._age = 0;
+        this._phone = "null";
+        this._email = "null";
+        this._id = "null";
+
     }
 
     public String get_name() {
@@ -68,5 +75,17 @@ public class User {
 
     public void set_id(String _id) {
         this._id = _id;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "_name='" + _name + '\'' +
+                ", _last_name='" + _last_name + '\'' +
+                ", _age=" + _age +
+                ", _phone='" + _phone + '\'' +
+                ", _email='" + _email + '\'' +
+                ", _id='" + _id + '\'' +
+                '}';
     }
 }
