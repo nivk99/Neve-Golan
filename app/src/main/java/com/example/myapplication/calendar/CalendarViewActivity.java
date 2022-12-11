@@ -31,14 +31,15 @@ public class CalendarViewActivity extends AppCompatActivity implements Interface
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar_view);
-        @SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-        Date date = new Date();
+        //@SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        //Date date = new Date();
         //String path = "activity/"+dateFormat.format(date);
         String path = "activity/2022/12/9";
-        ArrayList<Activity> activitis=new ArrayList<>();
-        adapter =new ActivityAdapter(activitis,new Activity());
         final RecyclerView recyclerView =findViewById(R.id.recyclerview_list_act);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        final ArrayList<Activity> activitis=new ArrayList<>();
+        adapter =new ActivityAdapter(activitis,new Activity());
+
         recyclerView.setAdapter(adapter);
         database = new Database(path);
         database.read_database_activity(adapter,this);
