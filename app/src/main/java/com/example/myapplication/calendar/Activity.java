@@ -2,25 +2,27 @@ package com.example.myapplication.calendar;
 
 public class Activity {
 
-    String Name;
-    String TimeStart;
-    String TimeEnd;
+    String name;
+    String timeStart;
+    String timeEnd;
 
     public Activity(String Name,String TimeStart,String TimeEnd){
-        this.Name=Name;
-        this.TimeStart=TimeStart;
-        this.TimeEnd=TimeEnd;
+        this.name=Name;
+        this.timeStart=TimeStart;
+        this.timeEnd=TimeEnd;
     }
     public String getName() {
-        return Name;
+        return name;
     }
     public String getTimeStart() {
-        return TimeStart;
+        return timeStart;
     }
     public String getTimeEnd() {
-        return TimeEnd;
+        return timeEnd;
     }
 
-
+    public Activity() {
+        super();
+    }
 
 }

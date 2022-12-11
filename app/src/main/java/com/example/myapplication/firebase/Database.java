@@ -8,9 +8,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.myapplication.adapter.ActivityAdapter;
 import com.example.myapplication.adapter.UserAdapter;
+import com.example.myapplication.calendar.Activity;
 import com.example.myapplication.calendar.CalendarViewActivity;
 import com.example.myapplication.calendar.EditDayActivities;
+import com.example.myapplication.calendar.InterfaceActivity;
 import com.example.myapplication.personalInformation.Personal_Information_teacher;
 import com.example.myapplication.readUser.admin.AdminContactListStudentActivity;
 import com.example.myapplication.readUser.InterfaceContactList;
@@ -125,6 +128,34 @@ public class Database {
 
     }
 
+    public void read_database_activity(ActivityAdapter adapter, InterfaceActivity interfaceActivity)
+    {
+        ArrayList<Activity> activitys=adapter.getActivitys();
+        _query.addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                activitys.clear();
+                for(DataSnapshot activitysnapshot:snapshot.getChildren())
+                {
+                    Activity currentactivity=activitysnapshot.getValue(Activity.class);
+                    adapter.getActivitys().add(currentactivity);
+                }
+                adapter.notifyDataSetChanged();
+                Toast.makeText((Context) interfaceActivity._this(),"there are " +activitys.size() +" activitys ",Toast.LENGTH_LONG).show();
+                //Toast.makeText((Context) ContactList._this(),"there are " +users.size() +" users ",Toast.LENGTH_LONG).show();
+                //_query.removeEventListener(this);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                System.out.println("cancle");
+
+            }
+
+        });
+    }
     public void orderByChild(String key, UserAdapter adapter, InterfaceContactList ContactList)
     {
         this._query = this._data_base.getReference(this._name_path).orderByChild(key);
