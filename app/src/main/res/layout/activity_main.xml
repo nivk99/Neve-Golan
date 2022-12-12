@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/textView_neve_golan"
-        android:layout_width="380dp"
-        android:layout_height="358dp"
+        android:layout_width="333dp"
+        android:layout_height="281dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
