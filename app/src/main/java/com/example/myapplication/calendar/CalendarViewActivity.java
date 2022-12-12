@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CalendarView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
@@ -50,8 +51,6 @@ public class CalendarViewActivity extends AppCompatActivity implements Interface
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                String message = "Selected Date " +year+"/"+(month+1)+"/"+dayOfMonth;
-                Toast.makeText(CalendarViewActivity.this, message, Toast.LENGTH_LONG).show();
                 Year=year; Month=month+1; Day=dayOfMonth;
                 String path = "activity/"+Year + "/" + Month + "/" + Day;
                 ArrayList<Activity> activitis=new ArrayList<>();
@@ -85,6 +84,7 @@ public class CalendarViewActivity extends AppCompatActivity implements Interface
     public InterfaceActivity _this() {
         return this;
     }
+
 //    @Override
 //    protected void onPause(){
 //        super.onPause();
