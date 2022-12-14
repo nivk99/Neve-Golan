@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.google.android.gms.tasks.Task;
+import com.google.errorprone.annotations.Var;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -53,13 +55,14 @@ public class EditDayActivities extends AppCompatActivity {
                             for (DataSnapshot nameSnapshot: dataSnapshot.getChildren()) {
                                 String save_name=(String)((Map)nameSnapshot.getValue()).get("name");
                                 if(save_name.equals(Add_ActivityName)){
-                                    Toast.makeText(EditDayActivities.this, "קיימת פעילות בשם זה,אנא בחר שם אחר", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(EditDayActivities.this, "פעילות זאת כבר קיימת", Toast.LENGTH_SHORT).show();
                                     flag=true; break;
                                 }
                             }
-                            if(!flag){
+                            if(!flag){ //        DatabaseReference myRef = this._data_base.getReference(this._name_path).child(user.get_id());
+
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                DatabaseReference myRef = database.getReference("activity/"+year+"/"+month+"/"+day).push();
+                                DatabaseReference myRef = database.getReference("activity/"+year+"/"+month+"/"+day).child(Add_ActivityName+","+Add_TimeStart+","+Add_TimeEnd);
                                 myRef.setValue(new Activity(Add_ActivityName,Add_TimeStart,Add_TimeEnd));
                                 Toast.makeText(EditDayActivities.this, "הפעילות נוספה", Toast.LENGTH_SHORT).show();
                             }
@@ -76,44 +79,9 @@ public class EditDayActivities extends AppCompatActivity {
             }
         });
         // when click " בטל" , delete from the firebase
-        findViewById(R.id.buttonDelete).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Delete_ActivityName="";
-                Delete_ActivityName = removeSpaces(((EditText) findViewById(R.id.DeleteActivityName)).getText().toString());
 
-                if (Delete_ActivityName.length() !=0) {
-
-                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-                    Query nameQuery = ref.child("activity").child(year).child(month).child(day).orderByChild("name").equalTo(Delete_ActivityName);
-
-                    nameQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            Boolean flag=false;
-                            for (DataSnapshot nameSnapshot: dataSnapshot.getChildren()) {
-                                String save_name=(String)((Map)nameSnapshot.getValue()).get("name");
-                                if(save_name.equals(Delete_ActivityName)){
-                                    Toast.makeText(EditDayActivities.this, "הפעילות נמחקה", Toast.LENGTH_SHORT).show();
-                                    flag=true;
-                                }
-                                nameSnapshot.getRef().removeValue();
-                            }
-                            Toast.makeText(EditDayActivities.this, "לא קיימת פעילות בשם שהוזן", Toast.LENGTH_SHORT).show();
-                        }
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            Log.e(TAG, "onCancelled", databaseError.toException());
-                        }
-                    });
-                }
-                else {
-                    Toast.makeText(EditDayActivities.this, "לא קיימת פעילות בשם שהוזן", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
     }
-    private String removeSpaces(String s){
+    public String removeSpaces(String s){
         if(s.length()==0)
             return s;
         int i=0;      // remove start spaces(if there are)
