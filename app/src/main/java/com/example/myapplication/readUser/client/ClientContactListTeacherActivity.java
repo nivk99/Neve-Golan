@@ -4,23 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.myapplication.AddUser.AddStudentActivity;
+import com.example.myapplication.adapter.InterfaceSelectListener;
 import com.example.myapplication.R;
 import com.example.myapplication.readUser.InterfaceContactList;
 import com.example.myapplication.adapter.UserAdapter;
 import com.example.myapplication.firebase.Database;
-import com.example.myapplication.users.Teacher;
+import com.example.myapplication.users.FirebaseModelTeacher;
 import com.example.myapplication.users.User;
 
 import java.util.ArrayList;
 
-public class ClientContactListTeacherActivity extends AppCompatActivity implements InterfaceContactList {
+public class ClientContactListTeacherActivity extends AppCompatActivity implements InterfaceContactList, InterfaceSelectListener {
     private Database database;
     private UserAdapter adapter;
     @Override
@@ -30,7 +30,7 @@ public class ClientContactListTeacherActivity extends AppCompatActivity implemen
         final RecyclerView recyclerView =findViewById(R.id.recyclerview_client_teacher);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         final ArrayList<User> users_teacher=new ArrayList<>();
-        adapter =new UserAdapter(users_teacher,new Teacher());
+        adapter =new UserAdapter(users_teacher,new FirebaseModelTeacher(),this);
         recyclerView.setAdapter(adapter);
         database=new Database("users/teacher");
         database.read_database(adapter,this);
@@ -68,12 +68,15 @@ public class ClientContactListTeacherActivity extends AppCompatActivity implemen
         database.orderByChild(key,adapter,this);
 
     }
-    public void Click_imageView(View view)
-    {
-
-    }
     @Override
     public InterfaceContactList _this() {
         return this;
+    }
+
+    @Override
+    public void onItemClicked(User user) {
+        Toast.makeText(this, "delete_admin", Toast.LENGTH_SHORT).show();
+
+
     }
 }

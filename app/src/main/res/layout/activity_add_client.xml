@@ -4,23 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_main"
+    android:background="@drawable/kk"
     tools:context=".AddUser.AddClientActivity">
 
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="283dp"
-        android:layout_height="231dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="83dp"
-        android:layout_marginBottom="64dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText_email_client"
+        android:layout_width="220dp"
+        android:layout_height="176dp"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="148dp"
+        android:layout_marginEnd="115dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/client" />
+        app:srcCompat="@drawable/ic_baseline_person_add_alt_1_24" />
 
     <EditText
         android:id="@+id/editText_email_client"
@@ -29,11 +28,11 @@
         android:layout_marginStart="78dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="124dp"
-        android:layout_marginBottom="21dp"
+        android:background="#BAB2B2"
+        android:backgroundTint="#BAB2B2"
         android:ems="10"
+        android:hint="הכנס מייל"
         android:inputType="textEmailAddress"
-        android:hint="@string/email"
-        app:layout_constraintBottom_toTopOf="@+id/editText_full_name_client"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
@@ -42,15 +41,15 @@
         android:id="@+id/editText_full_name_client"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="124dp"
-        android:layout_marginBottom="40dp"
+        android:background="#BAB2B2"
         android:ems="10"
+        android:hint="הכנס שם מלא לפי המייל"
         android:inputType="textPersonName"
-        android:hint="@string/full_name"
-        app:layout_constraintBottom_toTopOf="@+id/button_add_client"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/editText_email_client"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_email_client" />
 
     <Button
@@ -60,11 +59,13 @@
         android:layout_marginStart="123dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="157dp"
-        android:layout_marginBottom="164dp"
+        android:layout_marginBottom="150dp"
+        android:backgroundTint="@color/black"
         android:onClick="click_add_client"
-        android:text="Add"
+        android:text="הוסף"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_full_name_client" />
 

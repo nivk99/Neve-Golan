@@ -1,7 +1,6 @@
 package com.example.myapplication.adapter;
 
 
-import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.calendar.Activity;
-import com.example.myapplication.users.Student;
-import com.example.myapplication.users.Teacher;
-import com.example.myapplication.users.User;
 
 import java.util.ArrayList;
 

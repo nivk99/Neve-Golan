@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.firebase.Database;
-import com.example.myapplication.users.Student;
+import com.example.myapplication.users.FirebaseModelStudent;
 
 public class AddStudentActivity extends AppCompatActivity {
 
@@ -29,7 +29,7 @@ public class AddStudentActivity extends AppCompatActivity {
             TextView textView_email=(TextView)(findViewById(R.id.editText_student_email));
             TextView textView_id=(TextView)(findViewById(R.id.editText_student_id));
             TextView textView_class=(TextView)(findViewById(R.id.editText_student_class));
-            Student new_student=new Student(textView_name.getText().toString(),textView_last_name.getText().toString(),Double.parseDouble(textView_age.getText().toString()),textView_phone.getText().toString(),textView_email.getText().toString(),textView_id.getText().toString(),textView_class.getText().toString());
+            FirebaseModelStudent new_student=new FirebaseModelStudent(textView_name.getText().toString(),textView_last_name.getText().toString(),Double.parseDouble(textView_age.getText().toString()),textView_phone.getText().toString(),textView_email.getText().toString(),textView_id.getText().toString(),textView_class.getText().toString());
             Database database=new Database("users/student");
             database.write_database(new_student);
 

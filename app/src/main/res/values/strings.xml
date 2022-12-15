@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Neve Golan</string>
+    <string name="menu_open">open</string>
+    <string name="menu_close">close</string>
     <string name="neve_golan">Neve Golan</string>
     <string name="register">REGISTER</string>
     <string name="login">Login</string>

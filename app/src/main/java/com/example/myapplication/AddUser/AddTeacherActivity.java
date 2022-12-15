@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.example.myapplication.R;
 import com.example.myapplication.firebase.Authenticate;
 import com.example.myapplication.firebase.Database;
-import com.example.myapplication.users.Teacher;
+import com.example.myapplication.users.FirebaseModelTeacher;
 
 public class AddTeacherActivity extends AppCompatActivity implements InterfaceAddUser {
 
@@ -28,7 +28,7 @@ public class AddTeacherActivity extends AppCompatActivity implements InterfaceAd
         TextView textView_email = (TextView) (findViewById(R.id.editText_teacher_email));
         TextView textView_id = (TextView) (findViewById(R.id.editText_teacher_id));
         TextView textView_profession = (TextView) (findViewById(R.id.editText_teacher_profession));
-        Teacher new_teacher = new Teacher(textView_name.getText().toString(), textView_last_name.getText().toString(), Double.parseDouble(textView_age.getText().toString()), textView_phone.getText().toString(), textView_email.getText().toString(), textView_id.getText().toString(), textView_profession.getText().toString());
+        FirebaseModelTeacher new_teacher = new FirebaseModelTeacher(textView_name.getText().toString(), textView_last_name.getText().toString(), Double.parseDouble(textView_age.getText().toString()), textView_phone.getText().toString(), textView_email.getText().toString(), textView_id.getText().toString(), textView_profession.getText().toString());
         Database database = new Database("users/teacher");
         database.write_database(new_teacher);
         String email = new_teacher.get_email();

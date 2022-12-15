@@ -10,18 +10,18 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.example.myapplication.adapter.InterfaceSelectListener;
 import com.example.myapplication.R;
 import com.example.myapplication.adapter.UserAdapter;
 import com.example.myapplication.firebase.Database;
 import com.example.myapplication.readUser.InterfaceContactList;
 import com.example.myapplication.updateRemoveUser.UpdateRemoveTeacher;
-import com.example.myapplication.users.Teacher;
+import com.example.myapplication.users.FirebaseModelTeacher;
 import com.example.myapplication.users.User;
-import com.example.myapplication.AddUser.AddTeacherActivity;
 
 import java.util.ArrayList;
 
-public class AdminContactListTeacherActivity extends AppCompatActivity implements InterfaceContactList {
+public class AdminContactListTeacherActivity extends AppCompatActivity implements InterfaceContactList, InterfaceSelectListener {
 
     private  Database database;
     private UserAdapter adapter;
@@ -35,18 +35,13 @@ public class AdminContactListTeacherActivity extends AppCompatActivity implement
         final RecyclerView recyclerView =findViewById(R.id.recyclerview_admin_teacher);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         final ArrayList<User> users_teacher=new ArrayList<>();
-        adapter =new UserAdapter(users_teacher,new Teacher());
+        adapter =new UserAdapter(users_teacher,new FirebaseModelTeacher(),this);
         recyclerView.setAdapter(adapter);
         database=new Database("users/teacher");
         database.read_database(adapter,this);
 
     }
 
-
-    public void click_add_teacher(View view)
-    {
-        startActivity(new Intent(this, AddTeacherActivity.class));
-    }
 
 
     public void click_search_teacher(View view) {
@@ -83,34 +78,28 @@ public class AdminContactListTeacherActivity extends AppCompatActivity implement
 
     }
 
-    public void click_imageView_teacher(View view)
-    {
-        TextView teacher_name_textView=findViewById(R.id.textView_teacher_name);
-        TextView teacher_last_name_textView=findViewById(R.id.textView_teacher_last_name);
-        TextView teacher_age_textView=findViewById(R.id.textView_teacher_age);
-        TextView teacher_phone_textView=findViewById(R.id.textView_teacher_phone);
-        TextView  teacher_email_textView=findViewById(R.id.textView_teacher_email);
-        TextView teacher_id_textView =findViewById(R.id.textView_teacher_id);
-        TextView teacher_profession_textView=findViewById(R.id.textView_teacher_profession);
-
-        String[] message=new String[7];
-
-        message[0] =teacher_name_textView.getText().toString();
-        message[1]=teacher_last_name_textView.getText().toString();
-        message[2]=teacher_age_textView.getText().toString();
-        message[3]=teacher_phone_textView.getText().toString();
-        message[4]=teacher_email_textView.getText().toString();
-        message[5] =teacher_id_textView.getText().toString();
-        message[6]=teacher_profession_textView.getText().toString();
-
-        Intent intent =new Intent(this, UpdateRemoveTeacher.class);
-        intent.putExtra(MESSAGE_KEY,message);
-        startActivity(intent);
-
-    }
 
     @Override
     public InterfaceContactList _this() {
         return this;
+    }
+
+    @Override
+    public void onItemClicked(User user) {
+
+        FirebaseModelTeacher teacher =(FirebaseModelTeacher)(user);
+        String[] message=new String[7];
+        message[0] =teacher.get_name();
+        message[1]=teacher.get_last_name();
+        message[2]=Double.toString(teacher.get_age());
+        message[3]=teacher.get_phone();
+        message[4]=teacher.get_email();
+        message[5] =teacher.get_id();
+        message[6]=teacher.get_profession();
+        Intent intent =new Intent(this, UpdateRemoveTeacher.class);
+        intent.putExtra(MESSAGE_KEY,message);
+        startActivity(intent);
+
+
     }
 }

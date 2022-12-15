@@ -4,23 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.example.myapplication.AddUser.AddStudentActivity;
+import com.example.myapplication.adapter.InterfaceSelectListener;
 import com.example.myapplication.R;
 import com.example.myapplication.readUser.InterfaceContactList;
 import com.example.myapplication.adapter.UserAdapter;
 import com.example.myapplication.firebase.Database;
 import com.example.myapplication.users.User;
-import com.example.myapplication.users.Student;
+import com.example.myapplication.users.FirebaseModelStudent;
 
 import java.util.ArrayList;
 
-public class ClientContactListStudentActivity extends AppCompatActivity implements InterfaceContactList {
+public class ClientContactListStudentActivity extends AppCompatActivity implements InterfaceContactList, InterfaceSelectListener {
 
     private Database database;
     private UserAdapter adapter;
@@ -32,7 +31,7 @@ public class ClientContactListStudentActivity extends AppCompatActivity implemen
         final RecyclerView recyclerView =findViewById(R.id.recyclerview_client_student);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         final ArrayList<User> users_student=new ArrayList<>();
-        adapter =new UserAdapter(users_student,new Student());
+        adapter =new UserAdapter(users_student,new FirebaseModelStudent(),this);
         recyclerView.setAdapter(adapter);
         database=new Database("users/student");
         database.read_database(adapter,this);
@@ -72,10 +71,6 @@ public class ClientContactListStudentActivity extends AppCompatActivity implemen
 
     }
 
-    public void client_click_add_student(View view) {
-        startActivity(new Intent(this, AddStudentActivity.class));
-
-    }
 
 
 
@@ -84,4 +79,9 @@ public class ClientContactListStudentActivity extends AppCompatActivity implemen
     }
 
 
+    @Override
+    public void onItemClicked(User user) {
+
+
+    }
 }

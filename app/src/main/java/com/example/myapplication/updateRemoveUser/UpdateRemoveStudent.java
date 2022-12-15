@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.example.myapplication.R;
 import com.example.myapplication.firebase.Database;
 import com.example.myapplication.readUser.admin.AdminContactListStudentActivity;
-import com.example.myapplication.users.Student;
+import com.example.myapplication.users.FirebaseModelStudent;
 import com.google.firebase.database.Exclude;
 
 import java.util.HashMap;
@@ -82,7 +82,7 @@ public class UpdateRemoveStudent extends AppCompatActivity {
         else
         {
             database.remove(this.id);
-            Student new_student=new Student(student_name_textView_str,student_last_name_textView_str,student_age_textView_str,student_phone_textView_str,student_email_textView_str,student_id_textView_str,student_class_textView_str);
+            FirebaseModelStudent new_student=new FirebaseModelStudent(student_name_textView_str,student_last_name_textView_str,student_age_textView_str,student_phone_textView_str,student_email_textView_str,student_id_textView_str,student_class_textView_str);
             database.write_database(new_student);
         }
 
@@ -91,7 +91,7 @@ public class UpdateRemoveStudent extends AppCompatActivity {
 
 
 
-    private static class updateStudent extends Student
+    private static class updateStudent extends FirebaseModelStudent
     {
         public updateStudent(String _name, String _last_name, double _age, String _phone, String _email, String _id, String _class) {
             super(_name, _last_name, _age, _phone, _email, _id, _class);

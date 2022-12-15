@@ -1,15 +1,15 @@
 package com.example.myapplication.users;
 
-public class Teacher extends User {
+public class FirebaseModelTeacher extends User {
 
     protected String _profession;
 
-    public Teacher(String _name, String _last_name, double _age, String _phone, String _email, String _id, String _profession) {
+    public FirebaseModelTeacher(String _name, String _last_name, double _age, String _phone, String _email, String _id, String _profession) {
         super(_name, _last_name, _age, _phone, _email, _id);
         this._profession = _profession;
     }
 
-    public Teacher() {
+    public FirebaseModelTeacher() {
         super();
         this._profession="null";
     }

@@ -2,15 +2,12 @@ package com.example.myapplication.personalInformation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.firebase.Authenticate;
 import com.example.myapplication.firebase.Database;
-import com.example.myapplication.users.Teacher;
 
 public class Personal_Information_teacher extends AppCompatActivity {
     public TextView teacher_name_textView;

@@ -1,9 +1,6 @@
 package com.example.myapplication.firebase;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -11,18 +8,14 @@ import androidx.annotation.NonNull;
 import com.example.myapplication.adapter.ActivityAdapter;
 import com.example.myapplication.adapter.UserAdapter;
 import com.example.myapplication.calendar.Activity;
-import com.example.myapplication.calendar.CalendarViewActivity;
-import com.example.myapplication.calendar.EditDayActivities;
 import com.example.myapplication.calendar.InterfaceActivity;
 import com.example.myapplication.personalInformation.Personal_Information_teacher;
 import com.example.myapplication.readUser.admin.AdminContactListStudentActivity;
 import com.example.myapplication.readUser.InterfaceContactList;
 import com.example.myapplication.readUser.client.ClientContactListStudentActivity;
-import com.example.myapplication.users.Student;
-import com.example.myapplication.users.Teacher;
+import com.example.myapplication.users.FirebaseModelStudent;
+import com.example.myapplication.users.FirebaseModelTeacher;
 import com.example.myapplication.users.User;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,7 +31,7 @@ public class Database {
     private FirebaseDatabase _data_base;
     private String _name_path;
     private Query _query;
-    private Teacher _teacher;
+    private FirebaseModelTeacher _teacher;
 
     public Database(String name_path) {
         this._data_base = FirebaseDatabase.getInstance();
@@ -74,10 +67,10 @@ public class Database {
 
     public void write_database(User user) {
         DatabaseReference myRef = this._data_base.getReference(this._name_path).child(user.get_id());
-        if (user instanceof Student) {
-            myRef.setValue((Student) (user));
+        if (user instanceof FirebaseModelStudent) {
+            myRef.setValue((FirebaseModelStudent) (user));
         } else {
-            myRef.setValue((Teacher) (user));
+            myRef.setValue((FirebaseModelTeacher) (user));
         }
 
     }
@@ -93,9 +86,9 @@ public class Database {
                 for (DataSnapshot usersnapshot : snapshot.getChildren()) {
                     User currentuser = usersnapshot.getValue(User.class);
                     if (ContactList._this() instanceof AdminContactListStudentActivity || ContactList._this() instanceof ClientContactListStudentActivity) {
-                        currentuser = usersnapshot.getValue(Student.class);
+                        currentuser = usersnapshot.getValue(FirebaseModelStudent.class);
                     } else {
-                        currentuser = usersnapshot.getValue(Teacher.class);
+                        currentuser = usersnapshot.getValue(FirebaseModelTeacher.class);
                     }
                     adapter.getUsers().add(currentuser);
                 }
@@ -175,7 +168,7 @@ public class Database {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot usersnapshot : snapshot.getChildren()) {
-                    Teacher teacher = usersnapshot.getValue(Teacher.class);
+                    FirebaseModelTeacher teacher = usersnapshot.getValue(FirebaseModelTeacher.class);
                      p.teacher_name_textView.setText(teacher.get_name());
                     p.teacher_last_name_textView.setText(teacher.get_last_name());
                     p.teacher_age_textView.setText("" + teacher.get_age());

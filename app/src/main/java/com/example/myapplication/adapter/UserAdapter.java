@@ -6,11 +6,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.users.Student;
-import com.example.myapplication.users.Teacher;
+import com.example.myapplication.users.FirebaseModelStudent;
+import com.example.myapplication.users.FirebaseModelTeacher;
 import com.example.myapplication.users.User;
 
 import java.util.ArrayList;
@@ -18,11 +19,14 @@ import java.util.ArrayList;
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {
 
 
+
     private ArrayList<User> users;
     private User user;
+    private InterfaceSelectListener listener;
 
-    public UserAdapter(ArrayList<User> users,User user)
+    public UserAdapter(ArrayList<User> users,User user,InterfaceSelectListener listener)
     {
+        this.listener=listener;
         this.user=user;
         this.users = users;
     }
@@ -50,7 +54,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     @NonNull
     @Override
     public UserAdapter.UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if(this.user instanceof Student)
+        if(this.user instanceof FirebaseModelStudent)
         {
             //student
             View user_view= LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleritem_student,parent,false);
@@ -68,10 +72,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
 
         User user=users.get(position);
-        if(this.user instanceof Student)
+        if(this.user instanceof FirebaseModelStudent)
         {
             //student
-            Student student=(Student)(user);
+            FirebaseModelStudent student=(FirebaseModelStudent)(user);
             holder.student_name_textView.setText(user.get_name());
             holder.student_last_name_textView.setText(user.get_last_name());
             holder.student_age_textView.setText(""+user.get_age());
@@ -83,7 +87,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         else
         {
             //teacher
-            Teacher teacher=(Teacher)(user);
+            FirebaseModelTeacher teacher=(FirebaseModelTeacher)(user);
             holder.teacher_name_textView.setText(user.get_name());
             holder.teacher_last_name_textView.setText(user.get_last_name());
             holder.teacher_age_textView.setText(""+user.get_age());
@@ -92,6 +96,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             holder.teacher_id_textView.setText(user.get_id());
             holder.teacher_profession_textView.setText(teacher.get_profession());
         }
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onItemClicked(users.get(holder.getAdapterPosition()));
+            }
+        });
 
 
     }
@@ -121,11 +132,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         public TextView teacher_id_textView;
         public TextView teacher_profession_textView;
 
+        public CardView cardView;
+
 
         public UserViewHolder(@NonNull View itemView,User user) {
             super(itemView);
 
-            if(user instanceof Student)
+            if(user instanceof FirebaseModelStudent)
             {
                 //student
                 student_name_textView = itemView.findViewById(R.id.textView_student_name);
@@ -135,6 +148,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
                 student_email_textView = itemView.findViewById(R.id.textView_student_email);
                 student_id_textView = itemView.findViewById(R.id.textView_student_id);
                 student_class_textView = itemView.findViewById(R.id.textView_student_class);
+                cardView=itemView.findViewById(R.id.screen_container_student);
             }
             else {
 
@@ -147,6 +161,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
                 teacher_email_textView = itemView.findViewById(R.id.textView_teacher_email);
                 teacher_id_textView = itemView.findViewById(R.id.textView_teacher_id);
                 teacher_profession_textView = itemView.findViewById(R.id.textView_teacher_profession);
+                cardView=itemView.findViewById(R.id.screen_container_teacher);
             }
 
         }

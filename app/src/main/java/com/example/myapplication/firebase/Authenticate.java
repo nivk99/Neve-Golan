@@ -11,15 +11,12 @@ import android.widget.Toast;
 import com.example.myapplication.AddUser.AddAdminActivity;
 import com.example.myapplication.login.InterfaceLogin;
 import com.example.myapplication.AddUser.InterfaceAddUser;
-import com.example.myapplication.users.Student;
-import com.example.myapplication.users.Teacher;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.Query;
 
 
 public class Authenticate extends AppCompatActivity {
