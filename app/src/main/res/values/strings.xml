@@ -16,4 +16,24 @@
     <string name="authenticate_password">Authenticate password</string>
     <string name="email">Email</string>
     <string name="full_name">full name</string>
+    <string name="textView_name_client">שם המלא</string>
+    <string name="textView_welcome">ברוך הבא</string>
+    <string name="nav_home">מסך הבית</string>
+    <string name="nav_private">מידע אישי</string>
+    <string name="calendar">לוח שנה</string>
+    <string name="messages">הודעות</string>
+    <string name="feedback">משובים</string>
+    <string name="request">בקשות</string>
+    <string name="notes">פתקיות</string>
+    <string name="add_user">הוספת משתמש</string>
+    <string name="users">ממשתמשים</string>
+    <string name="serach_teacher">חיפוש מדריך</string>
+    <string name="serach_student">חיפוש חניך</string>
+    <string name="add_techer">הוספת מדריך</string>
+    <string name="add_student">הוספת חניך</string>
+    <string name="add_admin">הוספת מנהל</string>
+    <string name="delete_admin">למחוק מנהל</string>
+    <string name="some_else">אחר</string>
+    <string name="logout">יציאה</string>
+
 </resources>
