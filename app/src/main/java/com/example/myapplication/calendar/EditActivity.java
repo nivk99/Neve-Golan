@@ -44,7 +44,7 @@ public class EditActivity extends AppCompatActivity {
         ((EditText)findViewById(R.id.updateTimeStart)).setText(start);
         ((EditText)findViewById(R.id.updateTimeEnd)).setText(end);
         String activity_id=name+","+start+","+end;
-         //delete activity
+        //delete activity
         findViewById(R.id.buttonDeleteActivity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,20 +72,20 @@ public class EditActivity extends AppCompatActivity {
 
         //active "עדכן" button
         findViewById(R.id.buttonUpdateActivity).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+            @Override
+            public void onClick(View view) {
 
-                    String temp_name = ((EditText) findViewById(R.id.updateActivityName)).getText().toString();
-                    start = ((EditText) findViewById(R.id.updateTimeStart)).getText().toString();
-                    end = ((EditText) findViewById(R.id.updateTimeEnd)).getText().toString();
-                    HashMap<String, Object> update = new HashMap<>();
-                    update.put("name", name);
-                    update.put("start", start);
-                    update.put("end", end);
+                String temp_name = ((EditText) findViewById(R.id.updateActivityName)).getText().toString();
+                start = ((EditText) findViewById(R.id.updateTimeStart)).getText().toString();
+                end = ((EditText) findViewById(R.id.updateTimeEnd)).getText().toString();
+                HashMap<String, Object> update = new HashMap<>();
+                update.put("name", name);
+                update.put("start", start);
+                update.put("end", end);
 
-                    Database database=new Database("activity/"+year+"/"+month+"/"+day);
-                    database.update(update,activity_id);
-                }
+                Database database=new Database("activity/"+year+"/"+month+"/"+day);
+                database.update(update,activity_id);
+            }
         });
     }
 }
