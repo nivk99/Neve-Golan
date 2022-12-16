@@ -35,7 +35,7 @@ public class EditDayActivities extends AppCompatActivity {
         String month=data.getStringExtra("month");
         String day=data.getStringExtra("day");
 
-        // when click on "הוסף" save the activity to firebase
+    // when click on "הוסף" save the activity to firebase
         findViewById(R.id.buttonAdd).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +78,7 @@ public class EditDayActivities extends AppCompatActivity {
                 }
             }
         });
-        // when click " בטל" , delete from the firebase
+
 
     }
     public String removeSpaces(String s){
@@ -91,4 +91,3 @@ public class EditDayActivities extends AppCompatActivity {
         return s.substring(i);
     }
 }
-

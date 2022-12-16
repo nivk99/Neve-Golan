@@ -48,23 +48,24 @@ public class EditActivity extends AppCompatActivity {
         findViewById(R.id.buttonDeleteActivity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FirebaseDatabase.getInstance().getReference("activity"+"/"+year+"/"+month+"/"+day).child(activity_id).removeValue();
 
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-                Query nameQuery = ref.child("activity").child(year).child(month).child(day).orderByKey().equalTo(activity_id);
-
-                nameQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot nameSnapshot : dataSnapshot.getChildren()) {
-                            nameSnapshot.getRef().removeValue();
-                        }
-                        Toast.makeText(EditActivity.this, "הםעילות נמחקה", Toast.LENGTH_SHORT).show();
-                    }
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        Log.e(TAG, "onCancelled", databaseError.toException());
-                    }
-                });
+//                DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+//                Query nameQuery = ref.child("activity").child(year).child(month).orderByKey(day).equalTo(activity_id);
+//
+//                nameQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                        for (DataSnapshot nameSnapshot : dataSnapshot.getChildren()) {
+//                            nameSnapshot.getRef().removeValue();
+//                        }
+//                        Toast.makeText(EditActivity.this, "הםעילות נמחקה", Toast.LENGTH_SHORT).show();
+//                    }
+//                    @Override
+//                    public void onCancelled(DatabaseError databaseError) {
+//                        Log.e(TAG, "onCancelled", databaseError.toException());
+//                    }
+//                });
 
                 //jump back to the calander
             }
