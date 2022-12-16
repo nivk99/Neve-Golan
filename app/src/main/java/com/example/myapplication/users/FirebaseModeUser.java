@@ -1,6 +1,6 @@
 package com.example.myapplication.users;
 
-public class User {
+public class FirebaseModeUser {
 
     protected String _name;
     protected String _last_name;
@@ -10,7 +10,8 @@ public class User {
     protected String _id;
 
 
-    public User(String _name, String _last_name, double _age, String _phone, String _email, String _id) {
+    //constructor
+    public FirebaseModeUser(String _name, String _last_name, double _age, String _phone, String _email, String _id) {
         this._name = _name;
         this._last_name = _last_name;
         this._age = _age;
@@ -19,7 +20,8 @@ public class User {
         this._id = _id;
     }
 
-    public User() {
+    //constructor
+    public FirebaseModeUser() {
         this._name = "null";
         this._last_name = "null";
         this._age = 0;

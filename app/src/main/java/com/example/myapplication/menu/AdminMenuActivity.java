@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toolbar;
 
 import com.example.myapplication.AddUser.AddAdminActivity;
 import com.example.myapplication.AddUser.AddClientActivity;
@@ -26,18 +25,21 @@ import com.example.myapplication.notes.notesactivity;
 import com.example.myapplication.personalInformation.Personal_Information_teacher;
 import com.example.myapplication.readUser.admin.AdminContactListStudentActivity;
 import com.example.myapplication.readUser.admin.AdminContactListTeacherActivity;
+import com.example.myapplication.sms.sms_users_Activity;
 import com.google.android.material.navigation.NavigationView;
 
 public class AdminMenuActivity extends AppCompatActivity {
+
+    //User definition
     Authenticate mAuth;
+
+    //Exit button
     Button logout;
 
+    //Setting menu view
     DrawerLayout drawerLayout;
     NavigationView navigationView;
-    Toolbar toolbar;
     ActionBarDrawerToggle actionBarDrawerToggle;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +60,7 @@ public class AdminMenuActivity extends AppCompatActivity {
                 switch (item.getItemId())
                 {
                     case R.id.nav_home:
-                        startActivity(new Intent(AdminMenuActivity.this, ClientMenuActivity.class));
+                        startActivity(new Intent(AdminMenuActivity.this, AdminMenuActivity.class));
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 
@@ -78,11 +80,12 @@ public class AdminMenuActivity extends AppCompatActivity {
                         break;
 
                     case R.id.nav_feedbacks:
-
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 
-                    case R.id.nav_requests:
+                    case R.id.nav_sms:
+                        startActivity(new Intent(AdminMenuActivity.this, sms_users_Activity.class));
+
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.nav_notes:
@@ -90,51 +93,46 @@ public class AdminMenuActivity extends AppCompatActivity {
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 
-
-
                     case R.id.nav_student:
                         startActivity(new Intent(AdminMenuActivity.this, AdminContactListStudentActivity.class));
-
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.nav_teacher:
                         startActivity(new Intent(AdminMenuActivity.this, AdminContactListTeacherActivity.class));
-
-
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.nav_logout:
+                        mAuth.get_auth().signOut();
+                        startActivity(new Intent(AdminMenuActivity.this, MainActivity.class));
+                        finish();
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 
                     case R.id.nav_add_teacher:
-                        startActivity(new Intent(AdminMenuActivity.this, AddTeacherActivity.class));                        drawerLayout.closeDrawer(GravityCompat.START);
-                        return true;
+                        startActivity(new Intent(AdminMenuActivity.this, AddTeacherActivity.class));
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
                     case R.id.nav_add_student:
-                        startActivity(new Intent(AdminMenuActivity.this, AddStudentActivity.class));                        drawerLayout.closeDrawer(GravityCompat.START);
-                        return true;
+                        startActivity(new Intent(AdminMenuActivity.this, AddStudentActivity.class));
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
 
                     case R.id.add_admin:
                         startActivity(new Intent(AdminMenuActivity.this, AddAdminActivity.class));
                         drawerLayout.closeDrawer(GravityCompat.START);
-                        return true;
+                        break;
                     case R.id.add_user:
                         startActivity(new Intent(AdminMenuActivity.this, AddClientActivity.class));
                         drawerLayout.closeDrawer(GravityCompat.START);
-                        return true;
+                        break;
                     case R.id.delete_admin:
                         drawerLayout.closeDrawer(GravityCompat.START);
-                        return true;
+                        break;
 
                 }
                 return true;
             }
         });
-
-
-
-
-
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

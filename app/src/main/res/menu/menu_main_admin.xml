@@ -6,67 +6,67 @@
 <item
     android:id="@+id/nav_home"
     android:icon="@drawable/ic_baseline_home_24"
-    android:title="@string/nav_home" />
+    android:title="מסך הבית" />
 <item
     android:id="@+id/nav_private"
     android:icon="@drawable/ic_baseline_assignment_ind_24"
-    android:title="@string/nav_private" />
+    android:title="מידע אישי" />
 <item
     android:id="@+id/nav_calendar"
     android:icon="@drawable/ic_baseline_calendar_month_24"
-    android:title="@string/calendar" />
+    android:title="לוח שנה" />
 <item
     android:id="@+id/nav_messages"
     android:icon="@drawable/ic_baseline_message_24"
-    android:title="@string/messages" />
+    android:title="הודעות מערכת" />
 <item
     android:id="@+id/nav_feedbacks"
     android:icon="@drawable/ic_baseline_feedback_24"
-    android:title="@string/feedback" />
+    android:title="משובים" />
 <item
-    android:id="@+id/nav_requests"
-    android:icon="@drawable/ic_baseline_hail_24"
-    android:title="@string/request" />
+    android:id="@+id/nav_sms"
+    android:icon="@drawable/ic_baseline_sms_24"
+    android:title="@string/sms" />
     <item
         android:id="@+id/nav_notes"
         android:icon="@drawable/ic_baseline_speaker_notes_24"
-        android:title="@string/notes" />
+        android:title="פתקיות" />
 
 </group>
 
 <group android:checkableBehavior="single">
-<item android:title="@string/users" android:icon="@drawable/ic_baseline_supervised_user_circle_24">
+<item android:title="משתמשים" android:icon="@drawable/ic_baseline_supervised_user_circle_24">
 
     <menu>
         <group>
             <item
                 android:id="@+id/nav_teacher"
                 android:icon="@drawable/ic_baseline_person_search_24"
-                android:title="@string/serach_teacher" />
+                android:title="חיפוש מדריך" />
             <item
                 android:id="@+id/nav_student"
                 android:icon="@drawable/ic_baseline_person_search_24"
-                android:title="@string/serach_student" />
+                android:title="חיפוש חניך" />
             <item
                 android:id="@+id/nav_add_teacher"
                 android:icon="@drawable/ic_baseline_person_add_alt_1_24"
-                android:title="@string/add_techer" />
+                android:title="הוספת מדריך" />
             <item
                 android:id="@+id/nav_add_student"
                 android:icon="@drawable/ic_baseline_person_add_alt_1_24"
-                android:title="@string/add_student" />
+                android:title="הוספת חניך" />
 
             <item
                 android:id="@+id/add_admin"
-                android:title="@string/add_admin"
+                android:title="הוספת מנהל"
                 android:icon="@drawable/ic_baseline_admin_panel_settings_24"/>
             <item
                 android:id="@+id/add_user"
-                android:title="@string/add_user"
-                android:icon="@drawable/ic_baseline_person_add_alt_1_24"/>
+                android:title="הוספת משתמש"
+                android:icon="@drawable/ic_baseline_person_add_alt_24"/>
             <item
                 android:id="@+id/delete_admin"
-                android:title="@string/delete_admin"
+                android:title="למחוק מנהל"
                 android:icon="@drawable/ic_baseline_admin_panel_settings_24"/>
 
         </group>
@@ -79,14 +79,14 @@
 
 
 <group android:checkableBehavior="single">
-<item android:title="@string/some_else" android:icon="@drawable/ic_baseline_east_24">
+<item android:title="אחר" android:icon="@drawable/ic_baseline_east_24">
 
     <menu>
         <group>
             <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_baseline_logout_24"
-                android:title="@string/logout" />
+                android:title="יציאה" />
 
         </group>
     </menu>

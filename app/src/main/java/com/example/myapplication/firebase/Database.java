@@ -15,7 +15,7 @@ import com.example.myapplication.readUser.InterfaceContactList;
 import com.example.myapplication.readUser.client.ClientContactListStudentActivity;
 import com.example.myapplication.users.FirebaseModelStudent;
 import com.example.myapplication.users.FirebaseModelTeacher;
-import com.example.myapplication.users.User;
+import com.example.myapplication.users.FirebaseModeUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,10 +28,15 @@ import java.util.Map;
 
 public class Database {
 
+
+    //the database
     private FirebaseDatabase _data_base;
+
+    //Name the path to the tree
     private String _name_path;
+
+    //A query to the database
     private Query _query;
-    private FirebaseModelTeacher _teacher;
 
     public Database(String name_path) {
         this._data_base = FirebaseDatabase.getInstance();
@@ -65,7 +70,7 @@ public class Database {
         this._query = _query;
     }
 
-    public void write_database(User user) {
+    public void write_database(FirebaseModeUser user) {
         DatabaseReference myRef = this._data_base.getReference(this._name_path).child(user.get_id());
         if (user instanceof FirebaseModelStudent) {
             myRef.setValue((FirebaseModelStudent) (user));
@@ -77,14 +82,14 @@ public class Database {
 
 
     public void read_database(UserAdapter adapter, InterfaceContactList ContactList) {
-        ArrayList<User> users = adapter.getUsers();
+        ArrayList<FirebaseModeUser> users = adapter.getUsers();
 
         _query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 users.clear();
                 for (DataSnapshot usersnapshot : snapshot.getChildren()) {
-                    User currentuser = usersnapshot.getValue(User.class);
+                    FirebaseModeUser currentuser = usersnapshot.getValue(FirebaseModeUser.class);
                     if (ContactList._this() instanceof AdminContactListStudentActivity || ContactList._this() instanceof ClientContactListStudentActivity) {
                         currentuser = usersnapshot.getValue(FirebaseModelStudent.class);
                     } else {
@@ -93,14 +98,14 @@ public class Database {
                     adapter.getUsers().add(currentuser);
                 }
                 adapter.notifyDataSetChanged();
-                Toast.makeText((Context) ContactList._this(), "there are " + users.size() + " users ", Toast.LENGTH_LONG).show();
+                Toast.makeText((Context) ContactList._this(), "משתמשים" + users.size() + "יש ", Toast.LENGTH_LONG).show();
 
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
-                Toast.makeText((Context) ContactList._this(), "error onCancelled", Toast.LENGTH_SHORT).show();
+                Toast.makeText((Context) ContactList._this(), "יש שגיאה", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -123,7 +128,7 @@ public class Database {
                     adapter.getActivitys().add(currentactivity);
                 }
                 adapter.notifyDataSetChanged();
-                Toast.makeText((Context) interfaceActivity._this(),"there are " +activitys.size() +" activitys ",Toast.LENGTH_LONG).show();
+                Toast.makeText((Context) interfaceActivity._this(),"פעילויות " +activitys.size() +" יש ",Toast.LENGTH_LONG).show();
                 //Toast.makeText((Context) ContactList._this(),"there are " +users.size() +" users ",Toast.LENGTH_LONG).show();
                 //_query.removeEventListener(this);
 

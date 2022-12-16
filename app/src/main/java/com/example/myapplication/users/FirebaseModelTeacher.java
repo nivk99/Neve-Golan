@@ -1,14 +1,16 @@
 package com.example.myapplication.users;
 
-public class FirebaseModelTeacher extends User {
+public class FirebaseModelTeacher extends FirebaseModeUser {
 
     protected String _profession;
 
+    //constructor
     public FirebaseModelTeacher(String _name, String _last_name, double _age, String _phone, String _email, String _id, String _profession) {
         super(_name, _last_name, _age, _phone, _email, _id);
         this._profession = _profession;
     }
 
+    //constructor
     public FirebaseModelTeacher() {
         super();
         this._profession="null";

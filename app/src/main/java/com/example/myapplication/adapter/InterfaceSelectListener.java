@@ -1,8 +1,8 @@
 package com.example.myapplication.adapter;
 
-import com.example.myapplication.users.User;
+import com.example.myapplication.users.FirebaseModeUser;
 
 public interface InterfaceSelectListener {
 
-    void onItemClicked(User user);
+    void onItemClicked(FirebaseModeUser user);
 }

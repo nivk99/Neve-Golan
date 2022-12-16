@@ -16,24 +16,27 @@
     <string name="authenticate_password">Authenticate password</string>
     <string name="email">Email</string>
     <string name="full_name">full name</string>
-    <string name="textView_name_client">שם המלא</string>
-    <string name="textView_welcome">ברוך הבא</string>
-    <string name="nav_home">מסך הבית</string>
-    <string name="nav_private">מידע אישי</string>
-    <string name="calendar">לוח שנה</string>
-    <string name="messages">הודעות</string>
-    <string name="feedback">משובים</string>
-    <string name="request">בקשות</string>
-    <string name="notes">פתקיות</string>
-    <string name="add_user">הוספת משתמש</string>
-    <string name="users">ממשתמשים</string>
-    <string name="serach_teacher">חיפוש מדריך</string>
-    <string name="serach_student">חיפוש חניך</string>
-    <string name="add_techer">הוספת מדריך</string>
-    <string name="add_student">הוספת חניך</string>
-    <string name="add_admin">הוספת מנהל</string>
-    <string name="delete_admin">למחוק מנהל</string>
-    <string name="some_else">אחר</string>
-    <string name="logout">יציאה</string>
 
+
+    <string name="show">Show</string>
+    <string name="enter_phone">Enter a phone number</string>
+    <string name="phone_status">"Phone Status: "</string>
+    <string name="ringing">"RINGING, number: "</string>
+    <string name="offhook">OFFHOOK</string>
+    <string name="idle">IDLE</string>
+    <string name="restarting_app">Restarting app</string>
+    <string name="permission_not_granted">PERMISSION NOT GRANTED!</string>
+    <string name="dial_number">"Phone Status: DIALING: "</string>
+    <string name="failure_permission">Failure to obtain permission!</string>
+    <string name="telephony_enabled">Telephony is enabled</string>
+    <string name="telephony_not_enabled">"TELEPHONY NOT ENABLED! "</string>
+    <string name="call">Call</string>
+    <string name="make_a_call">Make a call</string>
+    <string name="send_a_message">Send a message</string>
+    <string name="enter_message_here">Enter message here</string>
+    <string name="phone_disabled">Phone calling disabled.</string>
+    <string name="retry">Retry</string>
+    <string name="sms_disabled">SMS usage disabled</string>
+    <string name="granted_permission">Permission Granted</string>
+    <string name="sms">הודעת sms</string>
 </resources>

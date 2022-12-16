@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.example.myapplication.AddUser.AddStudentActivity;
 import com.example.myapplication.R;
@@ -34,25 +33,22 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ClientMenuActivity extends AppCompatActivity {
 
+
+    //google
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
+
+    //Name and Email Username
     TextView name, email;
+
+    //Exit button
     Button signOutBtn;
 
-
+    //Setting menu view
     DrawerLayout drawerLayout;
     NavigationView navigationView;
-    Toolbar toolbar;
     ActionBarDrawerToggle actionBarDrawerToggle;
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(actionBarDrawerToggle.onOptionsItemSelected(item))
-        {
-            return true;
-        }
-        return super.onOptionsItemSelected(item) ;
-    }
 
         @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +88,6 @@ public class ClientMenuActivity extends AppCompatActivity {
                         break;
 
                     case R.id.nav_feedbacks:
-
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 
@@ -168,6 +163,15 @@ public class ClientMenuActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(actionBarDrawerToggle.onOptionsItemSelected(item))
+        {
+            return true;
+        }
+        return super.onOptionsItemSelected(item) ;
+    }
+
 
     void signOut() {
         gsc.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -180,22 +184,4 @@ public class ClientMenuActivity extends AppCompatActivity {
         });
     }
 
-
-    public void client_click_private(View view) {
-        startActivity(new Intent(this, Personal_Information_teacher.class));
-
-    }
-
-    public void client_click_student(View view) {
-        startActivity(new Intent(this, ClientContactListStudentActivity.class));
-
-    }
-
-    public void client_click_teachers(View view) {
-        startActivity(new Intent(this, ClientContactListTeacherActivity.class));
-    }
-
-    public void client_click_timetable(View view) {
-        startActivity(new Intent(this, CalendarViewActivity.class));
-    }
 }

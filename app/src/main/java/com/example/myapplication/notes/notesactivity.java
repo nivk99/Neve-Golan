@@ -136,7 +136,7 @@ public class notesactivity extends AppCompatActivity {
                             public boolean onMenuItemClick(MenuItem item) {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(notesactivity.this);
                                 builder.setTitle("Delete");
-                                builder.setMessage("Are you sure you want to delete?");
+                                builder.setMessage("אתה בטוח שאתה רוצה למחוק?");
                                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -144,12 +144,12 @@ public class notesactivity extends AppCompatActivity {
                                         documentReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
-                                                Toast.makeText(v.getContext(),"This note is deleted",Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(v.getContext(),"הערה זו נמחקה",Toast.LENGTH_SHORT).show();
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
                                             @Override
                                             public void onFailure(@NonNull Exception e) {
-                                                Toast.makeText(v.getContext(),"Failed To Delete",Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(v.getContext(),"הערה זו לא נמחקת",Toast.LENGTH_SHORT).show();
                                             }
 
                                         });

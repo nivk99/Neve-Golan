@@ -58,7 +58,6 @@ public class editnoteactivity extends AppCompatActivity {
         msaveeditnote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(getApplicationContext(),"savebuton click",Toast.LENGTH_SHORT).show();
 
                 String newtitle=medittitleofnote.getText().toString();
                 String newcontent=meditcontentofnote.getText().toString();
@@ -66,7 +65,6 @@ public class editnoteactivity extends AppCompatActivity {
                 if(newtitle.isEmpty()||newcontent.isEmpty())
                 {
                     Toast.makeText(getApplicationContext(),"זה ריק",Toast.LENGTH_SHORT).show();
-                    return;
                 }
                 else
                 {

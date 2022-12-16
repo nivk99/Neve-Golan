@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/others"
         android:layout_above="@id/google_button"
-        android:text="sign in with"
+        android:text="היכנס עם גוגל"
         android:layout_centerHorizontal="true"/>
 
     <ImageView

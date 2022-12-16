@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -14,14 +15,19 @@ import com.example.myapplication.R;
 import com.example.myapplication.readUser.InterfaceContactList;
 import com.example.myapplication.adapter.UserAdapter;
 import com.example.myapplication.firebase.Database;
-import com.example.myapplication.users.User;
+import com.example.myapplication.readUser.admin.AdminContactListStudentActivity;
+import com.example.myapplication.updateRemoveUser.UpdateRemoveStudent;
+import com.example.myapplication.users.FirebaseModeUser;
 import com.example.myapplication.users.FirebaseModelStudent;
 
 import java.util.ArrayList;
 
 public class ClientContactListStudentActivity extends AppCompatActivity implements InterfaceContactList, InterfaceSelectListener {
 
+    //Database
     private Database database;
+
+    //Adapter
     private UserAdapter adapter;
 
     @Override
@@ -30,7 +36,7 @@ public class ClientContactListStudentActivity extends AppCompatActivity implemen
         setContentView(R.layout.activity_client_contact_list_student);
         final RecyclerView recyclerView =findViewById(R.id.recyclerview_client_student);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        final ArrayList<User> users_student=new ArrayList<>();
+        final ArrayList<FirebaseModeUser> users_student=new ArrayList<>();
         adapter =new UserAdapter(users_student,new FirebaseModelStudent(),this);
         recyclerView.setAdapter(adapter);
         database=new Database("users/student");
@@ -80,7 +86,20 @@ public class ClientContactListStudentActivity extends AppCompatActivity implemen
 
 
     @Override
-    public void onItemClicked(User user) {
+    public void onItemClicked(FirebaseModeUser user) {
+        FirebaseModelStudent student =(FirebaseModelStudent)(user);
+
+        String[] message=new String[7];
+        message[0] =student.get_name();
+        message[1]=student.get_last_name();
+        message[2]=Double.toString(student.get_age());
+        message[3]=student.get_phone();
+        message[4]=student.get_email();
+        message[5] =student.get_id();
+        message[6]=student.get_class();
+        Intent intent =new Intent(this, UpdateRemoveStudent.class);
+        intent.putExtra(AdminContactListStudentActivity.MESSAGE_KEY,message);
+        startActivity(intent);
 
 
     }

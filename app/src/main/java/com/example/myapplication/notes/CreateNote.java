@@ -65,7 +65,7 @@ public class CreateNote extends AppCompatActivity {
                 String content=mcreatecontentofnote.getText().toString().trim();
                 if(title.isEmpty() || content.isEmpty())
                 {
-                    Toast.makeText(getApplicationContext(),"Both field are Require",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"שני השדות נדרשים",Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
@@ -80,13 +80,13 @@ public class CreateNote extends AppCompatActivity {
                     documentReference.set(note).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Toast.makeText(getApplicationContext(),"Note Created Succesffuly",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"הפתק נוצרה בהצלחה",Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(CreateNote.this, notesactivity.class));
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getApplicationContext(),"Failed To Create Note",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"הפתק לא נוצר ",Toast.LENGTH_SHORT).show();
                             mprogressbarofcreatenote.setVisibility(View.INVISIBLE);
                         }
                     });
@@ -111,7 +111,7 @@ public class CreateNote extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(this,"Your Device Doesn't Support It",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"המכשיר שלך לא תומך בזה",Toast.LENGTH_SHORT).show();
         }
 
 

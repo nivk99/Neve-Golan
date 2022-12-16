@@ -13,8 +13,13 @@ import com.example.myapplication.AddUser.InterfaceAddUser;
 
 public class AddClientActivity extends AppCompatActivity implements InterfaceAddUser {
 
+    //user definition
     private Authenticate mAuth;
+
+    //email text
     private EditText email;
+
+    //full name text
     private TextView full_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

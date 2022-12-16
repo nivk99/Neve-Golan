@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.myapplication.R;
 import com.example.myapplication.firebase.Database;
 import com.example.myapplication.readUser.admin.AdminContactListStudentActivity;
+import com.example.myapplication.sms.sms_user_Activity;
 import com.example.myapplication.users.FirebaseModelStudent;
 import com.google.firebase.database.Exclude;
 
@@ -19,15 +20,20 @@ import java.util.Map;
 
 public class UpdateRemoveStudent extends AppCompatActivity {
 
-    public TextView student_name_textView;
-    public TextView student_last_name_textView;
-    public TextView student_age_textView;
-    public TextView student_phone_textView;
-    public TextView student_email_textView;
-    public TextView student_id_textView;
-    public TextView student_class_textView;
-    String id;
-    Database database;
+
+    //student definition
+    private TextView student_name_textView;
+    private TextView student_last_name_textView;
+    private TextView student_age_textView;
+    private TextView student_phone_textView;
+    private TextView student_email_textView;
+    private TextView student_id_textView;
+    private TextView student_class_textView;
+
+
+    private  String id;
+
+    private Database database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +92,14 @@ public class UpdateRemoveStudent extends AppCompatActivity {
             database.write_database(new_student);
         }
 
+
+    }
+
+    public void click_sms(View view)
+    {
+        Intent intent =new Intent(this, sms_user_Activity.class);
+        intent.putExtra("_phone",student_phone_textView.getText().toString());
+        startActivity(intent);
 
     }
 

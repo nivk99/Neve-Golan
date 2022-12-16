@@ -46,7 +46,7 @@
         android:fontFamily="serif"
         android:includeFontPadding="false"
         android:onClick="click_client_sign_in"
-        android:text="@string/client_sign_in"
+        android:text="כניסת מדריך"
         android:textColor="@android:color/black"
         android:textColorHighlight="#E91E63"
         android:textSize="16sp"
@@ -65,7 +65,7 @@
         android:fontFamily="serif"
         android:includeFontPadding="false"
         android:onClick="click_admin_sign_in"
-        android:text="@string/admin_sign_in"
+        android:text="כניסת מנהל"
         android:textColor="@android:color/black"
         android:textSize="16sp"
         android:textStyle="bold" />

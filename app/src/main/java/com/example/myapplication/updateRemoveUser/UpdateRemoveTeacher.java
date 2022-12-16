@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.myapplication.R;
 import com.example.myapplication.firebase.Database;
 import com.example.myapplication.readUser.admin.AdminContactListTeacherActivity;
+import com.example.myapplication.sms.sms_user_Activity;
 import com.example.myapplication.users.FirebaseModelTeacher;
 import com.google.firebase.database.Exclude;
 
@@ -18,15 +19,22 @@ import java.util.Map;
 
 public class UpdateRemoveTeacher extends AppCompatActivity  {
 
-    public TextView teacher_name_textView;
-    public TextView teacher_last_name_textView;
-    public TextView teacher_age_textView;
-    public TextView teacher_phone_textView;
-    public TextView teacher_email_textView;
-    public TextView teacher_id_textView;
-    public TextView teacher_profession_textView;
-    String id;
-    Database database;
+    //Teacher definition
+    private TextView teacher_name_textView;
+    private TextView teacher_last_name_textView;
+    private TextView teacher_age_textView;
+    private TextView teacher_phone_textView;
+    private TextView teacher_email_textView;
+    private TextView teacher_id_textView;
+    private TextView teacher_profession_textView;
+
+    //key
+    private String id;
+
+    //Database
+    private Database database;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +84,13 @@ public class UpdateRemoveTeacher extends AppCompatActivity  {
             FirebaseModelTeacher new_teacher=new FirebaseModelTeacher(teacher_name_textView_str,teacher_last_name_textView_str,teacher_age_textView_str,teacher_phone_textView_str,teacher_email_textView_str,teacher_id_textView_str,teacher_profession_textView_str);
             database.write_database(new_teacher);
         }
+
+    }
+    public void click_sms(View view)
+    {
+        Intent intent =new Intent(this, sms_user_Activity.class);
+        intent.putExtra("_phone",teacher_phone_textView.getText().toString());
+        startActivity(intent);
 
     }
 

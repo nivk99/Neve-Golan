@@ -17,7 +17,6 @@ import com.example.myapplication.adapter.ActivityAdapter;
 import com.example.myapplication.adapter.UserAdapter;
 import com.example.myapplication.firebase.Database;
 import com.example.myapplication.users.FirebaseModelStudent;
-import com.example.myapplication.users.User;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

@@ -22,23 +22,25 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:fontFamily="cursive"
-            android:text="@string/textView_name_client"
+            android:text="שם המלא"
             android:textSize="34sp"
             app:layout_constraintBottom_toTopOf="@+id/imageView6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2"
             app:layout_constraintVertical_bias="0.0" />
 
-<!--        <Button-->
-<!--            android:id="@+id/button_logout"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:background="#3F51B5"-->
-<!--            android:backgroundTint="#3F51B5"-->
-<!--            android:onClick="client_click_logout"-->
-<!--            android:text="logout"-->
-<!--            tools:layout_editor_absoluteX="411dp"-->
-<!--            tools:layout_editor_absoluteY="685dp" />-->
+        <Button
+            android:id="@+id/button_logout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="630dp"
+            android:background="#3F51B5"
+            android:backgroundTint="#3F51B5"
+            android:text="logout"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -67,14 +69,14 @@
             app:srcCompat="@drawable/w" />
 
         <TextView
-            android:id="@+id/textView_welcome"
+            android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="40dp"
             android:fontFamily="cursive"
-            android:text="@string/textView_welcome"
+            android:text="ברוך הבא"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView_name_client"
             app:layout_constraintEnd_toEndOf="parent"
@@ -91,7 +93,7 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/header_menu"
-        app:menu="@menu/menu_main_" />
+        app:menu="@menu/menu_main_client" />
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

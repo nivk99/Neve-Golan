@@ -16,7 +16,10 @@ import com.example.myapplication.readUser.admin.AdminContactListStudentActivity;
 
 public class AddAdminActivity extends AppCompatActivity {
 
+    //user definition
     private Authenticate mAuth;
+
+    //Phone text
     public EditText admin_phone_textView;
 
     @Override

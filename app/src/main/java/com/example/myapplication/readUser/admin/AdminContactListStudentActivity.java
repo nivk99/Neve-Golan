@@ -16,13 +16,17 @@ import com.example.myapplication.readUser.InterfaceContactList;
 import com.example.myapplication.updateRemoveUser.UpdateRemoveStudent;
 import com.example.myapplication.adapter.UserAdapter;
 import com.example.myapplication.firebase.Database;
-import com.example.myapplication.users.User;
+import com.example.myapplication.users.FirebaseModeUser;
 import com.example.myapplication.users.FirebaseModelStudent;
 
 import java.util.ArrayList;
 
 public class AdminContactListStudentActivity extends AppCompatActivity implements InterfaceContactList, InterfaceSelectListener {
+
+    //Database
     private  Database database;
+
+    //Adapter
     private UserAdapter adapter;
 
     public static final String MESSAGE_KEY="com.example.myapplication.readUser.ContactListStudentActivity";
@@ -33,7 +37,7 @@ public class AdminContactListStudentActivity extends AppCompatActivity implement
         setContentView(R.layout.activity_admin_contact_list_student);
         final RecyclerView recyclerView =findViewById(R.id.recyclerview_admin_student);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        final ArrayList<User> users_student=new ArrayList<>();
+        final ArrayList<FirebaseModeUser> users_student=new ArrayList<>();
         adapter =new UserAdapter(users_student,new FirebaseModelStudent(),this);
         recyclerView.setAdapter(adapter);
         database=new Database("users/student");
@@ -81,7 +85,7 @@ public class AdminContactListStudentActivity extends AppCompatActivity implement
     }
 
     @Override
-    public void onItemClicked(User user) {
+    public void onItemClicked(FirebaseModeUser user) {
         FirebaseModelStudent student =(FirebaseModelStudent)(user);
 
         String[] message=new String[7];

@@ -264,4 +264,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="78dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="307dp"
+        android:layout_marginTop="184dp"
+        android:layout_marginEnd="26dp"
+        android:onClick="click_sms"
+        app:layout_constraintBottom_toTopOf="@+id/textView_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_message_24" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,8 @@ import com.example.myapplication.firebase.Authenticate;
 import com.example.myapplication.firebase.Database;
 
 public class Personal_Information_teacher extends AppCompatActivity {
+
+    //Defining personal details
     public TextView teacher_name_textView;
     public TextView teacher_last_name_textView;
     public TextView teacher_age_textView;
@@ -17,6 +19,8 @@ public class Personal_Information_teacher extends AppCompatActivity {
     public TextView teacher_email_textView;
     public TextView teacher_id_textView;
     public TextView teacher_profession_textView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

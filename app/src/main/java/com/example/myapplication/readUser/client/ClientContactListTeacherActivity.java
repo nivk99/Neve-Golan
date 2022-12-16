@@ -16,12 +16,16 @@ import com.example.myapplication.readUser.InterfaceContactList;
 import com.example.myapplication.adapter.UserAdapter;
 import com.example.myapplication.firebase.Database;
 import com.example.myapplication.users.FirebaseModelTeacher;
-import com.example.myapplication.users.User;
+import com.example.myapplication.users.FirebaseModeUser;
 
 import java.util.ArrayList;
 
 public class ClientContactListTeacherActivity extends AppCompatActivity implements InterfaceContactList, InterfaceSelectListener {
+
+    //Database
     private Database database;
+
+    //Adapter
     private UserAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +33,7 @@ public class ClientContactListTeacherActivity extends AppCompatActivity implemen
         setContentView(R.layout.activity_client_contact_list_teacher);
         final RecyclerView recyclerView =findViewById(R.id.recyclerview_client_teacher);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        final ArrayList<User> users_teacher=new ArrayList<>();
+        final ArrayList<FirebaseModeUser> users_teacher=new ArrayList<>();
         adapter =new UserAdapter(users_teacher,new FirebaseModelTeacher(),this);
         recyclerView.setAdapter(adapter);
         database=new Database("users/teacher");
@@ -74,7 +78,7 @@ public class ClientContactListTeacherActivity extends AppCompatActivity implemen
     }
 
     @Override
-    public void onItemClicked(User user) {
+    public void onItemClicked(FirebaseModeUser user) {
         Toast.makeText(this, "delete_admin", Toast.LENGTH_SHORT).show();
 
 

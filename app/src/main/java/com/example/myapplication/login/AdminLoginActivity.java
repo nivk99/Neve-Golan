@@ -30,15 +30,24 @@ import java.util.concurrent.TimeUnit;
 
 
 
-
-
 public class AdminLoginActivity extends AppCompatActivity implements InterfaceLogin {
 
+    //Setting up a phone and verification code
     EditText phone, otp;
+
+    //Setting buttons
     Button btngenOTP, btnverify;
+
+    //User definition
     Authenticate mAuth;
+
+    //verification code
     String verificationID;
+
+    //Loading display
     ProgressBar bar;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +65,7 @@ public class AdminLoginActivity extends AppCompatActivity implements InterfaceLo
             {
                 if(TextUtils.isEmpty(phone.getText().toString()))
                 {
-                    Toast.makeText(AdminLoginActivity.this, "Enter Valid Phone No.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminLoginActivity.this, "הזן מספר טלפון חוקי.", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     String google="@gmail.com";
@@ -80,7 +89,7 @@ public class AdminLoginActivity extends AppCompatActivity implements InterfaceLo
             {
                 if(TextUtils.isEmpty(otp.getText().toString()))
                 {
-                    Toast.makeText(AdminLoginActivity.this, "Wrong OTP Entered", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminLoginActivity.this, "הוזן OTP שגוי", Toast.LENGTH_SHORT).show();
                 }
                 else
                     verifycode(otp.getText().toString());
@@ -114,7 +123,7 @@ public class AdminLoginActivity extends AppCompatActivity implements InterfaceLo
         }
         @Override
         public void onVerificationFailed(@NonNull FirebaseException e) {
-            Toast.makeText(AdminLoginActivity.this, "Verification Failed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AdminLoginActivity.this, "האימות נכשל", Toast.LENGTH_SHORT).show();
         }
 
         @Override
@@ -123,7 +132,7 @@ public class AdminLoginActivity extends AppCompatActivity implements InterfaceLo
         {
             super.onCodeSent(s, token);
             verificationID = s;
-            Toast.makeText(AdminLoginActivity.this, "Code sent", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AdminLoginActivity.this, "קוד נשלח", Toast.LENGTH_SHORT).show();
             btnverify.setEnabled(true);
             bar.setVisibility(View.INVISIBLE);
         }};
@@ -143,7 +152,7 @@ public class AdminLoginActivity extends AppCompatActivity implements InterfaceLo
                     {
                         if(task.isSuccessful())
                         {
-                            Toast.makeText(AdminLoginActivity.this, "Login Successfull", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AdminLoginActivity.this, "התחברת בהצלחה", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(AdminLoginActivity.this, AdminMenuActivity.class));
                         }
 

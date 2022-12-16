@@ -32,7 +32,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:background="#30ffffff"
-        android:hint="@string/phone_number"
+        android:hint="הקלד את מספר הטלפון ללא קידומת"
         android:padding="20dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
@@ -49,7 +49,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:background="#30ffffff"
-        android:hint="@string/authenticate_password"
+        android:hint="הכנס את הקוד שהתקבל"
         android:padding="20dp"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
@@ -69,7 +69,7 @@
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/design_default_color_secondary"
         android:onClick="click_login"
-        android:text="SEND" />
+        android:text="שלח הודעה" />
 
     <TextView
         android:id="@+id/forgotpass"
@@ -90,7 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/click_login"
         android:layout_marginBottom="20dp"
-        android:text="Verify OTP"
+        android:text="אשר הודעה"
         android:textSize="20dp"
         android:enabled="false"/>
     <ProgressBar

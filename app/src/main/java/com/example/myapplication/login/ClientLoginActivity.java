@@ -22,12 +22,14 @@ import com.google.android.gms.tasks.Task;
 
 public class ClientLoginActivity extends AppCompatActivity implements InterfaceLogin {
 
-
+    //User definition
      Authenticate _mAuth;
 
-    //google
+    //Google
    GoogleSignInOptions gso;
    GoogleSignInClient gsc;
+
+    //Image Google
    ImageView googleBtn;
 
 
@@ -35,7 +37,7 @@ public class ClientLoginActivity extends AppCompatActivity implements InterfaceL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_login);
-//       startActivity(new Intent(ClientLoginActivity.this, ClientMenuActivity.class));
+      startActivity(new Intent(ClientLoginActivity.this, ClientMenuActivity.class));
         _mAuth=new Authenticate();
         googleBtn = findViewById(R.id.google_button);
 
@@ -79,7 +81,7 @@ public class ClientLoginActivity extends AppCompatActivity implements InterfaceL
                 task.getResult(ApiException.class);
                 navigateToSecondActivity();
             } catch (ApiException e) {
-                Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "משהו השתבש", Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -94,7 +96,7 @@ public class ClientLoginActivity extends AppCompatActivity implements InterfaceL
 
 
 
-
+  //Login to the application
     @Override
     public void login()
     {

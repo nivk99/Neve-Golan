@@ -12,41 +12,47 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
 import com.example.myapplication.users.FirebaseModelStudent;
 import com.example.myapplication.users.FirebaseModelTeacher;
-import com.example.myapplication.users.User;
+import com.example.myapplication.users.FirebaseModeUser;
 
 import java.util.ArrayList;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {
 
 
+    //array of users
+    private ArrayList<FirebaseModeUser> users;
 
-    private ArrayList<User> users;
-    private User user;
+    //Checks whether it is a teacher or a student
+    private FirebaseModeUser user;
+
+    //listening for clicks
     private InterfaceSelectListener listener;
 
-    public UserAdapter(ArrayList<User> users,User user,InterfaceSelectListener listener)
+
+    //constructor
+    public UserAdapter(ArrayList<FirebaseModeUser> users, FirebaseModeUser user, InterfaceSelectListener listener)
     {
         this.listener=listener;
         this.user=user;
         this.users = users;
     }
 
-    public ArrayList<User> getUsers()
+    public ArrayList<FirebaseModeUser> getUsers()
     {
         return users;
     }
 
-    public void setUsers(ArrayList<User> users)
+    public void setUsers(ArrayList<FirebaseModeUser> users)
     {
         this.users = users;
     }
 
-    public User getUser()
+    public FirebaseModeUser getUser()
     {
         return user;
     }
 
-    public void setUser(User user)
+    public void setUser(FirebaseModeUser user)
     {
         this.user = user;
     }
@@ -71,7 +77,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
 
-        User user=users.get(position);
+        FirebaseModeUser user=users.get(position);
         if(this.user instanceof FirebaseModelStudent)
         {
             //student
@@ -135,7 +141,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         public CardView cardView;
 
 
-        public UserViewHolder(@NonNull View itemView,User user) {
+        public UserViewHolder(@NonNull View itemView, FirebaseModeUser user) {
             super(itemView);
 
             if(user instanceof FirebaseModelStudent)
