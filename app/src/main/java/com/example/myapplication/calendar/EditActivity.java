@@ -26,6 +26,7 @@ import java.util.Map;
 
 public class EditActivity extends AppCompatActivity {
     String year,month,day,name,start,end;
+    DatabaseReference myRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,28 +45,13 @@ public class EditActivity extends AppCompatActivity {
         ((EditText)findViewById(R.id.updateTimeStart)).setText(start);
         ((EditText)findViewById(R.id.updateTimeEnd)).setText(end);
         String activity_id=name+","+start+","+end;
+        myRef = FirebaseDatabase.getInstance().getReference("activity/"+year+"/"+month+"/"+day).child(name+","+start+","+end);
         //delete activity
         findViewById(R.id.buttonDeleteActivity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseDatabase.getInstance().getReference("activity"+"/"+year+"/"+month+"/"+day).child(activity_id).removeValue();
-
-//                DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-//                Query nameQuery = ref.child("activity").child(year).child(month).orderByKey(day).equalTo(activity_id);
-//
-//                nameQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(DataSnapshot dataSnapshot) {
-//                        for (DataSnapshot nameSnapshot : dataSnapshot.getChildren()) {
-//                            nameSnapshot.getRef().removeValue();
-//                        }
-//                        Toast.makeText(EditActivity.this, "הםעילות נמחקה", Toast.LENGTH_SHORT).show();
-//                    }
-//                    @Override
-//                    public void onCancelled(DatabaseError databaseError) {
-//                        Log.e(TAG, "onCancelled", databaseError.toException());
-//                    }
-//                });
+                myRef.setValue(null);
+                Toast.makeText(EditActivity.this, "הפעילות נמחקה", Toast.LENGTH_SHORT).show();
 
                 //jump back to the calander
             }
@@ -76,16 +62,16 @@ public class EditActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String temp_name = ((EditText) findViewById(R.id.updateActivityName)).getText().toString();
+                name = ((EditText) findViewById(R.id.updateActivityName)).getText().toString();
                 start = ((EditText) findViewById(R.id.updateTimeStart)).getText().toString();
                 end = ((EditText) findViewById(R.id.updateTimeEnd)).getText().toString();
-                HashMap<String, Object> update = new HashMap<>();
-                update.put("name", name);
-                update.put("start", start);
-                update.put("end", end);
 
-                Database database=new Database("activity/"+year+"/"+month+"/"+day);
-                database.update(update,activity_id);
+                myRef.setValue(null);
+                myRef = FirebaseDatabase.getInstance().getReference("activity/"+year+"/"+month+"/"+day).child(name+","+start+","+end);
+                myRef.setValue(new Activity(name,start,end));
+                Toast.makeText(EditActivity.this, "הפעילות עודכנה", Toast.LENGTH_SHORT).show();
+
+
             }
         });
     }

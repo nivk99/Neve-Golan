@@ -107,7 +107,7 @@
         android:id="@+id/button"
         android:layout_width="95dp"
         android:layout_height="35dp"
-        android:onClick="ClickToRemove"
+        android:onClick="ClickToRemov"
         android:text="ערוך"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"

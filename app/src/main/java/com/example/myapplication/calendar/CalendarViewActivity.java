@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class CalendarViewActivity extends AppCompatActivity implements InterfaceActivity {
-    int Year=0, Month=0, Day=0;
+    String Year, Month, Day;
     private  Database database;
     private ActivityAdapter adapter;
     @Override
@@ -35,6 +35,10 @@ public class CalendarViewActivity extends AppCompatActivity implements Interface
         @SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         Date date = new Date();
         String path = "activity/"+dateFormat.format(date);
+        Year=dateFormat.format(date).substring(0,4);
+        Month=dateFormat.format(date).substring(5,7);
+        Day=dateFormat.format(date).substring(8);
+
         if ( path.charAt(path.length()-2)=='0')
             path = path.substring(0,path.length()-2)+path.substring(path.length()-1);
         //String path = "activity/2022/12/9";
@@ -51,8 +55,9 @@ public class CalendarViewActivity extends AppCompatActivity implements Interface
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                Year=year; Month=month+1; Day=dayOfMonth;
-                String path = "activity/"+Year + "/" + Month + "/" + Day;
+                int Yeart=year, Montht=month+1, Dayt=dayOfMonth;
+                Year=Integer.toString(year);Month=Integer.toString(month+1);Day=Integer.toString(dayOfMonth);
+                String path = "activity/"+Yeart + "/" + Montht + "/" + Dayt;
                 ArrayList<Activity> activitis=new ArrayList<>();
                 adapter =new ActivityAdapter(activitis,new Activity());
                 final RecyclerView recyclerView =findViewById(R.id.recyclerview_list_act);
@@ -61,25 +66,22 @@ public class CalendarViewActivity extends AppCompatActivity implements Interface
                 database.read_database_activity(adapter,_this());
             }
         });
-        // move to page "עריכת פעילויות"
+        // move to page "הוספת פעילויות"
         findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Year==0||Day==0||Month==0){
-                    Toast.makeText(CalendarViewActivity.this, "please choose a day", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Intent intent = new Intent(CalendarViewActivity.this, EditDayActivities.class);
-                    intent.putExtra("year", Integer.toString(Year));
-                    intent.putExtra("month", Integer.toString(Month));
-                    intent.putExtra("day", Integer.toString(Day));
-                    startActivity(intent);
-                }
+
+                Intent intent = new Intent(CalendarViewActivity.this, EditDayActivities.class);
+                intent.putExtra("year",Year);
+                intent.putExtra("month", Month);
+                intent.putExtra("day", (Day));
+                startActivity(intent);
+
             }
         });
 
     }
-    public void ClickToRemove(View view){
+    public void ClickToRemov(View view){
         int ya;
         TextView name_textView=findViewById(R.id.textView_activity_name);
         TextView timeEnd_textView=findViewById(R.id.textView_activity_time_end);

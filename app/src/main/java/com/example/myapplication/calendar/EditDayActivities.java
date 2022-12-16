@@ -59,7 +59,7 @@ public class EditDayActivities extends AppCompatActivity {
                                     flag=true; break;
                                 }
                             }
-                            if(!flag){ //        DatabaseReference myRef = this._data_base.getReference(this._name_path).child(user.get_id());
+                            if(!flag){
 
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                                 DatabaseReference myRef = database.getReference("activity/"+year+"/"+month+"/"+day).child(Add_ActivityName+","+Add_TimeStart+","+Add_TimeEnd);
