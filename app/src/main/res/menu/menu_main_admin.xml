@@ -63,7 +63,7 @@
             <item
                 android:id="@+id/add_user"
                 android:title="הוספת משתמש"
-                android:icon="@drawable/ic_baseline_person_add_alt_24"/>
+                android:icon="@drawable/ic_baseline_person_add_alt_1_24"/>
             <item
                 android:id="@+id/delete_admin"
                 android:title="למחוק מנהל"

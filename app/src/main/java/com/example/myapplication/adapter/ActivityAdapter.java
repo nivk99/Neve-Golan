@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
@@ -19,11 +20,13 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
 
     private ArrayList<Activity> activitys;
     private Activity activity;
+    private InterfaceSelectActivityListener listener;
 
-    public ActivityAdapter(ArrayList<Activity> activitys,Activity activity)
+    public ActivityAdapter(ArrayList<Activity> activitys,Activity activity, InterfaceSelectActivityListener listener)
     {
         this.activity=activity;
         this.activitys = activitys;
+        this.listener = listener;
     }
 
     public ArrayList<Activity> getActivitys()
@@ -60,6 +63,13 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
         holder.activity_name_textView.setText(activity.getName());
         holder.activity_time_start_textView.setText(activity.getTimeStart());
         holder.activity_time_end_textView.setText(activity.getTimeEnd());
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onItemClicked(activitys.get(holder.getAdapterPosition()));
+            }
+        });
     }
 
     @Override
@@ -73,6 +83,8 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
         public TextView activity_time_start_textView;
         public TextView activity_time_end_textView;
 
+        public CardView cardView;
+
         public ActivityViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -80,6 +92,8 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
             activity_name_textView=itemView.findViewById(R.id.textView_activity_name);
             activity_time_start_textView=itemView.findViewById(R.id.textView_activity_time_start);
             activity_time_end_textView=itemView.findViewById(R.id.textView_activity_time_end);
+
+            cardView=itemView.findViewById(R.id.screen_container_activity);
 
         }
     }

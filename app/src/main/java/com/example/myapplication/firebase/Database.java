@@ -128,9 +128,6 @@ public class Database {
                     adapter.getActivitys().add(currentactivity);
                 }
                 adapter.notifyDataSetChanged();
-                Toast.makeText((Context) interfaceActivity._this(),"פעילויות " +activitys.size() +" יש ",Toast.LENGTH_LONG).show();
-                //Toast.makeText((Context) ContactList._this(),"there are " +users.size() +" users ",Toast.LENGTH_LONG).show();
-                //_query.removeEventListener(this);
 
             }
 
