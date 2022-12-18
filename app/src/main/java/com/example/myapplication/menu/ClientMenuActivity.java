@@ -49,6 +49,8 @@ public class ClientMenuActivity extends AppCompatActivity {
     NavigationView navigationView;
     ActionBarDrawerToggle actionBarDrawerToggle;
 
+    static String full_name;
+
 
         @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,6 +145,7 @@ public class ClientMenuActivity extends AppCompatActivity {
         if (acct != null)
         {
             String personName = acct.getDisplayName();
+            full_name=personName;
             String personEmail = acct.getEmail();
             name.setText(personName);
 //            email.setText(personEmail);
@@ -150,6 +153,7 @@ public class ClientMenuActivity extends AppCompatActivity {
         else
         {
             name.setText("??");
+            full_name="??";
 //            email.setText("??");
         }
 
@@ -182,6 +186,15 @@ public class ClientMenuActivity extends AppCompatActivity {
                 startActivity(new Intent(ClientMenuActivity.this, ClientLoginActivity.class));
             }
         });
+    }
+
+    public static String get()
+    {
+        if(full_name==null)
+        {
+            return "מנהל";
+        }
+        return full_name;
     }
 
 }

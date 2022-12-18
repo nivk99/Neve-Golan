@@ -10,7 +10,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.adapter.InterfaceSelectListener;
+import com.example.myapplication.adapter.InterfaceSelectUserListener;
 import com.example.myapplication.R;
 import com.example.myapplication.readUser.InterfaceContactList;
 import com.example.myapplication.adapter.UserAdapter;
@@ -18,9 +18,10 @@ import com.example.myapplication.firebase.Database;
 import com.example.myapplication.users.FirebaseModelTeacher;
 import com.example.myapplication.users.FirebaseModeUser;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ClientContactListTeacherActivity extends AppCompatActivity implements InterfaceContactList, InterfaceSelectListener {
+public class ClientContactListTeacherActivity extends AppCompatActivity implements InterfaceContactList, InterfaceSelectUserListener, Serializable {
 
     //Database
     private Database database;

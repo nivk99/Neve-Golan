@@ -1,4 +1,4 @@
-package com.example.myapplication.updateRemoveUser;
+package com.example.myapplication.userUpdate;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,16 +8,15 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.userCard.TeacherCardActivity;
 import com.example.myapplication.firebase.Database;
-import com.example.myapplication.readUser.admin.AdminContactListTeacherActivity;
-import com.example.myapplication.sms.sms_user_Activity;
 import com.example.myapplication.users.FirebaseModelTeacher;
 import com.google.firebase.database.Exclude;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class UpdateRemoveTeacher extends AppCompatActivity  {
+public class UpdateTeacher extends AppCompatActivity  {
 
     //Teacher definition
     private TextView teacher_name_textView;
@@ -49,7 +48,7 @@ public class UpdateRemoveTeacher extends AppCompatActivity  {
         teacher_id_textView=(TextView)findViewById(R.id.editText_teacher_id);
         teacher_profession_textView=(TextView)findViewById(R.id.editText_teacher_profession);
         Intent intent=getIntent();
-        String[] message=intent.getStringArrayExtra(AdminContactListTeacherActivity.MESSAGE_KEY);
+        String[] message=intent.getStringArrayExtra(TeacherCardActivity.MESSAGE_KEY);
         teacher_name_textView.setText(message[0]);
         teacher_last_name_textView.setText(message[1]);
         teacher_age_textView.setText(message[2]);
@@ -86,13 +85,6 @@ public class UpdateRemoveTeacher extends AppCompatActivity  {
         }
 
     }
-    public void click_sms(View view)
-    {
-        Intent intent =new Intent(this, sms_user_Activity.class);
-        intent.putExtra("_phone",teacher_phone_textView.getText().toString());
-        startActivity(intent);
-
-    }
 
 
     private static class  updateTeacher extends FirebaseModelTeacher
@@ -125,10 +117,5 @@ public class UpdateRemoveTeacher extends AppCompatActivity  {
     }
 
 
-    public void click_remove_teacher(View view)
-    {
-        database.remove(this.id);
-
-    }
 
 }

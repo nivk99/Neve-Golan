@@ -22,30 +22,15 @@ public class sms_users_Activity extends AppCompatActivity {
         CheckBox  teacher=(CheckBox)findViewById(R.id.checkBox_teacher);
         CheckBox  all=(CheckBox)findViewById(R.id.checkBox_all);
 
-        String key="";
-
         if(student.isChecked())
-        {
-            key="student";
-        }
-        if(teacher.isChecked())
-        {
-            key="teacher";
-        }
-        if(all.isChecked())
-        {
-            key="all";
-        }
-
-        if(key.equals("student"))
         {
             student();
         }
-        if(key.equals("teacher"))
+        else if(teacher.isChecked())
         {
             teacher();
         }
-        if(key.equals("all"))
+         else if(all.isChecked())
         {
             all();
         }
@@ -55,6 +40,8 @@ public class sms_users_Activity extends AppCompatActivity {
 
     private void student()
     {
+
+
 
 
     }

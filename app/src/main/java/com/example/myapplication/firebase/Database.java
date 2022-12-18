@@ -5,6 +5,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.myapplication.feedback.FirebaseModelFeedback;
+import com.example.myapplication.feedback.FeedbacksAdapter;
+import com.example.myapplication.feedback.FeedbackActivity;
 import com.example.myapplication.adapter.ActivityAdapter;
 import com.example.myapplication.adapter.UserAdapter;
 import com.example.myapplication.calendar.Activity;
@@ -116,6 +119,7 @@ public class Database {
 
     public void read_database_activity(ActivityAdapter adapter, InterfaceActivity interfaceActivity)
     {
+        this._query=this._query.orderByChild("timeStart");
         ArrayList<Activity> activitys=adapter.getActivitys();
         _query.addValueEventListener(new ValueEventListener()
         {
@@ -128,9 +132,6 @@ public class Database {
                     adapter.getActivitys().add(currentactivity);
                 }
                 adapter.notifyDataSetChanged();
-                Toast.makeText((Context) interfaceActivity._this(),"פעילויות " +activitys.size() +" יש ",Toast.LENGTH_LONG).show();
-                //Toast.makeText((Context) ContactList._this(),"there are " +users.size() +" users ",Toast.LENGTH_LONG).show();
-                //_query.removeEventListener(this);
 
             }
 
@@ -141,6 +142,32 @@ public class Database {
             }
 
         });
+    }
+
+    public void read_database_feedback(FeedbacksAdapter adapter, FeedbackActivity feedbackActivity)
+    {
+        ArrayList<FirebaseModelFeedback> activitys=adapter.get_feedbacks();
+        _query.addValueEventListener(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                activitys.clear();
+                for(DataSnapshot feedbacksnapshot:snapshot.getChildren())
+                {
+                    FirebaseModelFeedback currentactivity=feedbacksnapshot.getValue(FirebaseModelFeedback.class);
+                    adapter.get_feedbacks().add(currentactivity);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                System.out.println("cancle");
+
+            }
+
+        });
+
     }
 
     public void orderByChild(String key, UserAdapter adapter, InterfaceContactList ContactList) {

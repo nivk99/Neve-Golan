@@ -1,4 +1,4 @@
-package com.example.myapplication.updateRemoveUser;
+package com.example.myapplication.userUpdate;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,9 +8,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.userCard.StudentCardActivity;
 import com.example.myapplication.firebase.Database;
-import com.example.myapplication.readUser.admin.AdminContactListStudentActivity;
-import com.example.myapplication.sms.sms_user_Activity;
 import com.example.myapplication.users.FirebaseModelStudent;
 import com.google.firebase.database.Exclude;
 
@@ -18,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class UpdateRemoveStudent extends AppCompatActivity {
+public class UpdateStudent extends AppCompatActivity {
 
 
     //student definition
@@ -51,7 +50,7 @@ public class UpdateRemoveStudent extends AppCompatActivity {
 
 
         Intent intent=getIntent();
-        String[] message=intent.getStringArrayExtra(AdminContactListStudentActivity.MESSAGE_KEY);
+        String[] message=intent.getStringArrayExtra(StudentCardActivity.MESSAGE_KEY);
         student_name_textView.setText(message[0]);
         student_last_name_textView.setText(message[1]);
         student_age_textView.setText(message[2]);
@@ -95,13 +94,6 @@ public class UpdateRemoveStudent extends AppCompatActivity {
 
     }
 
-    public void click_sms(View view)
-    {
-        Intent intent =new Intent(this, sms_user_Activity.class);
-        intent.putExtra("_phone",student_phone_textView.getText().toString());
-        startActivity(intent);
-
-    }
 
 
 
@@ -130,8 +122,4 @@ public class UpdateRemoveStudent extends AppCompatActivity {
         }
     }
 
-    public void student_remove_student(View view)
-    {
-        database.remove(this.id);
-    }
 }

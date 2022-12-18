@@ -10,23 +10,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CalendarView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.adapter.ActivityAdapter;
-import com.example.myapplication.adapter.UserAdapter;
+import com.example.myapplication.adapter.InterfaceSelectActivityListener;
 import com.example.myapplication.firebase.Database;
-import com.example.myapplication.users.FirebaseModelStudent;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class CalendarViewActivity extends AppCompatActivity implements InterfaceActivity {
+public class CalendarViewActivity extends AppCompatActivity implements InterfaceActivity, InterfaceSelectActivityListener {
     String Year, Month, Day;
     private  Database database;
     private ActivityAdapter adapter;
+    private InterfaceSelectActivityListener listener = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,21 +43,21 @@ public class CalendarViewActivity extends AppCompatActivity implements Interface
         final RecyclerView recyclerView =findViewById(R.id.recyclerview_list_act);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         final ArrayList<Activity> activitis=new ArrayList<>();
-        adapter =new ActivityAdapter(activitis,new Activity());
+        adapter =new ActivityAdapter(activitis,new Activity(),this);
 
         recyclerView.setAdapter(adapter);
         database = new Database(path);
         database.read_database_activity(adapter,this);
 
         CalendarView calendar=(CalendarView) findViewById(R.id.calendarView);
-        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 int Yeart=year, Montht=month+1, Dayt=dayOfMonth;
                 Year=Integer.toString(year);Month=Integer.toString(month+1);Day=Integer.toString(dayOfMonth);
                 String path = "activity/"+Yeart + "/" + Montht + "/" + Dayt;
                 ArrayList<Activity> activitis=new ArrayList<>();
-                adapter =new ActivityAdapter(activitis,new Activity());
+                adapter =new ActivityAdapter(activitis,new Activity(),listener);
                 final RecyclerView recyclerView =findViewById(R.id.recyclerview_list_act);
                 recyclerView.setAdapter(adapter);
                 database = new Database(path);
@@ -103,10 +102,16 @@ public class CalendarViewActivity extends AppCompatActivity implements Interface
         return this;
     }
 
-//    @Override
-//    protected void onPause(){
-//        super.onPause();
-//        Year=0; Month=0; Day=0;
-//
-//    }
+    @Override
+    public void onItemClicked(Activity activity) {
+        Intent intent = new Intent(this, EditActivity.class);
+        intent.putExtra("year", Year);
+        intent.putExtra("month",Month);
+        intent.putExtra("day", Day);
+        intent.putExtra("name",activity.getName());
+        intent.putExtra("start",activity.getTimeStart());
+        intent.putExtra("end",activity.getTimeEnd());
+        startActivity(intent);
+    }
+
 }

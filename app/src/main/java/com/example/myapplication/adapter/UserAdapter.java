@@ -26,11 +26,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     private FirebaseModeUser user;
 
     //listening for clicks
-    private InterfaceSelectListener listener;
+    private InterfaceSelectUserListener listener;
 
 
     //constructor
-    public UserAdapter(ArrayList<FirebaseModeUser> users, FirebaseModeUser user, InterfaceSelectListener listener)
+    public UserAdapter(ArrayList<FirebaseModeUser> users, FirebaseModeUser user, InterfaceSelectUserListener listener)
     {
         this.listener=listener;
         this.user=user;

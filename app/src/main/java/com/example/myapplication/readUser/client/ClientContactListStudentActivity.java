@@ -10,19 +10,20 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.example.myapplication.adapter.InterfaceSelectListener;
+import com.example.myapplication.userCard.StudentCardActivity;
+import com.example.myapplication.adapter.InterfaceSelectUserListener;
 import com.example.myapplication.R;
 import com.example.myapplication.readUser.InterfaceContactList;
 import com.example.myapplication.adapter.UserAdapter;
 import com.example.myapplication.firebase.Database;
 import com.example.myapplication.readUser.admin.AdminContactListStudentActivity;
-import com.example.myapplication.updateRemoveUser.UpdateRemoveStudent;
 import com.example.myapplication.users.FirebaseModeUser;
 import com.example.myapplication.users.FirebaseModelStudent;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ClientContactListStudentActivity extends AppCompatActivity implements InterfaceContactList, InterfaceSelectListener {
+public class ClientContactListStudentActivity extends AppCompatActivity implements InterfaceContactList, InterfaceSelectUserListener, Serializable {
 
     //Database
     private Database database;
@@ -89,7 +90,7 @@ public class ClientContactListStudentActivity extends AppCompatActivity implemen
     public void onItemClicked(FirebaseModeUser user) {
         FirebaseModelStudent student =(FirebaseModelStudent)(user);
 
-        String[] message=new String[7];
+        String[] message=new String[8];
         message[0] =student.get_name();
         message[1]=student.get_last_name();
         message[2]=Double.toString(student.get_age());
@@ -97,7 +98,8 @@ public class ClientContactListStudentActivity extends AppCompatActivity implemen
         message[4]=student.get_email();
         message[5] =student.get_id();
         message[6]=student.get_class();
-        Intent intent =new Intent(this, UpdateRemoveStudent.class);
+        message[7]="Client";
+        Intent intent =new Intent(this, StudentCardActivity.class);
         intent.putExtra(AdminContactListStudentActivity.MESSAGE_KEY,message);
         startActivity(intent);
 

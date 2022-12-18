@@ -18,4 +18,8 @@
     <color name="color3" >#ccf6c8</color>
     <color name="color4" >#ffe0ac</color>
     <color name="color5" >#e5cfe5</color>
+
+
+    <color name="lightGray">#B2BEC3</color>
+    <color name="DarkBlue">#2980b9</color>
 </resources>

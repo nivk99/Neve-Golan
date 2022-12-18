@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/student_card_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/kk"
+    tools:context=".userCard.StudentCardActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/editText_student_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="68dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="#BAB2B2"
+            android:backgroundTint="#BAB2B2"
+            android:ems="10"
+            android:hint="שם"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/editText_student_last_name"
+            app:layout_constraintEnd_toStartOf="@+id/textView_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_stusent_imag"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/editText_student_last_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="#BAB2B2"
+            android:backgroundTint="#BAB2B2"
+            android:ems="10"
+            android:hint="משפחה"
+            android:inputType="textPersonName"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toTopOf="@+id/editText_student_age"
+            app:layout_constraintEnd_toStartOf="@+id/textView_last"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/editText_student_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="#BAB2B2"
+            android:backgroundTint="#BAB2B2"
+            android:ems="10"
+            android:hint="גיל"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/editText_student_phone"
+            app:layout_constraintEnd_toStartOf="@+id/textView_age"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/editText_student_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="#BAB2B2"
+            android:backgroundTint="#BAB2B2"
+            android:ems="10"
+            android:hint="תעודת זהות"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/editText_student_class"
+            app:layout_constraintEnd_toStartOf="@+id/textView_id"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/editText_student_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="36dp"
+            android:background="#BAB2B2"
+            android:backgroundTint="#BAB2B2"
+            android:ems="10"
+            android:hint="טלפון"
+            android:inputType="phone"
+            app:layout_constraintBottom_toBottomOf="@+id/editText_student_email"
+            app:layout_constraintEnd_toStartOf="@+id/textView_phone"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/editText_student_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="#BAB2B2"
+            android:backgroundTint="#BAB2B2"
+            android:ems="10"
+            android:hint="מייל"
+            android:inputType="textEmailAddress"
+            app:layout_constraintBottom_toTopOf="@+id/editText_student_id"
+            app:layout_constraintEnd_toStartOf="@+id/textView_email"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageView
+            android:id="@+id/imageView_stusent_imag"
+            android:layout_width="164dp"
+            android:layout_height="137dp"
+            android:layout_marginBottom="84dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.384"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.094"
+            app:srcCompat="@drawable/student" />
+
+        <TextView
+            android:id="@+id/editText_student_class"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="254dp"
+            android:background="#BAB2B2"
+            android:backgroundTint="#BAB2B2"
+            android:ems="10"
+            android:hint="כיתה"
+            android:inputType="textPersonName"
+            android:onClick="click_student_class"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView_class"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/textView_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="255dp"
+            android:layout_marginEnd="118dp"
+            android:layout_marginBottom="14dp"
+            android:background="#BAB2B2"
+            android:backgroundTint="#BAB2B2"
+            android:text="שם"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView_last"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView_last"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_last"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="92dp"
+            android:layout_marginBottom="14dp"
+            android:background="#BAB2B2"
+            android:backgroundTint="#BAB2B2"
+            android:text="משפחה"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView_age"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView_age" />
+
+        <TextView
+            android:id="@+id/textView_age"
+            android:layout_width="35dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="103dp"
+            android:layout_marginBottom="15dp"
+            android:background="#BAB2B2"
+            android:text="גיל"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView_phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView_phone" />
+
+        <TextView
+            android:id="@+id/textView_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="105dp"
+            android:layout_marginBottom="20dp"
+            android:background="#BAB2B2"
+            android:text="טלפון"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView_email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView_email" />
+
+        <TextView
+            android:id="@+id/textView_email"
+            android:layout_width="31dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="107dp"
+            android:layout_marginBottom="15dp"
+            android:background="#BAB2B2"
+            android:text="מייל"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView_id"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView_id" />
+
+        <TextView
+            android:id="@+id/textView_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="68dp"
+            android:layout_marginBottom="15dp"
+            android:background="#BAB2B2"
+            android:text="תעודת זהות"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView_class"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView_class" />
+
+        <TextView
+            android:id="@+id/textView_class"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="108dp"
+            android:layout_marginBottom="250dp"
+            android:background="#BAB2B2"
+            android:text="כיתה"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView_student"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/header_menu"
+        app:menu="@menu/menu_student_card" />
+
+</androidx.drawerlayout.widget.DrawerLayout>
+
+

@@ -10,18 +10,19 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.example.myapplication.adapter.InterfaceSelectListener;
+import com.example.myapplication.userCard.TeacherCardActivity;
+import com.example.myapplication.adapter.InterfaceSelectUserListener;
 import com.example.myapplication.R;
 import com.example.myapplication.adapter.UserAdapter;
 import com.example.myapplication.firebase.Database;
 import com.example.myapplication.readUser.InterfaceContactList;
-import com.example.myapplication.updateRemoveUser.UpdateRemoveTeacher;
 import com.example.myapplication.users.FirebaseModelTeacher;
 import com.example.myapplication.users.FirebaseModeUser;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class AdminContactListTeacherActivity extends AppCompatActivity implements InterfaceContactList, InterfaceSelectListener {
+public class AdminContactListTeacherActivity extends AppCompatActivity implements InterfaceContactList, InterfaceSelectUserListener, Serializable {
 
     //Database
     private  Database database;
@@ -99,7 +100,7 @@ public class AdminContactListTeacherActivity extends AppCompatActivity implement
         message[4]=teacher.get_email();
         message[5] =teacher.get_id();
         message[6]=teacher.get_profession();
-        Intent intent =new Intent(this, UpdateRemoveTeacher.class);
+        Intent intent =new Intent(this, TeacherCardActivity.class);
         intent.putExtra(MESSAGE_KEY,message);
         startActivity(intent);
 
