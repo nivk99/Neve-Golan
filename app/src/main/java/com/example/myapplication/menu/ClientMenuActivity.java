@@ -145,7 +145,7 @@ public class ClientMenuActivity extends AppCompatActivity {
             String personName = acct.getDisplayName();
             String personEmail = acct.getEmail();
             name.setText(personName);
-//            email.setText(personEmail);
+            email.setText(personEmail);
         }
         else
         {

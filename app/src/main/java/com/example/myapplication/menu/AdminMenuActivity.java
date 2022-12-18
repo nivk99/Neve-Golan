@@ -23,6 +23,7 @@ import com.example.myapplication.firebase.Authenticate;
 import com.example.myapplication.messages.MessageActivity;
 import com.example.myapplication.notes.notesactivity;
 import com.example.myapplication.personalInformation.Personal_Information_teacher;
+import com.example.myapplication.personal_case.feedback_case;
 import com.example.myapplication.readUser.admin.AdminContactListStudentActivity;
 import com.example.myapplication.readUser.admin.AdminContactListTeacherActivity;
 import com.example.myapplication.sms.sms_users_Activity;
@@ -80,6 +81,9 @@ public class AdminMenuActivity extends AppCompatActivity {
                         break;
 
                     case R.id.nav_feedbacks:
+                        Intent Act = new Intent(AdminMenuActivity.this , feedback_case.class);
+                        Act.putExtra("id", "316080514");
+                        startActivity(Act);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 
