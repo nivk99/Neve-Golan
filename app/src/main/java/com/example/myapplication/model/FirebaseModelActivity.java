@@ -1,6 +1,7 @@
 package com.example.myapplication.model;
 
-public class FirebaseModelActivity {
+public class FirebaseModelActivity
+{
 
     String name;
     String timeStart;

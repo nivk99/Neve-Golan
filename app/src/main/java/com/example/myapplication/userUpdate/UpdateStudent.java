@@ -38,6 +38,8 @@ public class UpdateStudent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_student);
+
+
         database=new Database("users/student");
 
         student_name_textView=(TextView)findViewById(R.id.editText_student_name);
@@ -47,7 +49,6 @@ public class UpdateStudent extends AppCompatActivity {
         student_email_textView=(TextView)findViewById(R.id.editText_student_email);
         student_id_textView=(TextView)findViewById(R.id.editText_student_id);
         student_class_textView=(TextView)findViewById(R.id.editText_student_class);
-
 
         Intent intent=getIntent();
         String[] message=intent.getStringArrayExtra(StudentCardActivity.MESSAGE_KEY);

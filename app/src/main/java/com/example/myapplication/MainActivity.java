@@ -16,7 +16,8 @@ public class MainActivity extends AppCompatActivity {
     * there is two button for log-in: (1)admin log-in  (2) teacher log-in
     */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }

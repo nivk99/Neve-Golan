@@ -76,7 +76,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull UserViewHolder holder, int position)
+    {
 
         FirebaseModeUser user=users.get(position);
         if(this.user instanceof FirebaseModelStudent)

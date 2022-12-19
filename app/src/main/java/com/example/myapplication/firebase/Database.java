@@ -119,6 +119,7 @@ public class Database {
     public void read_database_activity(ActivityAdapter adapter)
     {
         this._query=this._query.orderByChild("timeStart");
+
         ArrayList<FirebaseModelActivity> activitys=adapter.getActivitys();
         _query.addValueEventListener(new ValueEventListener()
         {

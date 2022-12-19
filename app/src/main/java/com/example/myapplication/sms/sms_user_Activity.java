@@ -18,11 +18,10 @@ import android.widget.Toast;
 import com.example.myapplication.R;
 
 /**
- * This app provides SMS features that enable the user to:
  * - Enter a phone number.
  * - Enter a message and send the message to the phone number.
- * - Receive SMS messages and display them in a toast.
  */
+
 public class sms_user_Activity extends AppCompatActivity {
 
     private static final String TAG = sms_user_Activity.class.getSimpleName();
@@ -31,7 +30,6 @@ public class sms_user_Activity extends AppCompatActivity {
 
     /**
      * Creates the activity, sets the view, and checks for SMS permission.
-     *
      * @param savedInstanceState Instance state
      */
     @Override
@@ -101,6 +99,7 @@ public class sms_user_Activity extends AppCompatActivity {
      *
      * @param view View (message_icon) that was clicked.
      */
+
     public void smsSendMessage(View view) {
         String destinationAddress = phone_number;
         // Find the sms_message view.
@@ -129,13 +128,4 @@ public class sms_user_Activity extends AppCompatActivity {
         smsButton.setVisibility(View.VISIBLE);
     }
 
-    /**
-     * Sends an intent to start the activity.
-     *
-     * @param view  View (Retry button) that was clicked.
-     */
-    public void retryApp(View view) {
-        Intent intent = getPackageManager().getLaunchIntentForPackage(getPackageName());
-        startActivity(intent);
-    }
 }

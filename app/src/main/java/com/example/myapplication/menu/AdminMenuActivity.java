@@ -55,7 +55,8 @@ public class AdminMenuActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item)
+            {
 
                 switch (item.getItemId())
                 {
@@ -130,6 +131,7 @@ public class AdminMenuActivity extends AppCompatActivity {
                 return true;
             }
         });
+
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
