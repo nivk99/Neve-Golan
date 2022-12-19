@@ -38,9 +38,9 @@ public class Authenticate extends AppCompatActivity {
     }
 
 
-    // insert the mail and the password (name) to check. and return if it exist in the database
-    public void login(String email, String password, InterfaceLogin log) {
+    // insert the mail and the password (name) to check. and return if it exist in the database.
 
+    public void login(String email, String password, InterfaceLogin log) {
         this._auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(Authenticate.this, new OnCompleteListener<AuthResult>() {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
@@ -50,11 +50,9 @@ public class Authenticate extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 
-
+    // input: e-mail, password and user-Interface. check if the user us already register. if not it register it.
     public void register(String email, String password, InterfaceAddUser add) {
         this._auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener((Activity) add._this(), new OnCompleteListener<AuthResult>() {
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -87,7 +85,7 @@ public class Authenticate extends AppCompatActivity {
 
 
     }
-
+    // for admin register --> Add the phone with "@gmail.com" to the database to let hom the premonition.
     public void register_admin(String phone, AddAdminActivity add) {
         String email_phone = phone + "@gmail.com";
 
@@ -105,6 +103,7 @@ public class Authenticate extends AppCompatActivity {
 
     }
 
+    // Get the mail of the user that get inside the app.
     public static String get_current_email() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -112,7 +111,6 @@ public class Authenticate extends AppCompatActivity {
         } else {
             return null;
         }
-
     }
 
 
