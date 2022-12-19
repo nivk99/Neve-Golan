@@ -11,40 +11,41 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.calendar.Activity;
+import com.example.myapplication.adapter.interfaceSelectListener.InterfaceSelectActivityListener;
+import com.example.myapplication.model.FirebaseModelActivity;
 
 import java.util.ArrayList;
 
 public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.ActivityViewHolder> {
 
 
-    private ArrayList<Activity> activitys;
-    private Activity activity;
+    private ArrayList<FirebaseModelActivity> activitys;
+    private FirebaseModelActivity activity;
     private InterfaceSelectActivityListener listener;
 
-    public ActivityAdapter(ArrayList<Activity> activitys,Activity activity, InterfaceSelectActivityListener listener)
+    public ActivityAdapter(ArrayList<FirebaseModelActivity> activitys, FirebaseModelActivity activity, InterfaceSelectActivityListener listener)
     {
         this.activity=activity;
         this.activitys = activitys;
         this.listener = listener;
     }
 
-    public ArrayList<Activity> getActivitys()
+    public ArrayList<FirebaseModelActivity> getActivitys()
     {
         return activitys;
     }
 
-    public void setUsers(ArrayList<Activity> activitys)
+    public void setUsers(ArrayList<FirebaseModelActivity> activitys)
     {
         this.activitys = activitys;
     }
 
-    public Activity getActivity()
+    public FirebaseModelActivity getActivity()
     {
         return activity;
     }
 
-    public void setActivity(Activity activity)
+    public void setActivity(FirebaseModelActivity activity)
     {
         this.activity = activity;
     }
@@ -59,7 +60,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.Activi
     @Override
     public void onBindViewHolder(@NonNull ActivityViewHolder holder, int position) {
 
-        Activity activity=activitys.get(position);
+        FirebaseModelActivity activity=activitys.get(position);
         holder.activity_name_textView.setText(activity.getName());
         holder.activity_time_start_textView.setText(activity.getTimeStart());
         holder.activity_time_end_textView.setText(activity.getTimeEnd());

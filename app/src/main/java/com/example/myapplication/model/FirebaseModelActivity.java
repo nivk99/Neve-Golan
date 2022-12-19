@@ -1,12 +1,12 @@
-package com.example.myapplication.calendar;
+package com.example.myapplication.model;
 
-public class Activity {
+public class FirebaseModelActivity {
 
     String name;
     String timeStart;
     String timeEnd;
 
-    public Activity(String Name,String TimeStart,String TimeEnd){
+    public FirebaseModelActivity(String Name, String TimeStart, String TimeEnd){
         this.name=Name;
         this.timeStart=TimeStart;
         this.timeEnd=TimeEnd;
@@ -21,7 +21,7 @@ public class Activity {
         return timeEnd;
     }
 
-    public Activity() {
+    public FirebaseModelActivity() {
         super();
     }
 

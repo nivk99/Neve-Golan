@@ -2,7 +2,6 @@ package com.example.myapplication.AddUser;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -10,7 +9,7 @@ import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.firebase.Database;
-import com.example.myapplication.users.FirebaseModelStudent;
+import com.example.myapplication.model.FirebaseModelStudent;
 
 public class AddStudentActivity extends AppCompatActivity {
 

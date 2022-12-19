@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.example.myapplication.R;
 import com.example.myapplication.userCard.TeacherCardActivity;
 import com.example.myapplication.firebase.Database;
-import com.example.myapplication.users.FirebaseModelTeacher;
+import com.example.myapplication.model.FirebaseModelTeacher;
 import com.google.firebase.database.Exclude;
 
 import java.util.HashMap;

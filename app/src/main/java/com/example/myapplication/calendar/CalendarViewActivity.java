@@ -13,15 +13,16 @@ import android.widget.TextView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.adapter.ActivityAdapter;
-import com.example.myapplication.adapter.InterfaceSelectActivityListener;
+import com.example.myapplication.adapter.interfaceSelectListener.InterfaceSelectActivityListener;
 import com.example.myapplication.firebase.Database;
+import com.example.myapplication.model.FirebaseModelActivity;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class CalendarViewActivity extends AppCompatActivity implements InterfaceActivity, InterfaceSelectActivityListener {
+public class CalendarViewActivity extends AppCompatActivity implements  InterfaceSelectActivityListener {
     String Year, Month, Day;
     private  Database database;
     private ActivityAdapter adapter;
@@ -42,12 +43,12 @@ public class CalendarViewActivity extends AppCompatActivity implements Interface
         //String path = "activity/2022/12/9";
         final RecyclerView recyclerView =findViewById(R.id.recyclerview_list_act);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        final ArrayList<Activity> activitis=new ArrayList<>();
-        adapter =new ActivityAdapter(activitis,new Activity(),this);
+        final ArrayList<FirebaseModelActivity> activitis=new ArrayList<>();
+        adapter =new ActivityAdapter(activitis,new FirebaseModelActivity(),this);
 
         recyclerView.setAdapter(adapter);
         database = new Database(path);
-        database.read_database_activity(adapter,this);
+        database.read_database_activity(adapter);
 
         CalendarView calendar=(CalendarView) findViewById(R.id.calendarView);
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
@@ -56,12 +57,12 @@ public class CalendarViewActivity extends AppCompatActivity implements Interface
                 int Yeart=year, Montht=month+1, Dayt=dayOfMonth;
                 Year=Integer.toString(year);Month=Integer.toString(month+1);Day=Integer.toString(dayOfMonth);
                 String path = "activity/"+Yeart + "/" + Montht + "/" + Dayt;
-                ArrayList<Activity> activitis=new ArrayList<>();
-                adapter =new ActivityAdapter(activitis,new Activity(),listener);
+                ArrayList<FirebaseModelActivity> activitis=new ArrayList<>();
+                adapter =new ActivityAdapter(activitis,new FirebaseModelActivity(),listener);
                 final RecyclerView recyclerView =findViewById(R.id.recyclerview_list_act);
                 recyclerView.setAdapter(adapter);
                 database = new Database(path);
-                database.read_database_activity(adapter,_this());
+                database.read_database_activity(adapter);
             }
         });
         // move to page "הוספת פעילויות"
@@ -97,13 +98,9 @@ public class CalendarViewActivity extends AppCompatActivity implements Interface
 
     }
 
-    @Override
-    public InterfaceActivity _this() {
-        return this;
-    }
 
     @Override
-    public void onItemClicked(Activity activity) {
+    public void onItemClicked(FirebaseModelActivity activity) {
         Intent intent = new Intent(this, EditActivity.class);
         intent.putExtra("year", Year);
         intent.putExtra("month",Month);

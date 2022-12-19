@@ -15,13 +15,9 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Paint;
-import android.graphics.pdf.PdfDocument;
 import android.os.Build;
-import android.os.Environment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,8 +29,8 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
+import com.example.myapplication.model.FirebaseModelNote;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -46,15 +42,11 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class notesactivity extends AppCompatActivity {
+public class NotesActivity extends AppCompatActivity {
 
     FloatingActionButton mcreatenotesfab;
     private FirebaseAuth firebaseAuth;
@@ -83,7 +75,7 @@ public class notesactivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(notesactivity.this, CreateNote.class));
+                startActivity(new Intent(NotesActivity.this, CreateNote.class));
 
             }
         });
@@ -122,7 +114,7 @@ public class notesactivity extends AppCompatActivity {
                         popupMenu.getMenu().add("לערוך").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                             @Override
                             public boolean onMenuItemClick(MenuItem item) {
-                                Intent intent=new Intent(v.getContext(), editnoteactivity.class);
+                                Intent intent=new Intent(v.getContext(), EditNoteActivity.class);
                                 intent.putExtra("title",firebasemodel.getTitle());
                                 intent.putExtra("content",firebasemodel.getContent());
                                 intent.putExtra("noteId",docId);
@@ -134,7 +126,7 @@ public class notesactivity extends AppCompatActivity {
                         popupMenu.getMenu().add("למחוק").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                             @Override
                             public boolean onMenuItemClick(MenuItem item) {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(notesactivity.this);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(NotesActivity.this);
                                 builder.setTitle("Delete");
                                 builder.setMessage("אתה בטוח שאתה רוצה למחוק?");
                                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {

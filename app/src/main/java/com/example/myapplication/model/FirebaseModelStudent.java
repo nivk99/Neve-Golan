@@ -1,4 +1,4 @@
-package com.example.myapplication.users;
+package com.example.myapplication.model;
 
 public class FirebaseModelStudent extends FirebaseModeUser {
 

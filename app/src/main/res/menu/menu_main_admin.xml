@@ -20,10 +20,6 @@
     android:icon="@drawable/ic_baseline_message_24"
     android:title="הודעות מערכת" />
 <item
-    android:id="@+id/nav_feedbacks"
-    android:icon="@drawable/ic_baseline_feedback_24"
-    android:title="משובים" />
-<item
     android:id="@+id/nav_sms"
     android:icon="@drawable/ic_baseline_sms_24"
     android:title="@string/sms" />

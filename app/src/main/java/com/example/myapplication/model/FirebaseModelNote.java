@@ -1,4 +1,4 @@
-package com.example.myapplication.notes;
+package com.example.myapplication.model;
 
 public class FirebaseModelNote
 {

@@ -28,8 +28,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
-import com.example.myapplication.notes.FirebaseModelNote;
-import com.example.myapplication.notes.editnoteactivity;
+import com.example.myapplication.model.FirebaseModelNote;
+import com.example.myapplication.notes.EditNoteActivity;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -104,7 +104,7 @@ public class MessageActivity extends AppCompatActivity {
                         popupMenu.getMenu().add("לערוך").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                             @Override
                             public boolean onMenuItemClick(MenuItem item) {
-                                Intent intent=new Intent(v.getContext(), editnoteactivity.class);
+                                Intent intent=new Intent(v.getContext(), EditNoteActivity.class);
                                 intent.putExtra("title",firebasemodel.getTitle());
                                 intent.putExtra("content",firebasemodel.getContent());
                                 intent.putExtra("noteId",docId);

@@ -18,7 +18,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.calendar.CalendarViewActivity;
 import com.example.myapplication.login.ClientLoginActivity;
 import com.example.myapplication.messages.messageClientActivity;
-import com.example.myapplication.notes.notesactivity;
+import com.example.myapplication.notes.NotesActivity;
 import com.example.myapplication.personalInformation.Personal_Information_teacher;
 import com.example.myapplication.readUser.client.ClientContactListStudentActivity;
 import com.example.myapplication.readUser.client.ClientContactListTeacherActivity;
@@ -89,9 +89,6 @@ public class ClientMenuActivity extends AppCompatActivity {
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 
-                    case R.id.nav_feedbacks:
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
 
                     case R.id.nav_requests:
 
@@ -100,7 +97,7 @@ public class ClientMenuActivity extends AppCompatActivity {
 
                     case R.id.nav_notes:
 
-                        startActivity(new Intent(ClientMenuActivity.this, notesactivity.class));
+                        startActivity(new Intent(ClientMenuActivity.this, NotesActivity.class));
                          drawerLayout.closeDrawer(GravityCompat.START);
 
                         break;

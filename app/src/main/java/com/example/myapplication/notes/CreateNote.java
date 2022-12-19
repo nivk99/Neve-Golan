@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 
 import android.content.Intent;
 import android.speech.RecognizerIntent;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -81,7 +80,7 @@ public class CreateNote extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void aVoid) {
                             Toast.makeText(getApplicationContext(),"הפתק נוצרה בהצלחה",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(CreateNote.this, notesactivity.class));
+                            startActivity(new Intent(CreateNote.this, NotesActivity.class));
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override

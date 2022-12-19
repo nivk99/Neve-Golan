@@ -10,8 +10,10 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.myapplication.R;
+import com.example.myapplication.adapter.FeedbacksAdapter;
 import com.example.myapplication.firebase.Database;
 import com.example.myapplication.menu.ClientMenuActivity;
+import com.example.myapplication.model.FirebaseModelFeedback;
 import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;

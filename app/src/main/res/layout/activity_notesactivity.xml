@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#BAB2B2"
     android:backgroundTint="#BAB2B2"
-    tools:context=".notes.notesactivity">
+    tools:context=".notes.NotesActivity">
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

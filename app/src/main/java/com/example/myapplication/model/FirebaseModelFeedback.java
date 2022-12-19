@@ -1,4 +1,4 @@
-package com.example.myapplication.feedback;
+package com.example.myapplication.model;
 
 import androidx.annotation.NonNull;
 

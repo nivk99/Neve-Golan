@@ -12,8 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
-import com.google.android.gms.tasks.Task;
-import com.google.errorprone.annotations.Var;
+import com.example.myapplication.model.FirebaseModelActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -63,7 +62,7 @@ public class EditDayActivities extends AppCompatActivity {
 
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                                 DatabaseReference myRef = database.getReference("activity/"+year+"/"+month+"/"+day).child(Add_ActivityName+","+Add_TimeStart+","+Add_TimeEnd);
-                                myRef.setValue(new Activity(Add_ActivityName,Add_TimeStart,Add_TimeEnd));
+                                myRef.setValue(new FirebaseModelActivity(Add_ActivityName,Add_TimeStart,Add_TimeEnd));
                                 Toast.makeText(EditDayActivities.this, "הפעילות נוספה", Toast.LENGTH_SHORT).show();
                             }
                         }

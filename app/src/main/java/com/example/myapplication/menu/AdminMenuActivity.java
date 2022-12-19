@@ -21,7 +21,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.calendar.CalendarViewActivity;
 import com.example.myapplication.firebase.Authenticate;
 import com.example.myapplication.messages.MessageActivity;
-import com.example.myapplication.notes.notesactivity;
+import com.example.myapplication.notes.NotesActivity;
 import com.example.myapplication.personalInformation.Personal_Information_teacher;
 import com.example.myapplication.readUser.admin.AdminContactListStudentActivity;
 import com.example.myapplication.readUser.admin.AdminContactListTeacherActivity;
@@ -79,9 +79,6 @@ public class AdminMenuActivity extends AppCompatActivity {
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 
-                    case R.id.nav_feedbacks:
-                        drawerLayout.closeDrawer(GravityCompat.START);
-                        break;
 
                     case R.id.nav_sms:
                         startActivity(new Intent(AdminMenuActivity.this, sms_users_Activity.class));
@@ -89,7 +86,7 @@ public class AdminMenuActivity extends AppCompatActivity {
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
                     case R.id.nav_notes:
-                        startActivity(new Intent(AdminMenuActivity.this, notesactivity.class));
+                        startActivity(new Intent(AdminMenuActivity.this, NotesActivity.class));
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 

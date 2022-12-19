@@ -7,7 +7,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 
 import android.content.Intent;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,7 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class editnoteactivity extends AppCompatActivity {
+public class EditNoteActivity extends AppCompatActivity {
 
     Intent data;
     EditText medittitleofnote,meditcontentofnote;
@@ -76,7 +75,7 @@ public class editnoteactivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void aVoid) {
                             Toast.makeText(getApplicationContext(),"פתק התעדכן",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(editnoteactivity.this, notesactivity.class));
+                            startActivity(new Intent(EditNoteActivity.this, NotesActivity.class));
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override

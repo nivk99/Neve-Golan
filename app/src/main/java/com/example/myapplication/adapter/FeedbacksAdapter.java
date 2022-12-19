@@ -1,4 +1,4 @@
-package com.example.myapplication.feedback;
+package com.example.myapplication.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.model.FirebaseModelFeedback;
 
 import java.util.ArrayList;
 

@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.example.myapplication.R;
 import com.example.myapplication.firebase.Authenticate;
 import com.example.myapplication.firebase.Database;
-import com.example.myapplication.users.FirebaseModelTeacher;
+import com.example.myapplication.model.FirebaseModelTeacher;
 
 public class AddTeacherActivity extends AppCompatActivity implements InterfaceAddUser {
 

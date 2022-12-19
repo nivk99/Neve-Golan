@@ -5,20 +5,19 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.myapplication.feedback.FirebaseModelFeedback;
-import com.example.myapplication.feedback.FeedbacksAdapter;
+import com.example.myapplication.model.FirebaseModelFeedback;
+import com.example.myapplication.adapter.FeedbacksAdapter;
 import com.example.myapplication.feedback.FeedbackActivity;
 import com.example.myapplication.adapter.ActivityAdapter;
 import com.example.myapplication.adapter.UserAdapter;
-import com.example.myapplication.calendar.Activity;
-import com.example.myapplication.calendar.InterfaceActivity;
+import com.example.myapplication.model.FirebaseModelActivity;
 import com.example.myapplication.personalInformation.Personal_Information_teacher;
 import com.example.myapplication.readUser.admin.AdminContactListStudentActivity;
 import com.example.myapplication.readUser.InterfaceContactList;
 import com.example.myapplication.readUser.client.ClientContactListStudentActivity;
-import com.example.myapplication.users.FirebaseModelStudent;
-import com.example.myapplication.users.FirebaseModelTeacher;
-import com.example.myapplication.users.FirebaseModeUser;
+import com.example.myapplication.model.FirebaseModelStudent;
+import com.example.myapplication.model.FirebaseModelTeacher;
+import com.example.myapplication.model.FirebaseModeUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -117,10 +116,10 @@ public class Database {
     }
 
 
-    public void read_database_activity(ActivityAdapter adapter, InterfaceActivity interfaceActivity)
+    public void read_database_activity(ActivityAdapter adapter)
     {
         this._query=this._query.orderByChild("timeStart");
-        ArrayList<Activity> activitys=adapter.getActivitys();
+        ArrayList<FirebaseModelActivity> activitys=adapter.getActivitys();
         _query.addValueEventListener(new ValueEventListener()
         {
             @Override
@@ -128,7 +127,7 @@ public class Database {
                 activitys.clear();
                 for(DataSnapshot activitysnapshot:snapshot.getChildren())
                 {
-                    Activity currentactivity=activitysnapshot.getValue(Activity.class);
+                    FirebaseModelActivity currentactivity=activitysnapshot.getValue(FirebaseModelActivity.class);
                     adapter.getActivitys().add(currentactivity);
                 }
                 adapter.notifyDataSetChanged();

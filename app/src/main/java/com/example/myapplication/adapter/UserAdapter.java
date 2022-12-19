@@ -10,9 +10,10 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.users.FirebaseModelStudent;
-import com.example.myapplication.users.FirebaseModelTeacher;
-import com.example.myapplication.users.FirebaseModeUser;
+import com.example.myapplication.adapter.interfaceSelectListener.InterfaceSelectUserListener;
+import com.example.myapplication.model.FirebaseModelStudent;
+import com.example.myapplication.model.FirebaseModelTeacher;
+import com.example.myapplication.model.FirebaseModeUser;
 
 import java.util.ArrayList;
 

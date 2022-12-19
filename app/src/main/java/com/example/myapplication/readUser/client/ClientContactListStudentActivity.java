@@ -11,14 +11,14 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.example.myapplication.userCard.StudentCardActivity;
-import com.example.myapplication.adapter.InterfaceSelectUserListener;
+import com.example.myapplication.adapter.interfaceSelectListener.InterfaceSelectUserListener;
 import com.example.myapplication.R;
 import com.example.myapplication.readUser.InterfaceContactList;
 import com.example.myapplication.adapter.UserAdapter;
 import com.example.myapplication.firebase.Database;
 import com.example.myapplication.readUser.admin.AdminContactListStudentActivity;
-import com.example.myapplication.users.FirebaseModeUser;
-import com.example.myapplication.users.FirebaseModelStudent;
+import com.example.myapplication.model.FirebaseModeUser;
+import com.example.myapplication.model.FirebaseModelStudent;
 
 import java.io.Serializable;
 import java.util.ArrayList;
