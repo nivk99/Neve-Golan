@@ -9,6 +9,13 @@ Project site: https://github.com/nivk99/Neve-Golan
 
 Made by: 
 
+📧 [Avgilboa](https://github.com/Avgilboa) - Aviad Gilboa (I.D: 316080514)
+
+📧 [daniel555666](https://github.com/daniel555666) - Daniel Zaken (I.D: 207296989)
+
+📧 [shmooel28](https://github.com/shmooel28) - Shmuel Ben David (I.D: 208916437)
+
+📧 [nivk99](https://github.com/nivk99) - Niv Kotek (I.D: 208236315)
 
 
 
