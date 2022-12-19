@@ -19,16 +19,16 @@ Made by:
 
 
 
-## About The Project:
+## 💡 About The Project: 💡
 
 An application for managing the Neve Golan center
 
 
-## video
+## 💡 video💡 
 
 ![](https://github.com/nivk99/Neve-Golan/blob/main/image/Untitled%20video%20-%20Made%20with%20Clipchamp%20(1).gif)
 
-## Gallery:
+## 💡 Gallery: 💡 
 
 ![](https://github.com/nivk99/Neve-Golan/blob/main/image/app/main%20login.png)
 ![](https://github.com/nivk99/Neve-Golan/blob/main/image/app/login%20client.png)
@@ -46,15 +46,17 @@ An application for managing the Neve Golan center
 ![](https://github.com/nivk99/Neve-Golan/blob/main/image/app/Student%20update.png)
 
 
-## Diagrams:
+## 💡 Diagrams: 💡
 
 ![](https://github.com/nivk99/Neve-Golan/blob/main/image/diagram.gif)
 
 
-## The Neve Golan Wiki! [For more explanation ](https://github.com/nivk99/Neve-Golan/wiki)
+## 💡 The Neve Golan Wiki! 💡
+
+[For more explanation ](https://github.com/nivk99/Neve-Golan/wiki)
 
 
-## Technology:
+## 💡 Technology:💡 
 ![](https://www.developer.com/wp-content/uploads/2021/09/Java-tutorials-300x200.jpg)
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Android_logo_2019_%28stacked%29.svg/182px-Android_logo_2019_%28stacked%29.svg.png)
 ![](https://www.almtoolbox.com/blog_he/wp-content/uploads/2017/09/Git-Logo-2Color-1.png)
