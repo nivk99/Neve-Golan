@@ -63,10 +63,12 @@ public class AdminLoginActivity extends AppCompatActivity implements InterfaceLo
             @Override
             public void onClick(View v)
             {
+                // check if the phone number is legal
                 if(TextUtils.isEmpty(phone.getText().toString()))
                 {
                     Toast.makeText(AdminLoginActivity.this, "הזן מספר טלפון חוקי.", Toast.LENGTH_SHORT).show();
                 }
+                // if it is adding to it @gmail.com and log the admin in
                 else {
                     String google="@gmail.com";
                     String number = phone.getText().toString();
@@ -76,6 +78,7 @@ public class AdminLoginActivity extends AppCompatActivity implements InterfaceLo
             }
         });
     }
+    // When we push the button it get the phone number and check if it allowed to ins
     @Override
     public void login()
     {
@@ -110,6 +113,7 @@ public class AdminLoginActivity extends AppCompatActivity implements InterfaceLo
         PhoneAuthProvider.verifyPhoneNumber(options);
     }
 
+    // function that send the code and return feedback if the code sent.
     private final PhoneAuthProvider.OnVerificationStateChangedCallbacks
             mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         @Override
@@ -136,20 +140,26 @@ public class AdminLoginActivity extends AppCompatActivity implements InterfaceLo
             btnverify.setEnabled(true);
             bar.setVisibility(View.INVISIBLE);
         }};
+
+    // check if the code success
     private void verifycode(String Code)
     {
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationID,Code);
         signinbyCredentials(credential);
     }
 
+    // continue the verify function if the task return successful
     private void signinbyCredentials(PhoneAuthCredential credential)
     {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+
+        // Listener to complete the sms process.
         firebaseAuth.signInWithCredential(credential)
                 .addOnCompleteListener(new OnCompleteListener() {
                     @Override
                     public void onComplete(@NonNull Task task)
                     {
+                        //  if it is, moving the user to the next page.
                         if(task.isSuccessful())
                         {
                             Toast.makeText(AdminLoginActivity.this, "התחברת בהצלחה", Toast.LENGTH_SHORT).show();
