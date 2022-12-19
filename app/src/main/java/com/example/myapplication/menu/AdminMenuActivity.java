@@ -140,6 +140,7 @@ public class AdminMenuActivity extends AppCompatActivity {
             }
         });}
 
+    // to show the slide options on the screen
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(actionBarDrawerToggle.onOptionsItemSelected(item))
