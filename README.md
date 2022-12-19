@@ -21,6 +21,7 @@ Made by:
 
 ## About The Project:
 
+An application for managing the Neve Golan center
 
 ## Gallery:
 
