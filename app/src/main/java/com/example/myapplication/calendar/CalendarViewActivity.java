@@ -70,7 +70,7 @@ public class CalendarViewActivity extends AppCompatActivity implements  Interfac
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(CalendarViewActivity.this, EditDayActivities.class);
+                Intent intent = new Intent(CalendarViewActivity.this, AddActivity.class);
                 intent.putExtra("year",Year);
                 intent.putExtra("month", Month);
                 intent.putExtra("day", (Day));
