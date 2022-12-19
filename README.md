@@ -38,7 +38,7 @@ An application for managing the Neve Golan center
 ![](https://github.com/nivk99/Neve-Golan/blob/main/image/app/menu%20card.png)
 ![](https://github.com/nivk99/Neve-Golan/blob/main/image/app/add%20teacher.png)
 ![](https://github.com/nivk99/Neve-Golan/blob/main/image/app/feedback.png)
-![](github.com/nivk99/Neve-Golan/blob/main/image/app/Student%20update.png)
+![](https://github.com/nivk99/Neve-Golan/blob/main/image/app/Student%20update.png)
 
 
 ## Diagrams:
