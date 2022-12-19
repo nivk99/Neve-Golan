@@ -161,7 +161,7 @@ public class Database {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                System.out.println("cancle");
+                System.out.println("cancel");
 
             }
 
