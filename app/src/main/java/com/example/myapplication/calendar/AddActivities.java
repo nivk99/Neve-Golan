@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Map;
 
-public class EditDayActivities extends AppCompatActivity {
+public class AddActivities extends AppCompatActivity {
     String Delete_ActivityName="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +54,7 @@ public class EditDayActivities extends AppCompatActivity {
                             for (DataSnapshot nameSnapshot: dataSnapshot.getChildren()) {
                                 String save_name=(String)((Map)nameSnapshot.getValue()).get("name");
                                 if(save_name.equals(Add_ActivityName)){
-                                    Toast.makeText(EditDayActivities.this, "פעילות זאת כבר קיימת", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(AddActivities.this, "פעילות זאת כבר קיימת", Toast.LENGTH_SHORT).show();
                                     flag=true; break;
                                 }
                             }
@@ -63,7 +63,7 @@ public class EditDayActivities extends AppCompatActivity {
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                                 DatabaseReference myRef = database.getReference("activity/"+year+"/"+month+"/"+day).child(Add_ActivityName+","+Add_TimeStart+","+Add_TimeEnd);
                                 myRef.setValue(new FirebaseModelActivity(Add_ActivityName,Add_TimeStart,Add_TimeEnd));
-                                Toast.makeText(EditDayActivities.this, "הפעילות נוספה", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AddActivities.this, "הפעילות נוספה", Toast.LENGTH_SHORT).show();
                             }
                         }
                         @Override
@@ -73,7 +73,7 @@ public class EditDayActivities extends AppCompatActivity {
                     });
                 }
                 else {
-                    Toast.makeText(EditDayActivities.this, "נא למלא את כל השדות", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddActivities.this, "נא למלא את כל השדות", Toast.LENGTH_SHORT).show();
                 }
             }
         });
