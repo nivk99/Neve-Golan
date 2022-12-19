@@ -25,7 +25,7 @@ public class ClientLoginActivity extends AppCompatActivity implements InterfaceL
     //User definition
      Authenticate _mAuth;
 
-    //Google
+    //Google setting
    GoogleSignInOptions gso;
    GoogleSignInClient gsc;
 

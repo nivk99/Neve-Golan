@@ -37,6 +37,8 @@ public class Authenticate extends AppCompatActivity {
         this._auth = _auth;
     }
 
+
+    // insert the mail and the password (name) to check. and return if it exist in the database
     public void login(String email, String password, InterfaceLogin log) {
 
         this._auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(Authenticate.this, new OnCompleteListener<AuthResult>() {
