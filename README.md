@@ -49,6 +49,13 @@ An application for managing the Neve Golan center
 ## The Neve Golan Wiki! [For more explanation ](https://github.com/nivk99/Neve-Golan/wiki)
 
 
+## Technology:
+![](https://www.developer.com/wp-content/uploads/2021/09/Java-tutorials-300x200.jpg)
+![](https://1.bp.blogspot.com/-YIfQT6q8ZM4/Vzyq5z1B8HI/AAAAAAAAAAc/UmWSSMLKtKgtH7CACElUp12zXkrPK5UoACLcB/s400/image00.png)
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Android_logo_2019_%28stacked%29.svg/182px-Android_logo_2019_%28stacked%29.svg.png)
+![](https://www.almtoolbox.com/blog_he/wp-content/uploads/2017/09/Git-Logo-2Color-1.png)
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Android_Studio_Trademark.svg/768px-Android_Studio_Trademark.svg.png?20210519132050)
+
 ## How to use:
 
 [Clone the project and run the app](https://github.com/nivk99/Neve-Golan.git)
