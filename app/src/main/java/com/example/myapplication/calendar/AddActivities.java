@@ -52,14 +52,14 @@ public class AddActivities extends AppCompatActivity {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             flag=false;
                             for (DataSnapshot nameSnapshot: dataSnapshot.getChildren()) {
-                                String save_name=(String)((Map)nameSnapshot.getValue()).get("name");
-                                if(save_name.equals(Add_ActivityName)){
+                                Map dataActivity=((Map)nameSnapshot.getValue());
+                                String [] save_name={(String) dataActivity.get("name"),(String)dataActivity.get("timeStart"),(String)dataActivity.get("timeEnd")};
+                                if(save_name[0].equals(Add_ActivityName) && save_name[1].equals(Add_TimeStart) && save_name[2].equals(Add_TimeEnd)){
                                     Toast.makeText(AddActivities.this, "פעילות זאת כבר קיימת", Toast.LENGTH_SHORT).show();
                                     flag=true; break;
                                 }
                             }
                             if(!flag){
-
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                                 DatabaseReference myRef = database.getReference("activity/"+year+"/"+month+"/"+day).child(Add_ActivityName+","+Add_TimeStart+","+Add_TimeEnd);
                                 myRef.setValue(new FirebaseModelActivity(Add_ActivityName,Add_TimeStart,Add_TimeEnd));

@@ -35,6 +35,7 @@ public class EditActivity extends AppCompatActivity {
         ((EditText)findViewById(R.id.updateTimeEnd)).setText(end);
         String activity_id=name+","+start+","+end;
         myRef = FirebaseDatabase.getInstance().getReference("activity/"+year+"/"+month+"/"+day).child(name+","+start+","+end);
+
         //delete activity
         findViewById(R.id.buttonDeleteActivity).setOnClickListener(new View.OnClickListener() {
             @Override
