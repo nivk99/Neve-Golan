@@ -70,7 +70,7 @@ public class CalendarViewActivity extends AppCompatActivity implements  Interfac
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(CalendarViewActivity.this, AddActivities.class);
+                Intent intent = new Intent(CalendarViewActivity.this, EditDayActivities.class);
                 intent.putExtra("year",Year);
                 intent.putExtra("month", Month);
                 intent.putExtra("day", (Day));
@@ -80,6 +80,24 @@ public class CalendarViewActivity extends AppCompatActivity implements  Interfac
         });
 
     }
+    public void ClickToRemov(View view){
+        int ya;
+        TextView name_textView=findViewById(R.id.textView_activity_name);
+        TextView timeEnd_textView=findViewById(R.id.textView_activity_time_end);
+        TextView timeStart_textView=findViewById(R.id.textView_activity_time_start);
+
+
+        Intent intent = new Intent(this, EditActivity.class);
+        intent.putExtra("year", Year);
+        intent.putExtra("month",Month);
+        intent.putExtra("day", Day);
+        intent.putExtra("name",name_textView.getText().toString());
+        intent.putExtra("start",timeStart_textView.getText().toString());
+        intent.putExtra("end",timeEnd_textView.getText().toString());
+        startActivity(intent);
+
+    }
+
 
     @Override
     public void onItemClicked(FirebaseModelActivity activity) {
