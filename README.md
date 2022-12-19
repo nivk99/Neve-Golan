@@ -20,6 +20,8 @@ Made by:
 
 ## Diagrams:
 
+![](https://github.com/nivk99/Neve-Golan/blob/main/image/diagram.gif)
+
 
 ## The Neve Golan Wiki! [For more explanation ](https://github.com/nivk99/Neve-Golan/wiki)
 
