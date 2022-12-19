@@ -53,6 +53,7 @@ public class ClientLoginActivity extends AppCompatActivity implements InterfaceL
 
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
 
+        // if the user is in the database it log-in the
         if(acct!=null){
             navigateToSecondActivity();
         }
@@ -65,7 +66,7 @@ public class ClientLoginActivity extends AppCompatActivity implements InterfaceL
 
 
     }
-
+    //start intent to sign the user in with the onActivityResult function
     void signIn(){
         Intent signInIntent = gsc.getSignInIntent();
         startActivityForResult(signInIntent,1000);
@@ -86,6 +87,7 @@ public class ClientLoginActivity extends AppCompatActivity implements InterfaceL
         }
 
     }
+
     void navigateToSecondActivity() {
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         String personName = acct.getDisplayName();
@@ -100,6 +102,7 @@ public class ClientLoginActivity extends AppCompatActivity implements InterfaceL
     @Override
     public void login()
     {
+        // wait fo the func "onActivityResult" to end and then continue
         finish();
         startActivity(new Intent(ClientLoginActivity.this, ClientMenuActivity.class));
     }
