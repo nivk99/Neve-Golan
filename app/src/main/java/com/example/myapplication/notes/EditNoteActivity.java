@@ -27,9 +27,17 @@ import java.util.Map;
 
 public class EditNoteActivity extends AppCompatActivity {
 
+
+    //Intent
     Intent data;
+
+    //edit title of note,edit content of note
     EditText medittitleofnote,meditcontentofnote;
+
+    //Save note button
     FloatingActionButton msaveeditnote;
+
+    //firebase store
     FirebaseFirestore firebaseFirestore;
     FirebaseUser firebaseUser;
 
@@ -38,12 +46,15 @@ public class EditNoteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editnoteactivity);
+
+        //edit title of note,edit content of note
         medittitleofnote=findViewById(R.id.edittitleofnote);
         meditcontentofnote=findViewById(R.id.editcontentofnote);
+        //Save note button
         msaveeditnote=findViewById(R.id.saveeditnote);
 
         data=getIntent();
-
+        //firebase store
         firebaseFirestore=FirebaseFirestore.getInstance();
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
 
@@ -53,7 +64,7 @@ public class EditNoteActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-
+        //save edit note
         msaveeditnote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +82,8 @@ public class EditNoteActivity extends AppCompatActivity {
                     Map<String,Object> note=new HashMap<>();
                     note.put("title",newtitle);
                     note.put("content",newcontent);
+
+                    //edit note
                     documentReference.set(note).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
@@ -88,7 +101,7 @@ public class EditNoteActivity extends AppCompatActivity {
             }
         });
 
-
+        //get the data
         String notetitle=data.getStringExtra("title");
         String notecontent=data.getStringExtra("content");
         meditcontentofnote.setText(notecontent);

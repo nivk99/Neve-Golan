@@ -73,7 +73,7 @@
 
         <TextView
             android:id="@+id/textView_teacher_phone"
-            android:layout_width="43dp"
+            android:layout_width="78dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="9dp"
@@ -85,7 +85,7 @@
 
         <TextView
             android:id="@+id/textView_teacher_email"
-            android:layout_width="48dp"
+            android:layout_width="73dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:text="Email"
@@ -106,9 +106,9 @@
 
         <TextView
             android:id="@+id/textView_teacher_profession"
-            android:layout_width="36dp"
+            android:layout_width="38dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="30dp"
             android:layout_marginBottom="10dp"
             android:text="profession"
             android:textSize="10sp"
@@ -142,6 +142,7 @@
             android:id="@+id/textView14"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             android:text="תעודת זהות"
             android:textSize="10sp"
             android:textStyle="bold"
@@ -182,7 +183,6 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/textView_teacher_profession"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.204"
             app:layout_constraintStart_toEndOf="@+id/textView_teacher_profession" />
 
         <TextView

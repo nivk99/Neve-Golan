@@ -37,7 +37,7 @@ public class ClientLoginActivity extends AppCompatActivity implements InterfaceL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_login);
-      //startActivity(new Intent(ClientLoginActivity.this, ClientMenuActivity.class));
+      startActivity(new Intent(ClientLoginActivity.this, ClientMenuActivity.class));
         _mAuth=new Authenticate();
         googleBtn = findViewById(R.id.google_button);
 

@@ -29,7 +29,6 @@ import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.model.FirebaseModelNote;
-import com.example.myapplication.notes.EditNoteActivity;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -104,7 +103,7 @@ public class MessageActivity extends AppCompatActivity {
                         popupMenu.getMenu().add("לערוך").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                             @Override
                             public boolean onMenuItemClick(MenuItem item) {
-                                Intent intent=new Intent(v.getContext(), EditNoteActivity.class);
+                                Intent intent=new Intent(v.getContext(), EditMessageActivity.class);
                                 intent.putExtra("title",firebasemodel.getTitle());
                                 intent.putExtra("content",firebasemodel.getContent());
                                 intent.putExtra("noteId",docId);
@@ -118,7 +117,7 @@ public class MessageActivity extends AppCompatActivity {
                             public boolean onMenuItemClick(MenuItem item) {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(MessageActivity.this);
                                 builder.setTitle("Delete");
-                                builder.setMessage("Are you sure you want to delete?");
+                                builder.setMessage("אתה בטוח שאתה רוצה למחוק?");
                                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -126,12 +125,12 @@ public class MessageActivity extends AppCompatActivity {
                                         documentReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
-                                                Toast.makeText(v.getContext(),"This note is deleted",Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(v.getContext(),"הערה זו נמחקת",Toast.LENGTH_SHORT).show();
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
                                             @Override
                                             public void onFailure(@NonNull Exception e) {
-                                                Toast.makeText(v.getContext(),"Failed To Delete",Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(v.getContext(),"המחיקה נכשלה",Toast.LENGTH_SHORT).show();
                                             }
 
                                         });

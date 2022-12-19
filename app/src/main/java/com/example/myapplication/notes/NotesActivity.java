@@ -48,16 +48,24 @@ import java.util.Random;
 
 public class NotesActivity extends AppCompatActivity {
 
+
+    //create notes
     FloatingActionButton mcreatenotesfab;
+
+    //firebase Auth
     private FirebaseAuth firebaseAuth;
 
+    //recycler view
     RecyclerView mrecyclerview;
+
+    //staggered Grid Layout Manager
     StaggeredGridLayoutManager staggeredGridLayoutManager;
 
-
+    //firebase store
     FirebaseUser firebaseUser;
     FirebaseFirestore firebaseFirestore;
 
+    //note Adapter
     FirestoreRecyclerAdapter<FirebaseModelNote,NoteViewHolder> noteAdapter;
 
     @Override
@@ -72,6 +80,7 @@ public class NotesActivity extends AppCompatActivity {
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
         firebaseFirestore=FirebaseFirestore.getInstance();
 
+        //create notes
         mcreatenotesfab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,14 +90,17 @@ public class NotesActivity extends AppCompatActivity {
             }
         });
 
-
+       //Reading from the database
         Query query=firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection("myNotes").orderBy("title",Query.Direction.ASCENDING);
 
+        //pull the information from the database
         FirestoreRecyclerOptions<FirebaseModelNote> allusernotes= new FirestoreRecyclerOptions.Builder<FirebaseModelNote>().setQuery(query,FirebaseModelNote.class).build();
 
+        //request Permissions
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
 
+        //Adapter
         noteAdapter= new FirestoreRecyclerAdapter<FirebaseModelNote, NoteViewHolder>(allusernotes) {
 
             @RequiresApi(api = Build.VERSION_CODES.M)
@@ -96,16 +108,22 @@ public class NotesActivity extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull NoteViewHolder noteViewHolder, int i, @NonNull FirebaseModelNote firebasemodel) {
 
 
+
                 ImageView popupbutton=noteViewHolder.itemView.findViewById(R.id.menupopbutton);
 
+                //Color the note
                 int colourcode=getRandomColor();
+
+                //set Background Color
                 noteViewHolder.mnote.setBackgroundColor(noteViewHolder.itemView.getResources().getColor(colourcode,null));
 
+                //set Text
                 noteViewHolder.notetitle.setText(firebasemodel.getTitle());
                 noteViewHolder.notecontent.setText(firebasemodel.getContent());
-
                 String docId=noteAdapter.getSnapshots().getSnapshot(i).getId();
 
+
+                //Note menu - edit
                 popupbutton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -124,6 +142,7 @@ public class NotesActivity extends AppCompatActivity {
                             }
                         });
 
+                        //Note menu - Clear
                         popupMenu.getMenu().add("למחוק").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                             @Override
                             public boolean onMenuItemClick(MenuItem item) {

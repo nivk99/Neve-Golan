@@ -21,6 +21,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -52,15 +53,15 @@ public class CreateMessages extends AppCompatActivity {
         msavenote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Date date = new Date();
                 String title=mcreatetitleofnote.getText().toString().trim();
                 String content=mcreatecontentofnote.getText().toString().trim();
                 if(title.isEmpty() || content.isEmpty())
                 {
-                    Toast.makeText(getApplicationContext(),"Both field are Require",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"שני השדות נדרשים",Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
-
                     mprogressbarofcreatenote.setVisibility(View.VISIBLE);
 
                     DocumentReference documentReference=firebaseFirestore.collection("messages").document("Admin").collection("myMessages").document();
@@ -102,7 +103,7 @@ public class CreateMessages extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(this,"Your Device Doesn't Support It",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"המכשיר שלך לא תומך בזה",Toast.LENGTH_SHORT).show();
         }
 
 

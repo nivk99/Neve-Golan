@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/kk"
+    android:background="@drawable/general_design_image"
     android:paddingLeft="16dp"
     android:paddingTop="@dimen/cardview_compat_inset_shadow"
     android:paddingRight="16dp"

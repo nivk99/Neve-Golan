@@ -31,37 +31,64 @@ import java.util.Locale;
 import java.util.Map;
 
 public class CreateNote extends AppCompatActivity {
+
+
+    //create title of note
+    //create content of note
     EditText mcreatetitleofnote,mcreatecontentofnote;
+
+    //Save note button
     FloatingActionButton msavenote;
+
+
+    //User
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+
+    //firebase store
     FirebaseFirestore firebaseFirestore;
+
+    //progressbar to create note
     ProgressBar mprogressbarofcreatenote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
+
+        //Save note button
         msavenote=findViewById(R.id.savenote);
+
+        //create content of note
         mcreatecontentofnote=findViewById(R.id.createcontentofnote);
+
+        //create title of note
         mcreatetitleofnote=findViewById(R.id.createtitleofnote);
 
+        //progressbar to create note
         mprogressbarofcreatenote=findViewById(R.id.progressbarofcreatenote);
+
         Toolbar toolbar=findViewById(R.id.toolbarofcreatenote);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+        //firebase User
         firebaseAuth=FirebaseAuth.getInstance();
-        firebaseFirestore=FirebaseFirestore.getInstance();
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
 
+        //firebase store
+        firebaseFirestore=FirebaseFirestore.getInstance();
 
-
+        //If I clicked the save button
         msavenote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //
                 String title=mcreatetitleofnote.getText().toString().trim();
                 String content=mcreatecontentofnote.getText().toString().trim();
+
+                //if empty
                 if(title.isEmpty() || content.isEmpty())
                 {
                     Toast.makeText(getApplicationContext(),"שני השדות נדרשים",Toast.LENGTH_SHORT).show();
@@ -97,7 +124,7 @@ public class CreateNote extends AppCompatActivity {
     }
 
 
-
+   //speak and write
     public void click_speak(View view)
     {
 

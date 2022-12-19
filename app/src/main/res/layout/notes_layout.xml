@@ -28,6 +28,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+
                 <TextView
 
                     android:layout_width="match_parent"
@@ -52,8 +53,7 @@
                     android:layout_height="match_parent"
                     android:id="@+id/menupopbutton"
                     android:layout_weight="0"
-                    android:src="@drawable/ic_baseline_logout_24"
-                    ></ImageView>
+                    android:src="@drawable/ic_baseline_logout_24" />
 
 
             </LinearLayout>

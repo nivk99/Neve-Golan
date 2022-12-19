@@ -52,7 +52,6 @@ public class EditMessageActivity extends AppCompatActivity {
         msaveeditnote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(getApplicationContext(),"savebuton click",Toast.LENGTH_SHORT).show();
 
                 String newtitle=medittitleofnote.getText().toString();
                 String newcontent=meditcontentofnote.getText().toString();
