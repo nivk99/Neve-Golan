@@ -82,7 +82,7 @@ public class Database {
 
     }
 
-
+    // read all the users ->  all the teacher or all the students
     public void read_database(UserAdapter adapter, InterfaceContactList ContactList) {
         ArrayList<FirebaseModeUser> users = adapter.getUsers();
 
