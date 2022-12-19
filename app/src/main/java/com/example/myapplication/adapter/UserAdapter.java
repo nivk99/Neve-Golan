@@ -104,6 +104,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             holder.teacher_profession_textView.setText(teacher.get_profession());
         }
 
+        // recognize which user the client click and move to the user's page
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
