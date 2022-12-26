@@ -3,19 +3,29 @@ package com.example.myapplication.menu;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.AddUser.AddStudentActivity;
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.calendar.CalendarViewActivity;
+import com.example.myapplication.firebase.Database;
 import com.example.myapplication.login.ClientLoginActivity;
 import com.example.myapplication.messages.messageClientActivity;
 import com.example.myapplication.notes.NotesActivity;
@@ -30,6 +40,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Objects;
 
 public class ClientMenuActivity extends AppCompatActivity {
 
@@ -160,8 +176,7 @@ public class ClientMenuActivity extends AppCompatActivity {
                 signOut();
             }
         });
-
-
+            messageListener();
     }
 
     @Override
@@ -192,6 +207,45 @@ public class ClientMenuActivity extends AppCompatActivity {
             return "מנהל";
         }
         return full_name;
+    }
+
+
+    private void messageListener() {
+        Database database =new Database("broadcastMessage");
+        database.read_message_listener(this);
+    }
+
+    public void createChannel(String message)
+    {
+        NotificationManager manager=getSystemService(NotificationManager.class);
+        String id ="CHANNEL";
+        CharSequence name ="Message to Users";
+        String description ="deliver message from admin to users";
+        int importance =NotificationManager.IMPORTANCE_HIGH;
+        NotificationChannel mChannel=new NotificationChannel(id,name,importance);
+        mChannel.setDescription(description);
+        manager.createNotificationChannel(mChannel);
+        addNotification(message,id);
+    }
+
+
+
+    private void addNotification(String message, String id)
+    {
+        Notification.Builder notificationBuilder;
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O)
+        {
+            notificationBuilder=new Notification.Builder(this,id);
+
+        }
+        else
+        {
+            notificationBuilder=new Notification.Builder(this);
+        }
+        Notification notification =notificationBuilder.setContentTitle("הודעה חדשה מנווה גולן:").setSmallIcon(R.drawable.admin).setContentText(message).build();
+        NotificationManager notificationManager=(NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify((int)System.currentTimeMillis(),notification);
+
     }
 
 }

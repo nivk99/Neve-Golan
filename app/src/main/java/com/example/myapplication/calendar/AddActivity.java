@@ -4,13 +4,17 @@ import static android.content.ContentValues.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.model.FirebaseModelActivity;
 import com.google.firebase.database.DataSnapshot;
@@ -20,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Calendar;
 import java.util.Map;
 
 public class AddActivity extends AppCompatActivity {
@@ -76,10 +81,51 @@ public class AddActivity extends AppCompatActivity {
                     Toast.makeText(AddActivity.this, "נא למלא את כל השדות", Toast.LENGTH_SHORT).show();
                 }
             }
+
         });
 
 
     }
+
+
+    public void click_time_start(View view)
+    {
+        Calendar systemCalender=Calendar.getInstance();
+        int hour=systemCalender.get(Calendar.HOUR_OF_DAY);
+        int minute=systemCalender.get(Calendar.MINUTE);
+        TimePickerDialog timePickerDialog=new TimePickerDialog(AddActivity.this, new TimePickerDialog.OnTimeSetListener()
+        {
+
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                 ((EditText) findViewById(R.id.AddTimeStart)).setText(hourOfDay+":"+minute);
+            }
+        }
+                ,hour,minute,true);
+        timePickerDialog.show();
+
+    }
+    public void click_time_end(View view)
+    {
+        Calendar systemCalender=Calendar.getInstance();
+        int hour=systemCalender.get(Calendar.HOUR_OF_DAY);
+        int minute=systemCalender.get(Calendar.MINUTE);
+        TimePickerDialog timePickerDialog=new TimePickerDialog(AddActivity.this, new TimePickerDialog.OnTimeSetListener()
+        {
+
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                ((EditText) findViewById(R.id.AddTimeEnd)).setText(hourOfDay+":"+minute);
+            }
+        }
+                ,hour,minute,true);
+        timePickerDialog.show();
+
+    }
+
+
+
+
     public String removeSpaces(String s){
         if(s.length()==0)
             return s;
@@ -89,4 +135,6 @@ public class AddActivity extends AppCompatActivity {
         }
         return s.substring(i);
     }
+
+
 }

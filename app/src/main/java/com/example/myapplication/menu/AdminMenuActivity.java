@@ -16,6 +16,7 @@ import com.example.myapplication.AddUser.AddAdminActivity;
 import com.example.myapplication.AddUser.AddClientActivity;
 import com.example.myapplication.AddUser.AddStudentActivity;
 import com.example.myapplication.AddUser.AddTeacherActivity;
+import com.example.myapplication.notification.BroadcastsActivity;
 import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.calendar.CalendarViewActivity;
@@ -25,7 +26,6 @@ import com.example.myapplication.notes.NotesActivity;
 import com.example.myapplication.personalInformation.Personal_Information_teacher;
 import com.example.myapplication.readUser.admin.AdminContactListStudentActivity;
 import com.example.myapplication.readUser.admin.AdminContactListTeacherActivity;
-import com.example.myapplication.sms.sms_users_Activity;
 import com.google.android.material.navigation.NavigationView;
 
 public class AdminMenuActivity extends AppCompatActivity {
@@ -82,7 +82,7 @@ public class AdminMenuActivity extends AppCompatActivity {
 
 
                     case R.id.nav_sms:
-                        startActivity(new Intent(AdminMenuActivity.this, sms_users_Activity.class));
+                        startActivity(new Intent(AdminMenuActivity.this, BroadcastsActivity.class));
 
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;

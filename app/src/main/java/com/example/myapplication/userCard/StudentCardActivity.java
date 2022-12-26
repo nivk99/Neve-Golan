@@ -17,7 +17,7 @@ import com.example.myapplication.firebase.Database;
 import com.example.myapplication.menu.AdminMenuActivity;
 import com.example.myapplication.menu.ClientMenuActivity;
 import com.example.myapplication.readUser.admin.AdminContactListStudentActivity;
-import com.example.myapplication.sms.sms_user_Activity;
+import com.example.myapplication.notification.sms_user_Activity;
 import com.example.myapplication.userUpdate.UpdateStudent;
 import com.google.android.material.navigation.NavigationView;
 

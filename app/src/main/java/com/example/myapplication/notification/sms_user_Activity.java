@@ -1,4 +1,4 @@
-package com.example.myapplication.sms;
+package com.example.myapplication.notification;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 

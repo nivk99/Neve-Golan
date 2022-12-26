@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/general_design_image"
+    android:layout_height="match_parent"
+    tools:context=".notification.BroadcastsActivity"
+    android:orientation="vertical">
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="20dp"
+        android:background="#BAB2B2"
+        android:backgroundTint="#BAB2B2"
+        android:clickable="false"
+        android:text="שלח הודעה לכלל המשתמשים"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/message_content"
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="15dp"
+        android:background="#DFD8D8"
+        android:backgroundTint="#DFD8D8"
+        android:hint="תוכן ההודעה"
+        android:padding="10dp" />
+
+    <Button
+        android:id="@+id/publish_message"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@color/black"
+        android:textColorHint="#FFFFFF"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:text="שלח"
+        android:textColor="#fff"
+        android:textStyle="bold" />
+
+
+</LinearLayout>
+
+
+
+
+
+
+

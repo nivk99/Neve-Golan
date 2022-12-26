@@ -15,7 +15,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.firebase.Database;
 import com.example.myapplication.menu.AdminMenuActivity;
 import com.example.myapplication.readUser.admin.AdminContactListTeacherActivity;
-import com.example.myapplication.sms.sms_user_Activity;
+import com.example.myapplication.notification.sms_user_Activity;
 import com.example.myapplication.userUpdate.UpdateTeacher;
 import com.google.android.material.navigation.NavigationView;
 

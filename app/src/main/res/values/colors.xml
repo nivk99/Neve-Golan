@@ -19,7 +19,9 @@
     <color name="color4" >#ffe0ac</color>
     <color name="color5" >#e5cfe5</color>
 
-
+    <color name="DarkGreen">#27ae60</color>
     <color name="lightGray">#B2BEC3</color>
     <color name="DarkBlue">#2980b9</color>
+    <color name="DarkGray">#34495e</color>
+    <color name="Orange">#d35400</color>
 </resources>

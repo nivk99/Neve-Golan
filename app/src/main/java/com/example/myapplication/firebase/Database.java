@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.myapplication.menu.ClientMenuActivity;
 import com.example.myapplication.model.FirebaseModelFeedback;
 import com.example.myapplication.adapter.FeedbacksAdapter;
 import com.example.myapplication.feedback.FeedbackActivity;
@@ -18,6 +19,7 @@ import com.example.myapplication.readUser.client.ClientContactListStudentActivit
 import com.example.myapplication.model.FirebaseModelStudent;
 import com.example.myapplication.model.FirebaseModelTeacher;
 import com.example.myapplication.model.FirebaseModeUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Objects;
 
 public class Database {
 
@@ -217,6 +220,37 @@ public class Database {
 
             }
         });
+    }
+
+
+    public void read_message_listener(ClientMenuActivity clientMenuActivity)
+    {
+        this._data_base.getReference(this._name_path).limitToLast(1).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, String s) {
+                String message = Objects.requireNonNull(dataSnapshot.getValue()).toString();
+                clientMenuActivity.createChannel(message);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, String s) {
+                String message = Objects.requireNonNull(dataSnapshot.getValue()).toString();
+                clientMenuActivity.createChannel(message);
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, String s) {
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
     }
 
 
