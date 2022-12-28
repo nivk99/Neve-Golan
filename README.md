@@ -50,6 +50,9 @@ An application for managing the Neve Golan center
 
 ![](https://github.com/nivk99/Neve-Golan/blob/main/image/diagram.gif)
 
+## Class Diagram
+![](https://github.com/nivk99/Neve-Golan/blob/main/image/UML.png)
+
 
 ## 💡 The Neve Golan Wiki! 💡
 
