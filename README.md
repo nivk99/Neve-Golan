@@ -50,8 +50,29 @@ An application for managing the Neve Golan center
 
 ![](https://github.com/nivk99/Neve-Golan/blob/main/image/diagram.gif)
 
-## Class Diagram
-![](https://github.com/nivk99/Neve-Golan/blob/main/image/UML.png)
+
+### Class Diagram
+![](https://github.com/nivk99/Neve-Golan/blob/main/image/diagram/Class%20diagram%20.png)
+
+### Activity diagram
+![](https://github.com/nivk99/Neve-Golan/blob/main/image/diagram/Activity%20diagram.jpg)
+
+### ERD
+![](https://github.com/nivk99/Neve-Golan/blob/main/image/diagram/ERD.png)
+
+### Object diagram
+![](https://github.com/nivk99/Neve-Golan/blob/main/image/diagram/Object%20diagram.jpg)
+
+### Sequence diagram
+![](https://github.com/nivk99/Neve-Golan/blob/main/image/diagram/Sequence%20diagram.jpg)
+
+### State machine diagram
+![](https://github.com/nivk99/Neve-Golan/blob/main/image/diagram/State%20machine%20diagram.jpg)
+
+### Use case diagram
+![](https://github.com/nivk99/Neve-Golan/blob/main/image/diagram/Use%20case%20diagram.jpg)
+
+
 
 
 ## 💡 The Neve Golan Wiki! 💡
