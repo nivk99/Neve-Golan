@@ -46,6 +46,21 @@ An application for managing the Neve Golan center
 ![](https://github.com/nivk99/Neve-Golan/blob/main/image/app/Student%20update.png)
 
 
+## 💡 Features: 💡
+
+## 💡Selected Features: 💡
+
+### Admin messages:
+
+### Admin Broadcast Message that follows by Notification:
+
+### Client login with Google:
+
+### Admin login with a password sent to the phone:
+
+### Send an SMS to the user:
+
+
 ## 💡 Diagrams: 💡
 
 ![](https://github.com/nivk99/Neve-Golan/blob/main/image/diagram.gif)
