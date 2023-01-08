@@ -2,6 +2,8 @@ package com.example.myapplication.calendar;
 
 import static android.content.ContentValues.TAG;
 
+import static com.example.myapplication.calendar.Calender_Model.*;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -39,7 +41,7 @@ public class AddActivity extends AppCompatActivity {
         String month=data.getStringExtra("month");
         String day=data.getStringExtra("day");
 
-    // when click on "הוסף" save the activity to firebase
+        // when click on "הוסף" save the activity to firebase
         findViewById(R.id.buttonAdd).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,33 +51,13 @@ public class AddActivity extends AppCompatActivity {
 
                 if (Add_ActivityName.length() != 0 && Add_TimeEnd.length() != 0 && Add_TimeStart.length() != 0) {
                     //add to firebase,and to do more checks
-                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-                    Query nameQuery = ref.child("activity").child(year).child(month).child(day).orderByChild("name");
-                    nameQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-                        Boolean flag=false;
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            flag=false;
-                            for (DataSnapshot nameSnapshot: dataSnapshot.getChildren()) {
-                                Map dataActivity=((Map)nameSnapshot.getValue());
-                                String [] save_name={(String) dataActivity.get("name"),(String)dataActivity.get("timeStart"),(String)dataActivity.get("timeEnd")};
-                                if(save_name[0].equals(Add_ActivityName) && save_name[1].equals(Add_TimeStart) && save_name[2].equals(Add_TimeEnd)){
-                                    Toast.makeText(AddActivity.this, "פעילות זאת כבר קיימת", Toast.LENGTH_SHORT).show();
-                                    flag=true; break;
-                                }
-                            }
-                            if(!flag){
-                                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                                DatabaseReference myRef = database.getReference("activity/"+year+"/"+month+"/"+day).child(Add_ActivityName+","+Add_TimeStart+","+Add_TimeEnd);
-                                myRef.setValue(new FirebaseModelActivity(Add_ActivityName,Add_TimeStart,Add_TimeEnd));
-                                Toast.makeText(AddActivity.this, "הפעילות נוספה", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            Log.e(TAG, "onCancelled", databaseError.toException());
-                        }
-                    });
+                    int value = Add_new_activity(year, month, day,Add_ActivityName, Add_TimeStart, Add_TimeEnd);
+                    if(value == 0){
+                        Toast.makeText(AddActivity.this, "הפעילות נוספה", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Toast.makeText(AddActivity.this, "פעילות זאת כבר קיימת", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else {
                     Toast.makeText(AddActivity.this, "נא למלא את כל השדות", Toast.LENGTH_SHORT).show();
@@ -86,7 +68,6 @@ public class AddActivity extends AppCompatActivity {
 
 
     }
-
 
     public void click_time_start(View view)
     {
@@ -126,15 +107,7 @@ public class AddActivity extends AppCompatActivity {
 
 
 
-    public String removeSpaces(String s){
-        if(s.length()==0)
-            return s;
-        int i=0;      // remove start spaces(if there are)
-        while(s.charAt(i)==' '){
-            i++;
-        }
-        return s.substring(i);
-    }
+
 
 
 }

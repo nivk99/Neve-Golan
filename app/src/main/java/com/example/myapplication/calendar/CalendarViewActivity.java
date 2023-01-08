@@ -1,5 +1,7 @@
 package com.example.myapplication.calendar;
 
+import static com.example.myapplication.calendar.Calender_Model.Display_Activity;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,13 +42,7 @@ public class CalendarViewActivity extends AppCompatActivity implements  Interfac
         String path = "activity/"+Integer.parseInt(Year)+ "/"+Integer.parseInt(Month)+"/"+Integer.parseInt(Day);
         final RecyclerView recyclerView =findViewById(R.id.recyclerview_list_act);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        final ArrayList<FirebaseModelActivity> activitis=new ArrayList<>();
-        adapter =new ActivityAdapter(activitis,new FirebaseModelActivity(),this);
-
-        recyclerView.setAdapter(adapter);
-        database = new Database(path);
-        database.read_database_activity(adapter);
-
+        Display_Activity(path, adapter, database, listener, recyclerView);
         CalendarView calendar=(CalendarView) findViewById(R.id.calendarView);
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
             @Override
@@ -54,12 +50,9 @@ public class CalendarViewActivity extends AppCompatActivity implements  Interfac
                 int Yeart=year, Montht=month+1, Dayt=dayOfMonth;
                 Year=Integer.toString(year);Month=Integer.toString(month+1);Day=Integer.toString(dayOfMonth);
                 String path = "activity/"+Yeart + "/" + Montht + "/" + Dayt;
-                ArrayList<FirebaseModelActivity> activitis=new ArrayList<>();
-                adapter =new ActivityAdapter(activitis,new FirebaseModelActivity(),listener);
                 final RecyclerView recyclerView =findViewById(R.id.recyclerview_list_act);
                 recyclerView.setAdapter(adapter);
-                database = new Database(path);
-                database.read_database_activity(adapter);
+                Display_Activity(path, adapter, database, listener,recyclerView);
             }
         });
         // move to page "הוספת פעילויות"
@@ -77,24 +70,6 @@ public class CalendarViewActivity extends AppCompatActivity implements  Interfac
         });
 
     }
-    public void ClickToRemov(View view){
-        int ya;
-        TextView name_textView=findViewById(R.id.textView_activity_name);
-        TextView timeEnd_textView=findViewById(R.id.textView_activity_time_end);
-        TextView timeStart_textView=findViewById(R.id.textView_activity_time_start);
-
-
-        Intent intent = new Intent(this, EditActivity.class);
-        intent.putExtra("year", Year);
-        intent.putExtra("month",Month);
-        intent.putExtra("day", Day);
-        intent.putExtra("name",name_textView.getText().toString());
-        intent.putExtra("start",timeStart_textView.getText().toString());
-        intent.putExtra("end",timeEnd_textView.getText().toString());
-        startActivity(intent);
-
-    }
-
 
     @Override
     public void onItemClicked(FirebaseModelActivity activity) {
@@ -105,6 +80,7 @@ public class CalendarViewActivity extends AppCompatActivity implements  Interfac
         intent.putExtra("name",activity.getName());
         intent.putExtra("start",activity.getTimeStart());
         intent.putExtra("end",activity.getTimeEnd());
+        intent.putExtra("ID",activity.getID());
         startActivity(intent);
     }
 

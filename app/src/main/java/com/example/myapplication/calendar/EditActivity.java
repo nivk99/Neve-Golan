@@ -1,5 +1,7 @@
 package com.example.myapplication.calendar;
 
+import static com.example.myapplication.calendar.Calender_Model.*;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,12 +11,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
+import com.example.myapplication.firebase.Authenticate;
+import com.example.myapplication.firebase.Database;
 import com.example.myapplication.model.FirebaseModelActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class EditActivity extends AppCompatActivity {
-    String year,month,day,name,start,end;
+    String year,month,day,name,start,end, Id;
     DatabaseReference myRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +32,11 @@ public class EditActivity extends AppCompatActivity {
         name=data.getStringExtra("name");
         start=data.getStringExtra("start");
         end=data.getStringExtra("end");
-
+        Id = data.getStringExtra("ID");
+        Database teacher = new Database("users/teacher");
+        String teacher_id = teacher.get_teacher_ID(Authenticate.get_current_email());
+        // need to check what is the id of admin and what to write in the data base in case of admin write activity
+        boolean accept = (Id == teacher_id) || teacher_id.length()==0;
         //set the activity name and time
         ((EditText)findViewById(R.id.updateActivityName)).setText(name);
         ((EditText)findViewById(R.id.updateTimeStart)).setText(start);
@@ -40,12 +48,20 @@ public class EditActivity extends AppCompatActivity {
         findViewById(R.id.buttonDeleteActivity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myRef.setValue(null);
-                Toast.makeText(EditActivity.this, "הפעילות נמחקה", Toast.LENGTH_SHORT).show();
+                if(!accept) {
+                    Toast.makeText(EditActivity.this, "אין הרשאה למחיקה הפעילות - פנה למנהל", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    myRef.setValue(null);
+                    //delete_Activity(myRef);
+                    Toast.makeText(EditActivity.this, "הפעילות נמחקה", Toast.LENGTH_SHORT).show();
+                }
+
 
                 //jump back to the calander
             }
         });
+
 
         //active "עדכן" button
         findViewById(R.id.buttonUpdateActivity).setOnClickListener(new View.OnClickListener() {
@@ -55,12 +71,16 @@ public class EditActivity extends AppCompatActivity {
                 name = ((EditText) findViewById(R.id.updateActivityName)).getText().toString();
                 start = ((EditText) findViewById(R.id.updateTimeStart)).getText().toString();
                 end = ((EditText) findViewById(R.id.updateTimeEnd)).getText().toString();
-
-                myRef.setValue(null);
-                myRef = FirebaseDatabase.getInstance().getReference("activity/"+year+"/"+month+"/"+day).child(name+","+start+","+end);
-                myRef.setValue(new FirebaseModelActivity(name,start,end));
-                Toast.makeText(EditActivity.this, "הפעילות עודכנה", Toast.LENGTH_SHORT).show();
-
+                if(!accept){
+                    Toast.makeText(EditActivity.this, "אין הרשאה לעריכת הפעילות - פנה למנהל", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    myRef.setValue(null);
+                    myRef = FirebaseDatabase.getInstance().getReference("activity/"+Integer.parseInt(year)+"/"+Integer.parseInt(month)+"/"+Integer.parseInt(day)).child(name+","+start+","+end);
+                    myRef.setValue(new FirebaseModelActivity(name,start,end,Id));
+                    //Add_new_activity(year, month,day, name , start, end);
+                    Toast.makeText(EditActivity.this, "הפעילות עודכנה", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
