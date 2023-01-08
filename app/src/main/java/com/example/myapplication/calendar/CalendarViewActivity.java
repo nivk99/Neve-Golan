@@ -33,14 +33,11 @@ public class CalendarViewActivity extends AppCompatActivity implements  Interfac
         setContentView(R.layout.activity_calendar_view);
         @SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         Date date = new Date();
-        String path = "activity/"+dateFormat.format(date);
         Year=dateFormat.format(date).substring(0,4);
         Month=dateFormat.format(date).substring(5,7);
         Day=dateFormat.format(date).substring(8);
 
-        if ( path.charAt(path.length()-2)=='0')
-            path = path.substring(0,path.length()-2)+path.substring(path.length()-1);
-        //String path = "activity/2022/12/9";
+        String path = "activity/"+Integer.parseInt(Year)+ "/"+Integer.parseInt(Month)+"/"+Integer.parseInt(Day);
         final RecyclerView recyclerView =findViewById(R.id.recyclerview_list_act);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         final ArrayList<FirebaseModelActivity> activitis=new ArrayList<>();
