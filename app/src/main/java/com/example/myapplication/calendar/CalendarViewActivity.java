@@ -35,9 +35,9 @@ public class CalendarViewActivity extends AppCompatActivity implements  Interfac
         setContentView(R.layout.activity_calendar_view);
         @SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         Date date = new Date();
-        Year=dateFormat.format(date).substring(0,4);
-        Month=dateFormat.format(date).substring(5,7);
-        Day=dateFormat.format(date).substring(8);
+        Year= String.valueOf(Integer.parseInt(dateFormat.format(date).substring(0,4)));
+        Month=String.valueOf(Integer.parseInt(dateFormat.format(date).substring(5,7)));
+        Day=String.valueOf(Integer.parseInt(dateFormat.format(date).substring(8)));
 
         String path = "activity/"+Integer.parseInt(Year)+ "/"+Integer.parseInt(Month)+"/"+Integer.parseInt(Day);
         final RecyclerView recyclerView =findViewById(R.id.recyclerview_list_act);
