@@ -256,6 +256,7 @@ public class Database {
     public String get_teacher_ID(String email){
         this._query = this._data_base.getReference(this._name_path).orderByChild("_email").equalTo(email);
         final String[] ans = {""};
+
         _query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

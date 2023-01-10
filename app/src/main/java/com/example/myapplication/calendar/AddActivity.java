@@ -18,7 +18,10 @@ import android.widget.Toast;
 
 import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
+import com.example.myapplication.menu.ClientMenuActivity;
 import com.example.myapplication.model.FirebaseModelActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,6 +34,8 @@ import java.util.Map;
 
 public class AddActivity extends AppCompatActivity {
     String Delete_ActivityName="";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,10 +53,11 @@ public class AddActivity extends AppCompatActivity {
                 String Add_ActivityName =removeSpaces( ((EditText) findViewById(R.id.AddActivityName)).getText().toString());
                 String Add_TimeStart =removeSpaces( ((EditText) findViewById(R.id.AddTimeStart)).getText().toString());
                 String Add_TimeEnd =removeSpaces( ((EditText) findViewById(R.id.AddTimeEnd)).getText().toString());
+                String uid = ClientMenuActivity.get();
 
                 if (Add_ActivityName.length() != 0 && Add_TimeEnd.length() != 0 && Add_TimeStart.length() != 0) {
                     //add to firebase,and to do more checks
-                    int value = Add_new_activity(year, month, day,Add_ActivityName, Add_TimeStart, Add_TimeEnd);
+                    int value = Add_new_activity(year, month, day,Add_ActivityName, Add_TimeStart, Add_TimeEnd , uid);
                     if(value == 0){
                         Toast.makeText(AddActivity.this, "הפעילות נוספה", Toast.LENGTH_SHORT).show();
                     }

@@ -13,7 +13,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.firebase.Authenticate;
 import com.example.myapplication.firebase.Database;
+import com.example.myapplication.menu.ClientMenuActivity;
 import com.example.myapplication.model.FirebaseModelActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -33,10 +36,10 @@ public class EditActivity extends AppCompatActivity {
         start=data.getStringExtra("start");
         end=data.getStringExtra("end");
         Id = data.getStringExtra("ID");
-        Database teacher = new Database("users/teacher");
-        String teacher_id = teacher.get_teacher_ID(Authenticate.get_current_email());
+        String teacher_id = ClientMenuActivity.get();
         // need to check what is the id of admin and what to write in the data base in case of admin write activity
-        boolean accept = (Id == teacher_id) || teacher_id.length()==0;
+        final boolean accept [] = new boolean[1];
+       accept[0] = ( (Id == teacher_id) || teacher_id == "מנהל" );
         //set the activity name and time
         ((EditText)findViewById(R.id.updateActivityName)).setText(name);
         ((EditText)findViewById(R.id.updateTimeStart)).setText(start);
@@ -48,7 +51,7 @@ public class EditActivity extends AppCompatActivity {
         findViewById(R.id.buttonDeleteActivity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!accept) {
+                if(! accept[0]) {
                     Toast.makeText(EditActivity.this, "אין הרשאה למחיקה הפעילות - פנה למנהל", Toast.LENGTH_SHORT).show();
                 }
                 else{
@@ -71,7 +74,7 @@ public class EditActivity extends AppCompatActivity {
                 name = ((EditText) findViewById(R.id.updateActivityName)).getText().toString();
                 start = ((EditText) findViewById(R.id.updateTimeStart)).getText().toString();
                 end = ((EditText) findViewById(R.id.updateTimeEnd)).getText().toString();
-                if(!accept){
+                if(! accept[0]){
                     Toast.makeText(EditActivity.this, "אין הרשאה לעריכת הפעילות - פנה למנהל", Toast.LENGTH_SHORT).show();
                 }
                 else{

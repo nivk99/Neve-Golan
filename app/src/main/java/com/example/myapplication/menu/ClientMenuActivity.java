@@ -96,7 +96,8 @@ public class ClientMenuActivity extends AppCompatActivity {
                         break;
 
                     case R.id.nav_calendar:
-                        startActivity(new Intent(ClientMenuActivity.this, CalendarViewActivity.class));
+                        Intent cal = new Intent(ClientMenuActivity.this, CalendarViewActivity.class);
+                        startActivity(cal);
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
 

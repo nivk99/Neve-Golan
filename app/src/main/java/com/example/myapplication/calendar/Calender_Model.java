@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class Calender_Model {
-    public static int Add_new_activity(String year, String month,String day,String Add_ActivityName,String Add_TimeStart,String Add_TimeEnd){
+    public static int Add_new_activity(String year, String month,String day,String Add_ActivityName,String Add_TimeStart,String Add_TimeEnd, String ID){
         final int[] Ex_value = {0};
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
         Query nameQuery = ref.child("activity").child(year).child(month).child(day).orderByChild("name");
@@ -44,8 +44,8 @@ public class Calender_Model {
                 }
                 if(!flag){
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    Database teacher = new Database("users/teacher");
-                    String ID = teacher.get_teacher_ID(Authenticate.get_current_email());
+//                    Database teacher = new Database("users/teacher");
+//                    String ID = teacher.get_teacher_ID(Authenticate.get_current_email());
                     DatabaseReference myRef = database.getReference("activity/"+Integer.parseInt(year)+"/"+Integer.parseInt(month)+"/"+Integer.parseInt(day)).child(Add_ActivityName+","+Add_TimeStart+","+Add_TimeEnd);
                     myRef.setValue(new FirebaseModelActivity(Add_ActivityName,Add_TimeStart,Add_TimeEnd, ID));
                     flag = false;
