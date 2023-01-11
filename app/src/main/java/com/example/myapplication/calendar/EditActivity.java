@@ -80,6 +80,7 @@ public class EditActivity extends AppCompatActivity {
                 else{
                     myRef.setValue(null);
                     myRef = FirebaseDatabase.getInstance().getReference("activity/"+Integer.parseInt(year)+"/"+Integer.parseInt(month)+"/"+Integer.parseInt(day)).child(name+","+start+","+end);
+                    if(teacher_id == "מנהל")Id = "מנהל";
                     myRef.setValue(new FirebaseModelActivity(name,start,end,Id));
                     //Add_new_activity(year, month,day, name , start, end);
                     Toast.makeText(EditActivity.this, "הפעילות עודכנה", Toast.LENGTH_SHORT).show();
