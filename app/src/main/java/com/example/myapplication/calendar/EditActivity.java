@@ -2,6 +2,7 @@ package com.example.myapplication.calendar;
 
 import static com.example.myapplication.calendar.Calender_Model.*;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -39,7 +40,7 @@ public class EditActivity extends AppCompatActivity {
         String teacher_id = ClientMenuActivity.get();
         // need to check what is the id of admin and what to write in the data base in case of admin write activity
         final boolean accept [] = new boolean[1];
-       accept[0] = ( (Id == teacher_id) || teacher_id == "מנהל" );
+       accept[0] = ( (Id.equals(teacher_id)) || teacher_id.equals("מנהל" ));
         //set the activity name and time
         ((EditText)findViewById(R.id.updateActivityName)).setText(name);
         ((EditText)findViewById(R.id.updateTimeStart)).setText(start);
@@ -75,7 +76,7 @@ public class EditActivity extends AppCompatActivity {
                 else{
                     myRef.setValue(null);
                     myRef = FirebaseDatabase.getInstance().getReference("activity/"+Integer.parseInt(year)+"/"+Integer.parseInt(month)+"/"+Integer.parseInt(day)).child(name+","+start+","+end);
-                    if(teacher_id == "מנהל")Id = "מנהל";
+                    if(teacher_id.equals("מנהל"))Id = "מנהל";
                     myRef.setValue(new FirebaseModelActivity(name,start,end,Id));
                     //Add_new_activity(year, month,day, name , start, end);
                     Toast.makeText(EditActivity.this, "הפעילות עודכנה", Toast.LENGTH_SHORT).show();
@@ -84,5 +85,6 @@ public class EditActivity extends AppCompatActivity {
             }
         });
     }
+
 }
 
