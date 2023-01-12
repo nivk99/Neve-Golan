@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -57,13 +58,7 @@ public class AddActivity extends AppCompatActivity {
 
                 if (Add_ActivityName.length() != 0 && Add_TimeEnd.length() != 0 && Add_TimeStart.length() != 0) {
                     //add to firebase,and to do more checks
-                    int value = Add_new_activity(year, month, day,Add_ActivityName, Add_TimeStart, Add_TimeEnd , uid);
-                    if(value == 0){
-                        Toast.makeText(AddActivity.this, "הפעילות נוספה", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        Toast.makeText(AddActivity.this, "פעילות זאת כבר קיימת", Toast.LENGTH_SHORT).show();
-                    }
+                    new Calender_Model().Add_new_activity(year, month, day,Add_ActivityName, Add_TimeStart, Add_TimeEnd,uid,getApplicationContext());
                 }
                 else {
                     Toast.makeText(AddActivity.this, "נא למלא את כל השדות", Toast.LENGTH_SHORT).show();
@@ -110,10 +105,11 @@ public class AddActivity extends AppCompatActivity {
 
     }
 
-
-
-
-
+    // used for make toast from other class
+    public static void toasty(Context con, String msg)
+    {
+        Toast.makeText(con, msg, Toast.LENGTH_LONG).show();
+    }
 
 
 }

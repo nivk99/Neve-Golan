@@ -45,7 +45,7 @@ public class EditActivity extends AppCompatActivity {
         ((EditText)findViewById(R.id.updateTimeStart)).setText(start);
         ((EditText)findViewById(R.id.updateTimeEnd)).setText(end);
         String activity_id=name+","+start+","+end;
-        myRef = FirebaseDatabase.getInstance().getReference("activity/"+year+"/"+month+"/"+day).child(name+","+start+","+end);
+//        myRef = FirebaseDatabase.getInstance().getReference("activity/"+year+"/"+month+"/"+day).child(name+","+start+","+end);
 
         //delete activity
         findViewById(R.id.buttonDeleteActivity).setOnClickListener(new View.OnClickListener() {
@@ -55,13 +55,8 @@ public class EditActivity extends AppCompatActivity {
                     Toast.makeText(EditActivity.this, "אין הרשאה למחיקה הפעילות - פנה למנהל", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    myRef.setValue(null);
-                    //delete_Activity(myRef);
-                    Toast.makeText(EditActivity.this, "הפעילות נמחקה", Toast.LENGTH_SHORT).show();
+                    new Calender_Model().delete_Activity(year+"/"+month+"/"+day+"/"+name+","+start+","+end,getApplicationContext());
                 }
-
-
-                //jump back to the calander
             }
         });
 

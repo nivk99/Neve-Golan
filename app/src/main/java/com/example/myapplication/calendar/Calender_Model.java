@@ -2,6 +2,8 @@ package com.example.myapplication.calendar;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Context;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -21,43 +23,24 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Map;
 
 public class Calender_Model {
-    public static int Add_new_activity(String year, String month,String day,String Add_ActivityName,String Add_TimeStart,String Add_TimeEnd, String ID){
-        final int[] Ex_value = {0};
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-        Query nameQuery = ref.child("activity").child(year).child(month).child(day).orderByChild("name");
-        nameQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-            Boolean flag=false;
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                flag=false;
-                for (DataSnapshot nameSnapshot: dataSnapshot.getChildren()) {
-                    Map dataActivity=((Map)nameSnapshot.getValue());
-                    String [] save_name={(String) dataActivity.get("name"),(String)dataActivity.get("timeStart"),(String)dataActivity.get("timeEnd")};
-                    if(save_name[0].equals(Add_ActivityName) && save_name[1].equals(Add_TimeStart) && save_name[2].equals(Add_TimeEnd)){
-                        flag=true;
-                        Ex_value[0] =1;break;
-                    }
-                }
-                if(!flag){
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-//                    Database teacher = new Database("users/teacher");
-//                    String ID = teacher.get_teacher_ID(Authenticate.get_current_email());
-                    DatabaseReference myRef = database.getReference("activity/"+Integer.parseInt(year)+"/"+Integer.parseInt(month)+"/"+Integer.parseInt(day)).child(Add_ActivityName+","+Add_TimeStart+","+Add_TimeEnd);
-                    myRef.setValue(new FirebaseModelActivity(Add_ActivityName,Add_TimeStart,Add_TimeEnd, ID));
-                    flag = false;
-                    Ex_value[0] =0;
-                }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                Log.e(TAG, "onCancelled", databaseError.toException());
-            }
-        });
-        return Ex_value[0];
+    private Context context;
+    public void Add_new_activity(String year, String month, String day, String Add_ActivityName, String Add_TimeStart, String Add_TimeEnd,String id, Context con){
+        this.context=con;
+        task t=new task();
+        String send="http://10.0.2.2:8000/addActivity/"+Add_ActivityName+"/"+Add_TimeStart+"/"+Add_TimeEnd+"/"+id+"/"+year+"/"+month+"/"+day;
+        t.execute(send);
+
     }
 
     public static String removeSpaces(String s){
@@ -70,9 +53,11 @@ public class Calender_Model {
         return s.substring(i);
     }
 
-    public static DatabaseReference delete_Activity(DatabaseReference myRef){
-        myRef.setValue(null);
-        return myRef;
+    public void delete_Activity(String params,Context con){
+        this.context=con;
+        task t=new task();
+        String send="http://10.0.2.2:8000/deleteActivity/"+params;
+        t.execute(send);
     }
 
     public static void Display_Activity(String path, ActivityAdapter adapter, Database database, InterfaceSelectActivityListener listener, RecyclerView recyclerView){
@@ -82,5 +67,38 @@ public class Calender_Model {
         database = new Database(path);
         database.read_database_activity(adapter);
     }
-}
 
+    // for sending websocket to the server
+    public class task extends AsyncTask<String,String,String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            HttpURLConnection connection=null;
+            try {
+                URL url=new URL(params[0]);
+                connection=(HttpURLConnection)url.openConnection();
+                connection.connect();
+                InputStream stream=connection.getInputStream();
+                BufferedReader redReader=new BufferedReader(new InputStreamReader(stream));
+                StringBuffer buffer=new StringBuffer();
+                String line="";
+                while((line=redReader.readLine())!=null){
+                    buffer.append(line);
+                }
+                String s=buffer.toString();
+                return s;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+        @Override
+        protected void onPostExecute(String s){
+            super.onPostExecute(s);
+            AddActivity.toasty(context, s);
+
+        }
+    }
+}
