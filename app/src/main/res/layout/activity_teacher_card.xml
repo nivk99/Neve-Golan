@@ -32,7 +32,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="71dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginBottom="10dp"
             android:background="#BAB2B2"
             android:ems="10"
@@ -41,8 +40,10 @@
             android:textAllCaps="true"
             app:layout_constraintBottom_toTopOf="@+id/editText_teacher_last_name"
             app:layout_constraintEnd_toStartOf="@+id/textView_name"
+            app:layout_constraintHorizontal_bias="0.547"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView_teacher_image"
+            app:layout_constraintVertical_bias="0.0"
             tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
@@ -51,30 +52,31 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            android:layout_marginBottom="10dp"
             android:background="#BAB2B2"
             android:ems="10"
             android:hint="משפחה"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/editText_teacher_age"
             app:layout_constraintEnd_toStartOf="@+id/textView_last"
+            app:layout_constraintHorizontal_bias="0.912"
             app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck"
+            tools:layout_editor_absoluteY="295dp" />
 
         <TextView
             android:id="@+id/editText_teacher_age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="30dp"
-            android:layout_marginBottom="10dp"
             android:background="#BAB2B2"
             android:ems="10"
             android:hint="גיל"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/editText_teacher_phone"
             app:layout_constraintEnd_toStartOf="@+id/textView_age"
+            app:layout_constraintHorizontal_bias="0.896"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_teacher_last_name"
             tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
@@ -82,15 +84,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="30dp"
-            android:layout_marginBottom="10dp"
             android:background="#BAB2B2"
             android:ems="10"
             android:hint="מספר טלפון"
             android:inputType="phone"
-            app:layout_constraintBottom_toTopOf="@+id/editText_teacher_email"
             app:layout_constraintEnd_toStartOf="@+id/textView_phone"
+            app:layout_constraintHorizontal_bias="0.912"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_teacher_age"
             tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
@@ -98,15 +101,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="30dp"
-            android:layout_marginBottom="10dp"
             android:background="#BAB2B2"
             android:ems="10"
             android:hint="מייל"
             android:inputType="textEmailAddress"
-            app:layout_constraintBottom_toTopOf="@+id/editText_teacher_id"
             app:layout_constraintEnd_toStartOf="@+id/textView_email"
+            app:layout_constraintHorizontal_bias="0.912"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText_teacher_phone"
             tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
@@ -150,7 +154,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="264dp"
             android:layout_marginEnd="100dp"
             android:layout_marginBottom="12dp"
             android:background="#BAB2B2"
@@ -158,8 +161,10 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/textView_last"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView_last"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView_teacher_image"
+            app:layout_constraintVertical_bias="0.922" />
 
         <TextView
             android:id="@+id/textView_last"
