@@ -1,5 +1,7 @@
 package com.example.myapplication.readUser.client;
 
+import static com.example.myapplication.readUser.model_teacher_Activity.find_the_sortType_teacher;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -52,25 +54,9 @@ public class ClientContactListTeacherActivity extends AppCompatActivity implemen
         CheckBox  profession=(CheckBox)findViewById(R.id.checkBox_profession);
         CheckBox address=(CheckBox)findViewById(R.id.checkBox_id);
 
-        String key="";
-
-        if(name.isChecked())
-        {
-            key="_name";
-        }
-        if(age.isChecked())
-        {
-            key="_age";
-        }
-        if(profession.isChecked())
-        {
-            key="_profession";
-        }
-        if(address.isChecked())
-        {
-            key="_address";
-        }
-        database.orderByChild(key,adapter,this);
+        String key= find_the_sortType_teacher(name, age, profession, address);
+        if(key != null)
+            database.orderByChild(key,adapter,this);
 
     }
     @Override
@@ -81,7 +67,6 @@ public class ClientContactListTeacherActivity extends AppCompatActivity implemen
     @Override
     public void onItemClicked(FirebaseModeUser user) {
         Toast.makeText(this, "delete_admin", Toast.LENGTH_SHORT).show();
-
 
     }
 }

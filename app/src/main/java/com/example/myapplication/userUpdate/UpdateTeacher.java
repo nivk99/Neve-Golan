@@ -1,5 +1,7 @@
 package com.example.myapplication.userUpdate;
 
+import static com.example.myapplication.userUpdate.model_Teacher_update.update_teacher_card;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -71,50 +73,15 @@ public class UpdateTeacher extends AppCompatActivity  {
         String teacher_id_textView_str=teacher_id_textView.getText().toString();
         String teacher_profession_textView_str= teacher_profession_textView.getText().toString();
 
-        if(this.id.equals(teacher_id_textView_str))
-        {
-            updateTeacher update_teacher=new updateTeacher(teacher_name_textView_str,teacher_last_name_textView_str,teacher_age_textView_str,teacher_phone_textView_str,teacher_email_textView_str,teacher_id_textView_str,teacher_profession_textView_str);
-            database.update(update_teacher.toMap(),this.id);
-
-        }
-        else
-        {
-            database.remove(this.id);
-            FirebaseModelTeacher new_teacher=new FirebaseModelTeacher(teacher_name_textView_str,teacher_last_name_textView_str,teacher_age_textView_str,teacher_phone_textView_str,teacher_email_textView_str,teacher_id_textView_str,teacher_profession_textView_str);
-            database.write_database(new_teacher);
-        }
-
-    }
-
-
-    private static class  updateTeacher extends FirebaseModelTeacher
-    {
-        public updateTeacher(String _name, String _last_name, double _age, String _phone, String _email, String _id, String _profession) {
-            super(_name, _last_name, _age, _phone, _email, _id, _profession);
-        }
-
-        public updateTeacher() {
-        }
-
-        @Exclude
-        public Map<String, Object> toMap()
-        {
-            HashMap<String,Object> result =new HashMap<>();
-            result.put("_name",this._name);
-            result.put("_last_name",this._last_name);
-            result.put("_age",this._age);
-            result.put("_phone",this._phone);
-            result.put("_email",this._email);
-            result.put("_id",this._id);
-            result.put("_profession",this._profession);
-            return result;
-
-        }
-
-
+        update_teacher_card( teacher_name_textView_str,  teacher_last_name_textView_str,
+         teacher_age_textView_str ,  teacher_phone_textView_str ,  teacher_email_textView_str ,
+             teacher_id_textView_str ,  teacher_profession_textView_str,  database ,  id);
 
 
     }
+
+
+
 
 
 

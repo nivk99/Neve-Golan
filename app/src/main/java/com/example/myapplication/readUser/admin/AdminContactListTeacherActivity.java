@@ -1,5 +1,7 @@
 package com.example.myapplication.readUser.admin;
 
+import static com.example.myapplication.readUser.model_teacher_Activity.find_the_sortType_teacher;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -60,25 +62,11 @@ public class AdminContactListTeacherActivity extends AppCompatActivity implement
         CheckBox  profession=(CheckBox)findViewById(R.id.checkBox_profession);
         CheckBox address=(CheckBox)findViewById(R.id.checkBox_id);
 
-        String key="";
+        String key= find_the_sortType_teacher(name, age, profession, address);
+        if(key != null)
+            database.orderByChild(key,adapter,this);
 
-        if(name.isChecked())
-        {
-            key="_name";
-        }
-        if(age.isChecked())
-        {
-            key="_age";
-        }
-        if(profession.isChecked())
-        {
-            key="_profession";
-        }
-        if(address.isChecked())
-        {
-            key="_address";
-        }
-        database.orderByChild(key,adapter,this);
+
 
     }
 

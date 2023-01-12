@@ -1,5 +1,7 @@
 package com.example.myapplication.userUpdate;
 
+import static com.example.myapplication.userUpdate.model_student_update.Update_student_card;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,11 +12,6 @@ import android.widget.TextView;
 import com.example.myapplication.R;
 import com.example.myapplication.userCard.StudentCardActivity;
 import com.example.myapplication.firebase.Database;
-import com.example.myapplication.model.FirebaseModelStudent;
-import com.google.firebase.database.Exclude;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class UpdateStudent extends AppCompatActivity {
@@ -33,6 +30,7 @@ public class UpdateStudent extends AppCompatActivity {
     private  String id;
 
     private Database database;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,49 +76,14 @@ public class UpdateStudent extends AppCompatActivity {
         String student_id_textView_str=student_id_textView.getText().toString();
         String student_class_textView_str=student_class_textView.getText().toString();
 
-
-        if(this.id.equals(student_id_textView_str))
-        {
-            updateStudent update_student=new updateStudent(student_name_textView_str,student_last_name_textView_str,student_age_textView_str,student_phone_textView_str,student_email_textView_str,student_id_textView_str,student_class_textView_str);
-            database.update(update_student.toMap(),this.id);
-
-        }
-        else
-        {
-            database.remove(this.id);
-            FirebaseModelStudent new_student=new FirebaseModelStudent(student_name_textView_str,student_last_name_textView_str,student_age_textView_str,student_phone_textView_str,student_email_textView_str,student_id_textView_str,student_class_textView_str);
-            database.write_database(new_student);
-        }
-
+        Update_student_card(database, student_name_textView_str,student_last_name_textView_str, student_age_textView_str, student_phone_textView_str, student_email_textView_str ,
+                student_id_textView_str, student_class_textView_str, this.id);
 
     }
 
 
 
 
-    private static class updateStudent extends FirebaseModelStudent
-    {
-        public updateStudent(String _name, String _last_name, double _age, String _phone, String _email, String _id, String _class) {
-            super(_name, _last_name, _age, _phone, _email, _id, _class);
-        }
 
-        public updateStudent() {
-        }
-
-        @Exclude
-        public Map<String, Object> toMap()
-        {
-            HashMap<String,Object> result =new HashMap<>();
-            result.put("_name",this._name);
-            result.put("_last_name",this._last_name);
-            result.put("_age",this._age);
-            result.put("_phone",this._phone);
-            result.put("_email",this._email);
-            result.put("_id",this._id);
-            result.put("_class",this._class);
-            return result;
-
-        }
-    }
 
 }
