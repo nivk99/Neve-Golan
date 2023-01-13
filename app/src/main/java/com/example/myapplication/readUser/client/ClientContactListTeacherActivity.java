@@ -66,7 +66,7 @@ public class ClientContactListTeacherActivity extends AppCompatActivity implemen
 
     @Override
     public void onItemClicked(FirebaseModeUser user) {
-        Toast.makeText(this, "delete_admin", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "delete_admin", Toast.LENGTH_SHORT).show();
 
     }
 }
