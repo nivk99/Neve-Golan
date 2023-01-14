@@ -50,16 +50,23 @@ An application for managing the Neve Golan center
 
 ## 💡Selected Features: 💡
 
-### Admin messages:
+### speech to text:
+!()[https://github.com/nivk99/Neve-Golan/blob/main/image/Features/speech%20to%20text.png]
 
 ### Admin Broadcast Message that follows by Notification:
+![](https://github.com/nivk99/Neve-Golan/blob/main/image/Features/notification.png)
 
 ### Client login with Google:
+![](https://github.com/nivk99/Neve-Golan/blob/main/image/Features/google.png)
 
 ### Admin login with a password sent to the phone:
+![](https://github.com/nivk99/Neve-Golan/blob/main/image/Features/OTP.png)
 
 ### Send an SMS to the user:
+![](https://github.com/nivk99/Neve-Golan/blob/main/image/Features/sms.png)
 
+### choose a time:
+![](https://github.com/nivk99/Neve-Golan/blob/main/image/Features/Time.png)
 
 ## 💡 Diagrams: 💡
 
